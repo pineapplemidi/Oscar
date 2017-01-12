@@ -1,0 +1,54 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"4 button.h
+[s S1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1 . Bit CC Velocity State PreviousState Toggle Momentary ]
+[; ;button.h: 4: typedef struct {
+[; ;button.h: 5: char Bit;
+[; ;button.h: 6: char CC;
+[; ;button.h: 7: char Velocity;
+[; ;button.h: 8: char State;
+[; ;button.h: 9: char PreviousState;
+[; ;button.h: 10: char Toggle;
+[; ;button.h: 11: char Momentary;
+[; ;button.h: 12: } Bbutton;
+[; ;button.h: 14: Bbutton newButton(char b, char cc);
+"3 button.c
+[v _newButton `(S1 ~T0 @X0 1 ef2`uc`uc ]
+{
+[; ;button.c: 3: Bbutton newButton(char b, char cc) {
+[e :U _newButton ]
+[v _b `uc ~T0 @X0 1 r1 ]
+[v _cc `uc ~T0 @X0 1 r2 ]
+[f ]
+"4
+[v _button `S1 ~T0 @X0 1 a ]
+[; ;button.c: 4: Bbutton button;
+[; ;button.c: 5: button.Bit = b;
+"5
+[e = . _button 0 _b ]
+[; ;button.c: 6: button.CC = cc;
+"6
+[e = . _button 1 _cc ]
+[; ;button.c: 7: button.Velocity = 0x7a;
+"7
+[e = . _button 2 -> -> 122 `i `uc ]
+[; ;button.c: 8: button.State = 0;
+"8
+[e = . _button 3 -> -> 0 `i `uc ]
+[; ;button.c: 9: button.PreviousState = 0;
+"9
+[e = . _button 4 -> -> 0 `i `uc ]
+[; ;button.c: 10: button.Toggle = 0;
+"10
+[e = . _button 5 -> -> 0 `i `uc ]
+[; ;button.c: 11: button.Momentary = 0;
+"11
+[e = . _button 6 -> -> 0 `i `uc ]
+[; ;button.c: 13: return button;
+"13
+[e ) _button ]
+[e $UE 2  ]
+[; ;button.c: 14: }
+"14
+[e :UE 2 ]
+}
