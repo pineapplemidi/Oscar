@@ -8724,14 +8724,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;button.h: 9: char PreviousState;
 [; ;button.h: 10: char Toggle;
 [; ;button.h: 11: char Momentary;
-[; ;button.h: 12: } Bbutton;
-[; ;button.h: 14: Bbutton newButton(char b, char cc);
+[; ;button.h: 12: } Button;
+[; ;button.h: 14: Button newButton(char b, char cc);
 "10 buttons.h
 [v _k `uc ~T0 @X0 1 e ]
 [; ;buttons.h: 10: char k;
 "11
 [v _Buttons `S1287 ~T0 @X0 -> 8 `i e ]
-[; ;buttons.h: 11: Bbutton Buttons[8];
+[; ;buttons.h: 11: Button Buttons[8];
 [; ;buttons.h: 13: void initButtons(void);
 [; ;buttons.h: 14: void scanButtonsHardware(void);
 [; ;buttons.h: 15: void handleButtons(void);

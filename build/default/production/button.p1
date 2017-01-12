@@ -10,19 +10,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;button.h: 9: char PreviousState;
 [; ;button.h: 10: char Toggle;
 [; ;button.h: 11: char Momentary;
-[; ;button.h: 12: } Bbutton;
-[; ;button.h: 14: Bbutton newButton(char b, char cc);
+[; ;button.h: 12: } Button;
+[; ;button.h: 14: Button newButton(char b, char cc);
 "3 button.c
 [v _newButton `(S1 ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;button.c: 3: Bbutton newButton(char b, char cc) {
+[; ;button.c: 3: Button newButton(char b, char cc) {
 [e :U _newButton ]
 [v _b `uc ~T0 @X0 1 r1 ]
 [v _cc `uc ~T0 @X0 1 r2 ]
 [f ]
 "4
 [v _button `S1 ~T0 @X0 1 a ]
-[; ;button.c: 4: Bbutton button;
+[; ;button.c: 4: Button button;
 [; ;button.c: 5: button.Bit = b;
 "5
 [e = . _button 0 _b ]

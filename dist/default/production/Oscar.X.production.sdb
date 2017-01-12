@@ -169,9 +169,9 @@ LED_D2 2
 [v _handleButtons handleButtons `(v  1 e 1 0 ]
 "77
 [v _writeToButtonsMemory writeToButtonsMemory `(v  1 e 1 0 ]
-"87
+"89
 [v _sendMidiNoteOn sendMidiNoteOn `(v  1 e 1 0 ]
-"100
+"102
 [v _sendMidiNoteOff sendMidiNoteOff `(v  1 e 1 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
@@ -1234,7 +1234,7 @@ LED_D2 2
 {
 "60
 } 0
-"87
+"89
 [v _sendMidiNoteOn sendMidiNoteOn `(v  1 e 1 0 ]
 {
 [v sendMidiNoteOn@cc cc `uc  1 a 1 wreg ]
@@ -1242,9 +1242,9 @@ LED_D2 2
 [v sendMidiNoteOn@velocity velocity `uc  1 p 1 25 ]
 [v sendMidiNoteOn@channel channel `uc  1 p 1 26 ]
 [v sendMidiNoteOn@cc cc `uc  1 a 1 27 ]
-"98
-} 0
 "100
+} 0
+"102
 [v _sendMidiNoteOff sendMidiNoteOff `(v  1 e 1 0 ]
 {
 [v sendMidiNoteOff@cc cc `uc  1 a 1 wreg ]
@@ -1252,7 +1252,7 @@ LED_D2 2
 [v sendMidiNoteOff@velocity velocity `uc  1 p 1 25 ]
 [v sendMidiNoteOff@channel channel `uc  1 p 1 26 ]
 [v sendMidiNoteOff@cc cc `uc  1 a 1 27 ]
-"111
+"113
 } 0
 "995 C:\Users\matth\MPLABXProjects\Oscar.X\usb_device.c
 [v _USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]

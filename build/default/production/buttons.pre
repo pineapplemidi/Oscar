@@ -10,13 +10,13 @@ char State;
 char PreviousState;
 char Toggle;
 char Momentary;
-} Bbutton;
+} Button;
 
-Bbutton newButton(char b, char cc);
+Button newButton(char b, char cc);
 
 # 10 "buttons.h"
 char k;
-Bbutton Buttons[8];
+Button Buttons[8];
 
 void initButtons(void);
 void scanButtonsHardware(void);
@@ -12143,7 +12143,7 @@ char k;
 
 void initButtons() {
 for (k=0; k<8; k++) {
-Bbutton button = newButton(k, k + 60);
+Button button = newButton(k, k + 60);
 Buttons[k] = button;
 }
 }
@@ -12198,7 +12198,9 @@ Buttons[k].Momentary = (data & 0x00000010) >> 1;
 }
 
 void writeToButtonsMemory(char addr, char data) {
+if (addr >= 0 && addr < 24) {
 ;
+}
 }
 
 void initButtonsMemory() {

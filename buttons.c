@@ -13,7 +13,7 @@ char k;
 
 void initButtons() {
     for (k=0; k<8; k++) {
-        Bbutton button = newButton(k, k + 60);
+        Button button = newButton(k, k + 60);
         Buttons[k] = button;
     }
 }
@@ -75,7 +75,9 @@ void readButtonsMemory() {
 }
 
 void writeToButtonsMemory(char addr, char data) {
-    eeprom_write(addr, data);
+    if (addr >= 0 && addr < 24) {
+            eeprom_write(addr, data);
+    }
 }
 
 void initButtonsMemory() {

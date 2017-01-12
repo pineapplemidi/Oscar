@@ -11282,13 +11282,13 @@ char State;
 char PreviousState;
 char Toggle;
 char Momentary;
-} Bbutton;
+} Button;
 
-Bbutton newButton(char b, char cc);
+Button newButton(char b, char cc);
 
 # 10 "buttons.h"
 char k;
-Bbutton Buttons[8];
+Button Buttons[8];
 
 void initButtons(void);
 void scanButtonsHardware(void);

@@ -8,7 +8,7 @@
 #define SLAVE_ENABLE = LATCbits.LATC1; 
 
 char k; 
-Bbutton Buttons[8];
+Button Buttons[8];
 
 void initButtons(void);
 void scanButtonsHardware(void);

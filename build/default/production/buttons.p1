@@ -55,14 +55,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;button.h: 9: char PreviousState;
 [; ;button.h: 10: char Toggle;
 [; ;button.h: 11: char Momentary;
-[; ;button.h: 12: } Bbutton;
-[; ;button.h: 14: Bbutton newButton(char b, char cc);
+[; ;button.h: 12: } Button;
+[; ;button.h: 14: Button newButton(char b, char cc);
 "10 buttons.h
 [v _k `uc ~T0 @X0 1 e ]
 [; ;buttons.h: 10: char k;
 "11
 [v _Buttons `S1 ~T0 @X0 -> 8 `i e ]
-[; ;buttons.h: 11: Bbutton Buttons[8];
+[; ;buttons.h: 11: Button Buttons[8];
 [; ;buttons.h: 13: void initButtons(void);
 [; ;buttons.h: 14: void scanButtonsHardware(void);
 [; ;buttons.h: 15: void handleButtons(void);
@@ -9369,7 +9369,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 "16
 [v _button `S1 ~T0 @X0 1 a ]
-[; ;buttons.c: 16: Bbutton button = newButton(k, k + 60);
+[; ;buttons.c: 16: Button button = newButton(k, k + 60);
 [e = _button ( _newButton (2 , _k -> + -> _k `i -> 60 `i `uc ]
 [; ;buttons.c: 17: Buttons[k] = button;
 "17
@@ -9553,164 +9553,172 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _addr `uc ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;buttons.c: 78: ;
-[; ;buttons.c: 79: }
-"79
+[; ;buttons.c: 78: if (addr >= 0 && addr < 24) {
+"78
+[e $ ! && >= -> _addr `i -> 0 `i < -> _addr `i -> 24 `i 1365  ]
+{
+[; ;buttons.c: 79: ;
+"80
+}
+[e :U 1365 ]
+[; ;buttons.c: 80: }
+[; ;buttons.c: 81: }
+"81
 [e :UE 1364 ]
 }
-"81
+"83
 [v _initButtonsMemory `(v ~T0 @X0 1 ef ]
 {
-[; ;buttons.c: 81: void initButtonsMemory() {
+[; ;buttons.c: 83: void initButtonsMemory() {
 [e :U _initButtonsMemory ]
 [f ]
-[; ;buttons.c: 82: for (k=0; k<8; k++) {
-"82
+[; ;buttons.c: 84: for (k=0; k<8; k++) {
+"84
 {
 [e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 8 `i 1366  ]
-[e $U 1367  ]
-[e :U 1366 ]
-{
-[; ;buttons.c: 83: writeToButtonsMemory(k, k);
-"83
-[e ( _writeToButtonsMemory (2 , _k _k ]
-"84
-}
-"82
-[e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 8 `i 1366  ]
+[e $ < -> _k `i -> 8 `i 1367  ]
+[e $U 1368  ]
 [e :U 1367 ]
-"84
-}
-[; ;buttons.c: 84: }
-[; ;buttons.c: 85: }
+{
+[; ;buttons.c: 85: writeToButtonsMemory(k, k);
 "85
-[e :UE 1365 ]
+[e ( _writeToButtonsMemory (2 , _k _k ]
+"86
 }
+"84
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 8 `i 1367  ]
+[e :U 1368 ]
+"86
+}
+[; ;buttons.c: 86: }
+[; ;buttons.c: 87: }
 "87
+[e :UE 1366 ]
+}
+"89
 [v _sendMidiNoteOn `(v ~T0 @X0 1 ef3`uc`uc`uc ]
 {
-[; ;buttons.c: 87: void sendMidiNoteOn(char cc, char velocity, char channel) {
+[; ;buttons.c: 89: void sendMidiNoteOn(char cc, char velocity, char channel) {
 [e :U _sendMidiNoteOn ]
 [v _cc `uc ~T0 @X0 1 r1 ]
 [v _velocity `uc ~T0 @X0 1 r2 ]
 [v _channel `uc ~T0 @X0 1 r3 ]
 [f ]
-[; ;buttons.c: 88: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
-"88
-[e $ ! ! && != _USBTxHandle -> -> 0 `i `*v != & -> *U -> _USBTxHandle `*Vuc `i -> 128 `i -> 0 `i 1370  ]
-{
-[; ;buttons.c: 89: midiData.Val = 0;
-"89
-[e = . _midiData 0 -> -> -> 0 `i `l `ul ]
-[; ;buttons.c: 90: midiData.CableNumber = 0;
+[; ;buttons.c: 90: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
 "90
-[e = . . . _midiData 2 1 1 -> -> 0 `i `uc ]
-[; ;buttons.c: 91: midiData.CodeIndexNumber = 0x9;
+[e $ ! ! && != _USBTxHandle -> -> 0 `i `*v != & -> *U -> _USBTxHandle `*Vuc `i -> 128 `i -> 0 `i 1371  ]
+{
+[; ;buttons.c: 91: midiData.Val = 0;
 "91
-[e = . . . _midiData 2 1 0 -> -> 9 `i `uc ]
-[; ;buttons.c: 92: midiData.DATA_0 = 0x90;
+[e = . _midiData 0 -> -> -> 0 `i `l `ul ]
+[; ;buttons.c: 92: midiData.CableNumber = 0;
 "92
-[e = . . . _midiData 2 1 2 -> -> 144 `i `uc ]
-[; ;buttons.c: 93: midiData.DATA_1 = cc;
+[e = . . . _midiData 2 1 1 -> -> 0 `i `uc ]
+[; ;buttons.c: 93: midiData.CodeIndexNumber = 0x9;
 "93
-[e = . . . _midiData 2 1 3 _cc ]
-[; ;buttons.c: 94: midiData.DATA_2 = velocity;
+[e = . . . _midiData 2 1 0 -> -> 9 `i `uc ]
+[; ;buttons.c: 94: midiData.DATA_0 = 0x90;
 "94
-[e = . . . _midiData 2 1 4 _velocity ]
-[; ;buttons.c: 96: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
+[e = . . . _midiData 2 1 2 -> -> 144 `i `uc ]
+[; ;buttons.c: 95: midiData.DATA_1 = cc;
+"95
+[e = . . . _midiData 2 1 3 _cc ]
+[; ;buttons.c: 96: midiData.DATA_2 = velocity;
 "96
-[e = _USBTxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _midiData `*uc -> -> 4 `i `uc ]
-"97
-}
-[e :U 1370 ]
-[; ;buttons.c: 97: }
-[; ;buttons.c: 98: }
+[e = . . . _midiData 2 1 4 _velocity ]
+[; ;buttons.c: 98: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
 "98
-[e :UE 1369 ]
+[e = _USBTxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _midiData `*uc -> -> 4 `i `uc ]
+"99
 }
+[e :U 1371 ]
+[; ;buttons.c: 99: }
+[; ;buttons.c: 100: }
 "100
+[e :UE 1370 ]
+}
+"102
 [v _sendMidiNoteOff `(v ~T0 @X0 1 ef3`uc`uc`uc ]
 {
-[; ;buttons.c: 100: void sendMidiNoteOff(char cc, char velocity, char channel) {
+[; ;buttons.c: 102: void sendMidiNoteOff(char cc, char velocity, char channel) {
 [e :U _sendMidiNoteOff ]
 [v _cc `uc ~T0 @X0 1 r1 ]
 [v _velocity `uc ~T0 @X0 1 r2 ]
 [v _channel `uc ~T0 @X0 1 r3 ]
 [f ]
-[; ;buttons.c: 101: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
-"101
-[e $ ! ! && != _USBTxHandle -> -> 0 `i `*v != & -> *U -> _USBTxHandle `*Vuc `i -> 128 `i -> 0 `i 1372  ]
-{
-[; ;buttons.c: 102: midiData.Val = 0;
-"102
-[e = . _midiData 0 -> -> -> 0 `i `l `ul ]
-[; ;buttons.c: 103: midiData.CableNumber = 0;
+[; ;buttons.c: 103: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
 "103
-[e = . . . _midiData 2 1 1 -> -> 0 `i `uc ]
-[; ;buttons.c: 104: midiData.CodeIndexNumber = 0x8;
+[e $ ! ! && != _USBTxHandle -> -> 0 `i `*v != & -> *U -> _USBTxHandle `*Vuc `i -> 128 `i -> 0 `i 1373  ]
+{
+[; ;buttons.c: 104: midiData.Val = 0;
 "104
-[e = . . . _midiData 2 1 0 -> -> 8 `i `uc ]
-[; ;buttons.c: 105: midiData.DATA_0 = 0x80;
+[e = . _midiData 0 -> -> -> 0 `i `l `ul ]
+[; ;buttons.c: 105: midiData.CableNumber = 0;
 "105
-[e = . . . _midiData 2 1 2 -> -> 128 `i `uc ]
-[; ;buttons.c: 106: midiData.DATA_1 = cc;
+[e = . . . _midiData 2 1 1 -> -> 0 `i `uc ]
+[; ;buttons.c: 106: midiData.CodeIndexNumber = 0x8;
 "106
-[e = . . . _midiData 2 1 3 _cc ]
-[; ;buttons.c: 107: midiData.DATA_2 = velocity;
+[e = . . . _midiData 2 1 0 -> -> 8 `i `uc ]
+[; ;buttons.c: 107: midiData.DATA_0 = 0x80;
 "107
-[e = . . . _midiData 2 1 4 _velocity ]
-[; ;buttons.c: 109: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
+[e = . . . _midiData 2 1 2 -> -> 128 `i `uc ]
+[; ;buttons.c: 108: midiData.DATA_1 = cc;
+"108
+[e = . . . _midiData 2 1 3 _cc ]
+[; ;buttons.c: 109: midiData.DATA_2 = velocity;
 "109
-[e = _USBTxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _midiData `*uc -> -> 4 `i `uc ]
-"110
-}
-[e :U 1372 ]
-[; ;buttons.c: 110: }
-[; ;buttons.c: 111: }
+[e = . . . _midiData 2 1 4 _velocity ]
+[; ;buttons.c: 111: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
 "111
-[e :UE 1371 ]
+[e = _USBTxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _midiData `*uc -> -> 4 `i `uc ]
+"112
 }
+[e :U 1373 ]
+[; ;buttons.c: 112: }
+[; ;buttons.c: 113: }
 "113
+[e :UE 1372 ]
+}
+"115
 [v _sendMidiControlChange `(v ~T0 @X0 1 ef3`uc`uc`uc ]
 {
-[; ;buttons.c: 113: void sendMidiControlChange(char cc, char velocity, char channel) {
+[; ;buttons.c: 115: void sendMidiControlChange(char cc, char velocity, char channel) {
 [e :U _sendMidiControlChange ]
 [v _cc `uc ~T0 @X0 1 r1 ]
 [v _velocity `uc ~T0 @X0 1 r2 ]
 [v _channel `uc ~T0 @X0 1 r3 ]
 [f ]
-[; ;buttons.c: 114: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
-"114
-[e $ ! ! && != _USBTxHandle -> -> 0 `i `*v != & -> *U -> _USBTxHandle `*Vuc `i -> 128 `i -> 0 `i 1374  ]
-{
-[; ;buttons.c: 115: midiData.Val = 0;
-"115
-[e = . _midiData 0 -> -> -> 0 `i `l `ul ]
-[; ;buttons.c: 116: midiData.CableNumber = 0;
+[; ;buttons.c: 116: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
 "116
-[e = . . . _midiData 2 1 1 -> -> 0 `i `uc ]
-[; ;buttons.c: 117: midiData.CodeIndexNumber = 0xB;
+[e $ ! ! && != _USBTxHandle -> -> 0 `i `*v != & -> *U -> _USBTxHandle `*Vuc `i -> 128 `i -> 0 `i 1375  ]
+{
+[; ;buttons.c: 117: midiData.Val = 0;
 "117
-[e = . . . _midiData 2 1 0 -> -> 11 `i `uc ]
-[; ;buttons.c: 118: midiData.DATA_0 = 0xB0;
+[e = . _midiData 0 -> -> -> 0 `i `l `ul ]
+[; ;buttons.c: 118: midiData.CableNumber = 0;
 "118
-[e = . . . _midiData 2 1 2 -> -> 176 `i `uc ]
-[; ;buttons.c: 119: midiData.DATA_1 = cc;
+[e = . . . _midiData 2 1 1 -> -> 0 `i `uc ]
+[; ;buttons.c: 119: midiData.CodeIndexNumber = 0xB;
 "119
-[e = . . . _midiData 2 1 3 _cc ]
-[; ;buttons.c: 120: midiData.DATA_2 = velocity;
+[e = . . . _midiData 2 1 0 -> -> 11 `i `uc ]
+[; ;buttons.c: 120: midiData.DATA_0 = 0xB0;
 "120
-[e = . . . _midiData 2 1 4 _velocity ]
-[; ;buttons.c: 122: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
+[e = . . . _midiData 2 1 2 -> -> 176 `i `uc ]
+[; ;buttons.c: 121: midiData.DATA_1 = cc;
+"121
+[e = . . . _midiData 2 1 3 _cc ]
+[; ;buttons.c: 122: midiData.DATA_2 = velocity;
 "122
-[e = _USBTxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _midiData `*uc -> -> 4 `i `uc ]
-"123
-}
-[e :U 1374 ]
-[; ;buttons.c: 123: }
-[; ;buttons.c: 124: }
+[e = . . . _midiData 2 1 4 _velocity ]
+[; ;buttons.c: 124: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
 "124
-[e :UE 1373 ]
+[e = _USBTxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _midiData `*uc -> -> 4 `i `uc ]
+"125
+}
+[e :U 1375 ]
+[; ;buttons.c: 125: }
+[; ;buttons.c: 126: }
+"126
+[e :UE 1374 ]
 }

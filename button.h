@@ -9,9 +9,9 @@ typedef struct {
     char PreviousState;
     char Toggle;
     char Momentary;
-} Bbutton;
+} Button;
 
-Bbutton newButton(char b, char cc);
+Button newButton(char b, char cc);
 
 #endif
 
