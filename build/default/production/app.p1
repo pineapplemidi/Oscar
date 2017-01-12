@@ -21,10 +21,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "13 buttons.h
 [v _initButtons `(v ~T0 @X0 0 ef ]
 "38 app.c
-[c E9497 0 1 2 4 8 16 32 .. ]
-[n E9497 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
+[c E9485 0 1 2 4 8 16 32 .. ]
+[n E9485 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
 "2046 usb_device.h
-[v _USBDeviceState `E9497 ~T0 @X0 0 e ]
+[v _USBDeviceState `E9485 ~T0 @X0 0 e ]
 "7111 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f47j53.h
 [s S435 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S435 . . SUSPND RESUME USBEN PKTDIS SE0 PPBRST ]
@@ -8785,9 +8785,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;buttons.h: 16: void readButtonsMemory(void);
 [; ;buttons.h: 17: void writeToButtonsMemory(char addr, char data);
 [; ;buttons.h: 18: void initButtonsMemory(void);
-[; ;buttons.h: 19: void sendMidiNoteOn(char cc, char velocity, char channel);
-[; ;buttons.h: 20: void sendMidiNoteOff(char cc, char velocity, char channel);
-[; ;buttons.h: 21: void sendMidiControlChange(char cc, char velocity, char channel);
 [; ;system.h: 36: typedef enum
 [; ;system.h: 37: {
 [; ;system.h: 38: SYSTEM_STATE_USB_START,
@@ -9392,7 +9389,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;app.c: 37: if ((USBDeviceState < CONFIGURED_STATE) ||
 [; ;app.c: 38: (UCONbits.SUSPND == 1)) {
 "38
-[e $ ! || < -> _USBDeviceState `i -> . `E9497 6 `i == -> . . _UCONbits 0 1 `i -> 1 `i 1348  ]
+[e $ ! || < -> _USBDeviceState `i -> . `E9485 6 `i == -> . . _UCONbits 0 1 `i -> 1 `i 1348  ]
 {
 [; ;app.c: 39: return;
 "39

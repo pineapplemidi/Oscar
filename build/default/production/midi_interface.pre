@@ -1,29 +1,5 @@
 
-# 1 "buttons.c"
-
-# 4 "button.h"
-typedef struct {
-char Bit;
-char CC;
-char Velocity;
-char State;
-char PreviousState;
-char Toggle;
-char Momentary;
-} Button;
-
-Button newButton(char b, char cc);
-
-# 10 "buttons.h"
-char k;
-Button Buttons[8];
-
-void initButtons(void);
-void scanButtonsHardware(void);
-void handleButtons(void);
-void readButtonsMemory(void);
-void writeToButtonsMemory(char addr, char data);
-void initButtonsMemory(void);
+# 1 "midi_interface.c"
 
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.38\include\stdbool.h"
 typedef unsigned char bool;
@@ -12123,87 +12099,45 @@ uint8_t DATA_2;
 };
 } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
 
-# 4 "spi_interface.h"
-void InitSPIPins(void);
-void ConfigSPIInterrupts(void);
-void ConfigSPIPeriph(void);
+# 4 "midi_interface.c"
+static USB_AUDIO_MIDI_EVENT_PACKET midiData;
+static void* USBTxHandle;
 
-unsigned char SPIReadWrite(unsigned char);
+void sendMidiNoteOn(char cc, char velocity, char channel) {
+if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
+midiData.Val = 0;
+midiData.CableNumber = 0;
+midiData.CodeIndexNumber = 0x9;
+midiData.DATA_0 = 0x90;
+midiData.DATA_1 = cc;
+midiData.DATA_2 = velocity;
 
-# 6 "midi_interface.h"
-void sendMidiNoteOn(char cc, char velocity, char channel);
-void sendMidiNoteOff(char cc, char velocity, char channel);
-void sendMidiControlChange(char cc, char velocity, char channel);
-
-# 8 "buttons.c"
-char rx;
-unsigned char data;
-char k;
-
-void initButtons() {
-for (k=0; k<8; k++) {
-Button button = newButton(k, k + 60);
-Buttons[k] = button;
+USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
 }
 }
 
-void scanButtonsHardware() {
-LATCbits.LATC0 = 0;
-LATCbits.LATC0 = 1;
+void sendMidiNoteOff(char cc, char velocity, char channel) {
+if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
+midiData.Val = 0;
+midiData.CableNumber = 0;
+midiData.CodeIndexNumber = 0x8;
+midiData.DATA_0 = 0x80;
+midiData.DATA_1 = cc;
+midiData.DATA_2 = velocity;
 
-LATCbits.LATC1 = 0;
-rx = SPIReadWrite(0);
-LATCbits.LATC1 = 1;
-
-char states = rx;
-for (k=0; k<8; k++) {
-Buttons[k].PreviousState = Buttons[k].State;
-Buttons[k].State = states & 0b00000001;
-states = states >> 1;
-}
-
-
-
-}
-
-void handleButtons() {
-for (k=0; k<8; k++) {
-if (Buttons[k].State != Buttons[k].PreviousState) {
-
-# 50
-if (Buttons[k].State != 0x00) {
-sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
-
-} else {
-sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
-}
-}
+USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
 }
 }
 
+void sendMidiControlChange(char cc, char velocity, char channel) {
+if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
+midiData.Val = 0;
+midiData.CableNumber = 0;
+midiData.CodeIndexNumber = 0xB;
+midiData.DATA_0 = 0xB0;
+midiData.DATA_1 = cc;
+midiData.DATA_2 = velocity;
 
-void readButtonsMemory() {
-for (k=0; k<8; k++) {
-data = 0;
-Buttons[k].CC = data;
-
-data = 0;
-Buttons[k].Velocity = data;
-
-data = 0;
-Buttons[k].Toggle = data & 0x00000001;
-Buttons[k].Momentary = (data & 0x00000010) >> 1;
-}
-}
-
-void writeToButtonsMemory(char addr, char data) {
-if (addr >= 0 && addr < 24) {
-;
-}
-}
-
-void initButtonsMemory() {
-for (k=0; k<8; k++) {
-writeToButtonsMemory(k, k);
+USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
 }
 }

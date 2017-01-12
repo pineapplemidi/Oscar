@@ -16,8 +16,5 @@ void handleButtons(void);
 void readButtonsMemory(void);
 void writeToButtonsMemory(char addr, char data);
 void initButtonsMemory(void);
-void sendMidiNoteOn(char cc, char velocity, char channel);
-void sendMidiNoteOff(char cc, char velocity, char channel);
-void sendMidiControlChange(char cc, char velocity, char channel);
 
 #endif

@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.38 build -256452561 
-                                                                                               Thu Jan 12 16:26:52 2017
+                                                                                               Thu Jan 12 16:37:57 2017
 
 Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010351
      1                           	processor	18F47J53
@@ -403,7 +403,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
    397  000022                     _shortPacketStatus:
    398                           	opt stack 0
    399  000022                     	ds	1
-   400  000023                     buttons@midiData:
+   400  000023                     midi_interface@midiData:
    401                           	opt stack 0
    402  000023                     	ds	4
    403  000027                     _USBActiveConfiguration:
@@ -569,7 +569,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
    563  000039                     	ds	1
    564  00003A                     scanButtonsHardware@states:
    565                           	opt stack 0
-   566  00003A                     SYSTEM_Initialize@pll_startup_counter_732:
+   566  00003A                     SYSTEM_Initialize@pll_startup_counter_678:
    567                           	opt stack 0
    568  00003A                     memcpy@s1:
    569                           	opt stack 0
@@ -629,11 +629,11 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
    623                           
    624                           ; 7 bytes @ 0x17
    625  000041                     	ds	2
-   626  000043                     sendMidiNoteOn@velocity:
+   626  000043                     USBEnableEndpoint@ep:
    627                           	opt stack 0
-   628  000043                     sendMidiNoteOff@velocity:
+   628  000043                     sendMidiNoteOn@velocity:
    629                           	opt stack 0
-   630  000043                     USBEnableEndpoint@ep:
+   630  000043                     sendMidiNoteOff@velocity:
    631                           	opt stack 0
    632                           
    633                           ; 1 bytes @ 0x19
@@ -749,7 +749,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
    738                           ;main.c: 24: rx = 0xAA;
    739  0025FC  0EAA               	movlw	170
    740  0025FE  6E21               	movwf	_rx,c
-   741  002600                     l4734:
+   741  002600                     l4720:
    742                           
    743                           ;main.c: 27: ;
    744                           ;main.c: 29: USBDeviceTasks();
@@ -776,7 +776,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
    765                           
    766                           ;main.c: 38: LATDbits.LATD0 = 1;
    767  00261E  808C               	bsf	3980,0,c	;volatile
-   768  002620  D7EF               	goto	l4734
+   768  002620  D7EF               	goto	l4720
    769  002622                     __end_of_main:
    770                           	opt stack 0
    771                           postinc0	equ	0xFEE
@@ -879,12 +879,12 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
    862  0012F6  6F36               	movwf	54,b	;volatile
    863                           
    864                           ;usb_device.c: 579: while(!UCONbits.USBEN){UCONbits.USBEN = 1;}
-   865  0012F8  D001               	goto	l362
-   866  0012FA                     l363:
+   865  0012F8  D001               	goto	l338
+   866  0012FA                     l339:
    867  0012FA  8665               	bsf	3941,3,c	;volatile
-   868  0012FC                     l362:
+   868  0012FC                     l338:
    869  0012FC  A665               	btfss	3941,3,c	;volatile
-   870  0012FE  D7FD               	goto	l363
+   870  0012FE  D7FD               	goto	l339
    871                           
    872                           ;usb_device.c: 582: USBDeviceState = ATTACHED_STATE;
    873  001300  0E01               	movlw	1
@@ -948,7 +948,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
    931                           ;usb_device.c: 642: }
    932                           ;usb_device.c: 647: if(UCONbits.SUSPND==1)
    933  001332  A265               	btfss	3941,1,c	;volatile
-   934  001334  D002               	goto	l368
+   934  001334  D002               	goto	l344
    935                           
    936                           ;usb_device.c: 648: {
    937                           ;usb_device.c: 649: {PIR2bits.USBIF = 0;};
@@ -956,7 +956,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
    939                           
    940                           ;usb_device.c: 650: return;
    941  001338  0012               	return	
-   942  00133A                     l368:
+   942  00133A                     l344:
    943                           
    944                           ;usb_device.c: 651: }
    945                           ;usb_device.c: 663: if(UIRbits.URSTIF && UIEbits.URSTIE)
@@ -1102,7 +1102,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   1085                           ;usb_device.c: 774: if(USBDeviceState < DEFAULT_STATE)
   1086  0013D8  0E04               	movlw	4
   1087  0013DA  6019               	cpfslt	_USBDeviceState,c
-  1088  0013DC  D002               	goto	l377
+  1088  0013DC  D002               	goto	l353
   1089                           
   1090                           ;usb_device.c: 775: {
   1091                           ;usb_device.c: 776: {PIR2bits.USBIF = 0;};
@@ -1110,13 +1110,13 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   1093                           
   1094                           ;usb_device.c: 777: return;
   1095  0013E0  0012               	return	
-  1096  0013E2                     l377:
+  1096  0013E2                     l353:
   1097                           
   1098                           ;usb_device.c: 778: }
   1099                           ;usb_device.c: 783: if(UIEbits.TRNIE)
   1100  0013E2  010F               	movlb	15	; () banked
   1101  0013E4  A736               	btfss	54,3,b	;volatile
-  1102  0013E6  D040               	goto	l378
+  1102  0013E6  D040               	goto	l354
   1103                           
   1104                           ; BSR set to: 15
   1105                           ;usb_device.c: 784: {
@@ -1130,15 +1130,15 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   1113  0013EE  0E03               	movlw	3
   1114  0013F0  0101               	movlb	1	; () banked
   1115  0013F2  6505               	cpfsgt	USBDeviceTasks@i& (0+255),b
-  1116  0013F4  D001               	goto	l379
-  1117  0013F6  D038               	goto	l378
-  1118  0013F8                     l379:
+  1116  0013F4  D001               	goto	l355
+  1117  0013F6  D038               	goto	l354
+  1118  0013F8                     l355:
   1119                           
   1120                           ; BSR set to: 1
   1121                           ;usb_device.c: 786: {
   1122                           ;usb_device.c: 787: if(UIRbits.TRNIF)
   1123  0013F8  A662               	btfss	3938,3,c	;volatile
-  1124  0013FA  D036               	goto	l378
+  1124  0013FA  D036               	goto	l354
   1125                           
   1126                           ; BSR set to: 1
   1127                           ;usb_device.c: 788: {
@@ -1232,7 +1232,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   1214  001462  0101               	movlb	1	; () banked
   1215  001464  2B05               	incf	USBDeviceTasks@i& (0+255),f,b
   1216  001466  D7C3               	goto	l4682
-  1217  001468                     l378:
+  1217  001468                     l354:
   1218                           
   1219                           ;usb_device.c: 822: }
   1220                           ;usb_device.c: 823: }
@@ -1498,7 +1498,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   1465                           ;incstack = 0
   1466  002598  010F               	movlb	15	; () banked
   1467  00259A  A126               	btfss	38,0,b	;volatile
-  1468  00259C  D01E               	goto	l506
+  1468  00259C  D01E               	goto	l482
   1469                           
   1470                           ; BSR set to: 15
   1471                           ;usb_device.c: 2215: {
@@ -1540,7 +1540,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   1506                           ;usb_device.c: 2223: UEP0bits.EPSTALL = 0;
   1507  0025D6  010F               	movlb	15	; () banked
   1508  0025D8  9126               	bcf	38,0,b	;volatile
-  1509  0025DA                     l506:
+  1509  0025DA                     l482:
   1510                           
   1511                           ; BSR set to: 15
   1512                           ;usb_device.c: 2224: }
@@ -1762,7 +1762,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   1717  0014AE  0E07               	movlw	7
   1718  0014B0  6440               	cpfsgt	USBDeviceInit@i,c
   1719  0014B2  D001               	goto	l4454
-  1720  0014B4  D00E               	goto	l351
+  1720  0014B4  D00E               	goto	l327
   1721  0014B6                     l4454:
   1722                           
   1723                           ;usb_device.c: 308: {
@@ -1781,7 +1781,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   1736  0014CC  6ADD               	clrf	postdec2,c
   1737  0014CE  2A40               	incf	USBDeviceInit@i,f,c
   1738  0014D0  D7EE               	goto	l4450
-  1739  0014D2                     l351:
+  1739  0014D2                     l327:
   1740                           
   1741                           ;usb_device.c: 310: }
   1742                           ;usb_device.c: 313: UCONbits.PPBRST = 1;
@@ -2174,12 +2174,12 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   2121 ;;  d1              2   14[COMRAM] PTR void 
   2122 ;;		 -> SetupPkt(8), 
   2123 ;;  s1              2   16[COMRAM] PTR const void 
-  2124 ;;		 -> CtrlTrfData(8), RAM(3759), SetupPkt(8), buttons@midiData(4), 
+  2124 ;;		 -> midi_interface@midiData(4), CtrlTrfData(8), RAM(3759), SetupPkt(8), 
   2125 ;;		 -> ReceivedDataBuffer(64), 
   2126 ;;  n               2   18[COMRAM] unsigned int 
   2127 ;; Auto vars:     Size  Location     Type
   2128 ;;  s               2   22[COMRAM] PTR const unsigned char 
-  2129 ;;		 -> CtrlTrfData(8), RAM(3759), SetupPkt(8), buttons@midiData(4), 
+  2129 ;;		 -> midi_interface@midiData(4), CtrlTrfData(8), RAM(3759), SetupPkt(8), 
   2130 ;;		 -> ReceivedDataBuffer(64), 
   2131 ;;  d               2   20[COMRAM] PTR unsigned char 
   2132 ;;		 -> SetupPkt(8), 
@@ -2478,7 +2478,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   2408                           
   2409                           ;usb_device.c: 1628: if(inPipes[0].info.bits.busy == 0)
   2410  00190C  BE04               	btfsc	_inPipes+3,7,c
-  2411  00190E  D039               	goto	l430
+  2411  00190E  D039               	goto	l406
   2412                           
   2413                           ;usb_device.c: 1629: {
   2414                           ;usb_device.c: 1630: if(outPipes[0].info.bits.busy == 1)
@@ -2563,7 +2563,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   2493                           ;usb_device.c: 1665: }
   2494                           ;usb_device.c: 1666: }
   2495  001980  0012               	return	
-  2496  001982                     l430:
+  2496  001982                     l406:
   2497                           
   2498                           ;usb_device.c: 1667: else
   2499                           ;usb_device.c: 1668: {
@@ -2896,7 +2896,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   2816  001BD8  A4D8               	btfss	status,2,c
   2817  001BDA  0012               	return	
   2818  001BDC  D047               	goto	l4298
-  2819  001BDE                     l555:
+  2819  001BDE                     l531:
   2820                           
   2821                           ; BSR set to: 13
   2822                           ;usb_device.c: 2693: inPipes[0].info.bits.busy = 1;
@@ -2988,7 +2988,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   2907                           
   2908                           ;usb_device.c: 2721: break;
   2909  001C2A  0012               	return	
-  2910  001C2C                     l564:
+  2910  001C2C                     l540:
   2911                           
   2912                           ; BSR set to: 13
   2913                           ;usb_device.c: 2723: inPipes[0].info.bits.busy = 1;
@@ -3062,7 +3062,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   2981  001C80  D7C4               	goto	l4282
   2982  001C82  0A06               	xorlw	6	; case 5
   2983  001C84  B4D8               	btfsc	status,2,c
-  2984  001C86  D7AB               	goto	l555
+  2984  001C86  D7AB               	goto	l531
   2985  001C88  0A03               	xorlw	3	; case 6
   2986  001C8A  B4D8               	btfsc	status,2,c
   2987  001C8C  D7AC               	goto	l4268
@@ -3080,7 +3080,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   2999  001CA4  D7B5               	goto	l4284
   3000  001CA6  0A01               	xorlw	1	; case 11
   3001  001CA8  B4D8               	btfsc	status,2,c
-  3002  001CAA  D7C0               	goto	l564
+  3002  001CAA  D7C0               	goto	l540
   3003  001CAC  0A07               	xorlw	7	; case 12
   3004  001CAE  0012               	return	
   3005  001CB0                     __end_of_USBCheckStdRequest:
@@ -3464,7 +3464,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   3367                           
   3368                           ;usb_device.c: 2134: switch(SetupPkt.Recipient)
   3369  001F16  D038               	goto	l4076
-  3370  001F18                     l493:
+  3370  001F18                     l469:
   3371                           
   3372                           ; BSR set to: 13
   3373                           ;usb_device.c: 2137: inPipes[0].info.bits.busy = 1;
@@ -3483,7 +3483,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   3386                           ;usb_device.c: 2142: if(0 == 1)
   3387  001F1A  0414               	decf	_RemoteWakeup,w,c
   3388  001F1C  A4D8               	btfss	status,2,c
-  3389  001F1E  D040               	goto	l496
+  3389  001F1E  D040               	goto	l472
   3390                           
   3391                           ; BSR set to: 13
   3392                           ;usb_device.c: 2148: {
@@ -3494,16 +3494,16 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   3397                           ; BSR set to: 13
   3398                           ;usb_device.c: 2150: }
   3399                           ;usb_device.c: 2151: break;
-  3400  001F24  D03D               	goto	l496
-  3401  001F26                     l497:
+  3400  001F24  D03D               	goto	l472
+  3401  001F26                     l473:
   3402                           
   3403                           ; BSR set to: 13
   3404                           ;usb_device.c: 2153: inPipes[0].info.bits.busy = 1;
   3405  001F26  8E04               	bsf	_inPipes+3,7,c
   3406                           
   3407                           ;usb_device.c: 2154: break;
-  3408  001F28  D03B               	goto	l496
-  3409  001F2A                     l498:
+  3408  001F28  D03B               	goto	l472
+  3409  001F2A                     l474:
   3410                           
   3411                           ; BSR set to: 13
   3412                           ;usb_device.c: 2156: inPipes[0].info.bits.busy = 1;
@@ -3560,13 +3560,13 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   3463  001F68  C039  FFD9         	movff	USBStdGetStatusHandler@p,fsr2l
   3464  001F6C  C03A  FFDA         	movff	USBStdGetStatusHandler@p+1,fsr2h
   3465  001F70  AEDF               	btfss	indf2,7,c
-  3466  001F72  D016               	goto	l496
+  3466  001F72  D016               	goto	l472
   3467                           
   3468                           ; BSR set to: 13
   3469  001F74  C039  FFD9         	movff	USBStdGetStatusHandler@p,fsr2l
   3470  001F78  C03A  FFDA         	movff	USBStdGetStatusHandler@p+1,fsr2h
   3471  001F7C  A4DF               	btfss	indf2,2,c
-  3472  001F7E  D010               	goto	l496
+  3472  001F7E  D010               	goto	l472
   3473                           
   3474                           ; BSR set to: 13
   3475                           ;usb_device.c: 2173: CtrlTrfData[0]=0x01;
@@ -3580,7 +3580,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   3483                           
   3484                           ; BSR set to: 13
   3485                           ;usb_device.c: 2174: break;
-  3486  001F86  D00C               	goto	l496
+  3486  001F86  D00C               	goto	l472
   3487  001F88                     l4076:
   3488                           
   3489                           ; BSR set to: 13
@@ -3596,14 +3596,14 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   3499                           ;	Chosen strategy is simple_byte
   3500  001F8E  0A00               	xorlw	0	; case 0
   3501  001F90  B4D8               	btfsc	status,2,c
-  3502  001F92  D7C2               	goto	l493
+  3502  001F92  D7C2               	goto	l469
   3503  001F94  0A01               	xorlw	1	; case 1
   3504  001F96  B4D8               	btfsc	status,2,c
-  3505  001F98  D7C6               	goto	l497
+  3505  001F98  D7C6               	goto	l473
   3506  001F9A  0A03               	xorlw	3	; case 2
   3507  001F9C  B4D8               	btfsc	status,2,c
-  3508  001F9E  D7C5               	goto	l498
-  3509  001FA0                     l496:
+  3508  001F9E  D7C5               	goto	l474
+  3509  001FA0                     l472:
   3510                           
   3511                           ; BSR set to: 13
   3512                           ;usb_device.c: 2178: if(inPipes[0].info.bits.busy == 1)
@@ -3988,7 +3988,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   3881  000FD4  010D               	movlb	13	; () banked
   3882  000FD6  0522               	decf	34,w,b	;volatile
   3883  000FD8  A4D8               	btfss	status,2,c
-  3884  000FDA  D010               	goto	l570
+  3884  000FDA  D010               	goto	l546
   3885                           
   3886                           ; BSR set to: 13
   3887  000FDC  010D               	movlb	13	; () banked
@@ -3996,7 +3996,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   3889  000FE0  0B1F               	andlw	31
   3890  000FE2  0900               	iorlw	0
   3891  000FE4  A4D8               	btfss	status,2,c
-  3892  000FE6  D00A               	goto	l570
+  3892  000FE6  D00A               	goto	l546
   3893                           
   3894                           ; BSR set to: 13
   3895                           ;usb_device.c: 2801: {
@@ -4023,7 +4023,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   3916  000FF8  0E00               	movlw	0
   3917  000FFA                     L3:
   3918  000FFA  6E14               	movwf	_RemoteWakeup,c
-  3919  000FFC                     l570:
+  3919  000FFC                     l546:
   3920                           
   3921                           ; BSR set to: 13
   3922                           ;usb_device.c: 2807: }
@@ -4409,7 +4409,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
       +                           == 1))
   4301  00121A  0101               	movlb	1	; () banked
   4302  00121C  B302               	btfsc	USBStdFeatureReqHandler@current_ep_data& (0+255),1,b
-  4303  00121E  D007               	goto	l589
+  4303  00121E  D007               	goto	l565
   4304                           
   4305                           ; BSR set to: 1
   4306  001220  C103  FFD9         	movff	USBStdFeatureReqHandler@p,fsr2l
@@ -4417,7 +4417,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   4308  001228  0101               	movlb	1	; () banked
   4309  00122A  AEDF               	btfss	indf2,7,c
   4310  00122C  D037               	goto	l4162
-  4311  00122E                     l589:
+  4311  00122E                     l565:
   4312                           
   4313                           ; BSR set to: 1
   4314                           ;usb_device.c: 2907: {
@@ -4561,7 +4561,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   4451 ;; Defined at:
   4452 ;;		line 30 in file "usb_events.c"
   4453 ;; Parameters:    Size  Location     Type
-  4454 ;;  event           2    0[BANK0 ] enum E9258
+  4454 ;;  event           2    0[BANK0 ] enum E9246
   4455 ;;  pdata           2    2[BANK0 ] PTR void 
   4456 ;;		 -> RAM(3759), USTATcopy(1), USBActiveConfiguration(1), BDT(32), 
   4457 ;;		 -> NULL(0), 
@@ -4979,14 +4979,14 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   4853                           
   4854                           ;leds.c: 57: switch(led)
   4855  0027F6  D004               	goto	l3808
-  4856  0027F8                     l666:
+  4856  0027F8                     l642:
   4857                           
   4858                           ;leds.c: 60: LATEbits.LATE0 = 1;
   4859  0027F8  808D               	bsf	3981,0,c	;volatile
   4860                           
   4861                           ;leds.c: 61: break;
   4862  0027FA  0012               	return	
-  4863  0027FC                     l668:
+  4863  0027FC                     l644:
   4864                           
   4865                           ;leds.c: 64: LATEbits.LATE1 = 1;
   4866  0027FC  828D               	bsf	3981,1,c	;volatile
@@ -5013,11 +5013,11 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   4887  002806  0012               	return	
   4888  002808  0A01               	xorlw	1	; case 1
   4889  00280A  B4D8               	btfsc	status,2,c
-  4890  00280C  D7F5               	goto	l666
+  4890  00280C  D7F5               	goto	l642
   4891  00280E  0A03               	xorlw	3	; case 2
   4892  002810  A4D8               	btfss	status,2,c
   4893  002812  0012               	return	
-  4894  002814  D7F3               	goto	l668
+  4894  002814  D7F3               	goto	l644
   4895  002816                     __end_of_LED_On:
   4896                           	opt stack 0
   4897                           tblptru	equ	0xFF8
@@ -5089,14 +5089,14 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   4958                           
   4959                           ;leds.c: 90: switch(led)
   4960  002818  D004               	goto	l3802
-  4961  00281A                     l674:
+  4961  00281A                     l650:
   4962                           
   4963                           ;leds.c: 93: LATEbits.LATE0 = 0;
   4964  00281A  908D               	bcf	3981,0,c	;volatile
   4965                           
   4966                           ;leds.c: 94: break;
   4967  00281C  0012               	return	
-  4968  00281E                     l676:
+  4968  00281E                     l652:
   4969                           
   4970                           ;leds.c: 97: LATEbits.LATE1 = 0;
   4971  00281E  928D               	bcf	3981,1,c	;volatile
@@ -5123,11 +5123,11 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   4992  002828  0012               	return	
   4993  00282A  0A01               	xorlw	1	; case 1
   4994  00282C  B4D8               	btfsc	status,2,c
-  4995  00282E  D7F5               	goto	l674
+  4995  00282E  D7F5               	goto	l650
   4996  002830  0A03               	xorlw	3	; case 2
   4997  002832  A4D8               	btfss	status,2,c
   4998  002834  0012               	return	
-  4999  002836  D7F3               	goto	l676
+  4999  002836  D7F3               	goto	l652
   5000  002838                     __end_of_LED_Off:
   5001                           	opt stack 0
   5002                           tblptru	equ	0xFF8
@@ -5322,7 +5322,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   5181                           
   5182 ;; *************** function _initButtons *****************
   5183 ;; Defined at:
-  5184 ;;		line 14 in file "buttons.c"
+  5184 ;;		line 12 in file "buttons.c"
   5185 ;; Parameters:    Size  Location     Type
   5186 ;;		None
   5187 ;; Auto vars:     Size  Location     Type
@@ -5361,7 +5361,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   5215  002550                     _initButtons:
   5216                           	opt stack 25
   5217                           
-  5218                           ;buttons.c: 15: for (k=0; k<8; k++) {
+  5218                           ;buttons.c: 13: for (k=0; k<8; k++) {
   5219                           
   5220                           ;incstack = 0
   5221  002550  0E00               	movlw	0
@@ -5373,7 +5373,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   5227  00255A  0012               	return	
   5228  00255C                     l3790:
   5229                           
-  5230                           ;buttons.c: 16: Button button = newButton(k, k + 60);
+  5230                           ;buttons.c: 14: Button button = newButton(k, k + 60);
   5231  00255C  5020               	movf	_k,w,c
   5232  00255E  0F3C               	addlw	60
   5233  002560  6E38               	movwf	newButton@cc,c
@@ -5386,7 +5386,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   5240  002572  06E8               	decf	wreg,f,c
   5241  002574  E2FC               	bc	u3091
   5242                           
-  5243                           ;buttons.c: 17: Buttons[k] = button;
+  5243                           ;buttons.c: 15: Buttons[k] = button;
   5244  002576  EE20  F048         	lfsr	2,initButtons@button
   5245  00257A  5020               	movf	_k,w,c
   5246  00257C  0D07               	mullw	7
@@ -6530,7 +6530,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   6348                           ;usb_device.c: 2618: if(controlTransferState == 1)
   6349  001DBE  041D               	decf	_controlTransferState,w,c
   6350  001DC0  A4D8               	btfss	status,2,c
-  6351  001DC2  D03A               	goto	l541
+  6351  001DC2  D03A               	goto	l517
   6352                           
   6353                           ;usb_device.c: 2619: {
   6354                           ;usb_device.c: 2620: pBDTEntryIn[0]->ADR = ((uint16_t)(CtrlTrfData));
@@ -6612,7 +6612,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   6430                           ;usb_device.c: 2646: }
   6431                           ;usb_device.c: 2647: }
   6432  001E36  0012               	return	
-  6433  001E38                     l541:
+  6433  001E38                     l517:
   6434                           
   6435                           ;usb_device.c: 2648: else
   6436                           ;usb_device.c: 2649: {
@@ -6883,9 +6883,9 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   6696 ;; Defined at:
   6697 ;;		line 58 in file "system.c"
   6698 ;; Parameters:    Size  Location     Type
-  6699 ;;  state           1    wreg     enum E9201
+  6699 ;;  state           1    wreg     enum E9189
   6700 ;; Auto vars:     Size  Location     Type
-  6701 ;;  state           1   18[COMRAM] enum E9201
+  6701 ;;  state           1   18[COMRAM] enum E9189
   6702 ;;  pll_startup_    2   16[COMRAM] unsigned int 
   6703 ;;  pll_startup_    2   14[COMRAM] unsigned int 
   6704 ;; Return value:  Size  Location     Type
@@ -6959,16 +6959,16 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   6767                           ;system.c: 89: {
   6768                           ;system.c: 90: unsigned int pll_startup_counter = 800;
   6769  002520  0E03               	movlw	3
-  6770  002522  6E3B               	movwf	SYSTEM_Initialize@pll_startup_counter_732+1,c
+  6770  002522  6E3B               	movwf	SYSTEM_Initialize@pll_startup_counter_678+1,c
   6771  002524  0E20               	movlw	32
-  6772  002526  6E3A               	movwf	SYSTEM_Initialize@pll_startup_counter_732,c
+  6772  002526  6E3A               	movwf	SYSTEM_Initialize@pll_startup_counter_678,c
   6773  002528                     l3486:
-  6774  002528  063A               	decf	SYSTEM_Initialize@pll_startup_counter_732,f,c
+  6774  002528  063A               	decf	SYSTEM_Initialize@pll_startup_counter_678,f,c
   6775  00252A  A0D8               	btfss	status,0,c
-  6776  00252C  063B               	decf	SYSTEM_Initialize@pll_startup_counter_732+1,f,c
-  6777  00252E  283A               	incf	SYSTEM_Initialize@pll_startup_counter_732,w,c
+  6776  00252C  063B               	decf	SYSTEM_Initialize@pll_startup_counter_678+1,f,c
+  6777  00252E  283A               	incf	SYSTEM_Initialize@pll_startup_counter_678,w,c
   6778  002530  E1FB               	bnz	l3486
-  6779  002532  283B               	incf	SYSTEM_Initialize@pll_startup_counter_732+1,w,c
+  6779  002532  283B               	incf	SYSTEM_Initialize@pll_startup_counter_678+1,w,c
   6780  002534  B4D8               	btfsc	status,2,c
   6781  002536  0012               	return	
   6782  002538  D7F7               	goto	l3486
@@ -7326,7 +7326,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7118                           
   7119 ;; *************** function _scanButtonsHardware *****************
   7120 ;; Defined at:
-  7121 ;;		line 21 in file "buttons.c"
+  7121 ;;		line 19 in file "buttons.c"
   7122 ;; Parameters:    Size  Location     Type
   7123 ;;		None
   7124 ;; Auto vars:     Size  Location     Type
@@ -7365,29 +7365,29 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7152  002298                     _scanButtonsHardware:
   7153                           	opt stack 27
   7154                           
-  7155                           ;buttons.c: 22: LATCbits.LATC0 = 0;
+  7155                           ;buttons.c: 20: LATCbits.LATC0 = 0;
   7156                           
   7157                           ;incstack = 0
   7158  002298  908B               	bcf	3979,0,c	;volatile
   7159                           
-  7160                           ;buttons.c: 23: LATCbits.LATC0 = 1;
+  7160                           ;buttons.c: 21: LATCbits.LATC0 = 1;
   7161  00229A  808B               	bsf	3979,0,c	;volatile
   7162                           
-  7163                           ;buttons.c: 25: LATCbits.LATC1 = 0;
+  7163                           ;buttons.c: 23: LATCbits.LATC1 = 0;
   7164  00229C  928B               	bcf	3979,1,c	;volatile
   7165                           
-  7166                           ;buttons.c: 26: rx = SPIReadWrite(0);
+  7166                           ;buttons.c: 24: rx = SPIReadWrite(0);
   7167  00229E  0E00               	movlw	0
   7168  0022A0  EC29  F014         	call	_SPIReadWrite
   7169  0022A4  6E21               	movwf	_rx,c
   7170                           
-  7171                           ;buttons.c: 27: LATCbits.LATC1 = 1;
+  7171                           ;buttons.c: 25: LATCbits.LATC1 = 1;
   7172  0022A6  828B               	bsf	3979,1,c	;volatile
   7173                           
-  7174                           ;buttons.c: 29: char states = rx;
+  7174                           ;buttons.c: 27: char states = rx;
   7175  0022A8  C021  F03A         	movff	_rx,scanButtonsHardware@states
   7176                           
-  7177                           ;buttons.c: 30: for (k=0; k<8; k++) {
+  7177                           ;buttons.c: 28: for (k=0; k<8; k++) {
   7178  0022AC  0E00               	movlw	0
   7179  0022AE  6E20               	movwf	_k,c
   7180  0022B0                     l3278:
@@ -7397,7 +7397,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7184  0022B6  0012               	return	
   7185  0022B8                     l3282:
   7186                           
-  7187                           ;buttons.c: 31: Buttons[k].PreviousState = Buttons[k].State;
+  7187                           ;buttons.c: 29: Buttons[k].PreviousState = Buttons[k].State;
   7188  0022B8  5020               	movf	_k,w,c
   7189  0022BA  0D07               	mullw	7
   7190  0022BC  0E03               	movlw	3
@@ -7424,7 +7424,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7211  0022E6  6EE2               	movwf	fsr1h,c
   7212  0022E8  CFDF FFE7          	movff	indf2,indf1
   7213                           
-  7214                           ;buttons.c: 32: Buttons[k].State = states & 0b00000001;
+  7214                           ;buttons.c: 30: Buttons[k].State = states & 0b00000001;
   7215  0022EC  5020               	movf	_k,w,c
   7216  0022EE  0D07               	mullw	7
   7217  0022F0  0E03               	movlw	3
@@ -7441,7 +7441,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7228  002306  0B01               	andlw	1
   7229  002308  6EDF               	movwf	indf2,c
   7230                           
-  7231                           ;buttons.c: 33: states = states >> 1;
+  7231                           ;buttons.c: 31: states = states >> 1;
   7232  00230A  90D8               	bcf	status,0,c
   7233  00230C  303A               	rrcf	scanButtonsHardware@states,w,c
   7234  00230E  6E3A               	movwf	scanButtonsHardware@states,c
@@ -7523,9 +7523,9 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7305                           ;spi_interface.c: 26: unsigned char r;
   7306                           ;spi_interface.c: 27: SSP1BUF = byte;
   7307  002854  C038  FFC9         	movff	SPIReadWrite@byte,4041	;volatile
-  7308  002858                     l175:
+  7308  002858                     l151:
   7309  002858  A0C7               	btfss	4039,0,c	;volatile
-  7310  00285A  D7FE               	goto	l175
+  7310  00285A  D7FE               	goto	l151
   7311                           
   7312                           ;spi_interface.c: 29: r = SSP1BUF;
   7313  00285C  CFC9 F039          	movff	4041,SPIReadWrite@r	;volatile
@@ -7561,7 +7561,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7343                           
   7344 ;; *************** function _handleButtons *****************
   7345 ;; Defined at:
-  7346 ;;		line 40 in file "buttons.c"
+  7346 ;;		line 38 in file "buttons.c"
   7347 ;; Parameters:    Size  Location     Type
   7348 ;;		None
   7349 ;; Auto vars:     Size  Location     Type
@@ -7601,7 +7601,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7378  001AEA                     _handleButtons:
   7379                           	opt stack 26
   7380                           
-  7381                           ;buttons.c: 41: for (k=0; k<8; k++) {
+  7381                           ;buttons.c: 39: for (k=0; k<8; k++) {
   7382                           
   7383                           ;incstack = 0
   7384  001AEA  0E00               	movlw	0
@@ -7613,7 +7613,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7390  001AF4  0012               	return	
   7391  001AF6                     l4424:
   7392                           
-  7393                           ;buttons.c: 42: if (Buttons[k].State != Buttons[k].PreviousState) {
+  7393                           ;buttons.c: 40: if (Buttons[k].State != Buttons[k].PreviousState) {
   7394  001AF6  5020               	movf	_k,w,c
   7395  001AF8  0D07               	mullw	7
   7396  001AFA  0E04               	movlw	4
@@ -7643,7 +7643,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7420  001B2A  B4D8               	btfsc	status,2,c
   7421  001B2C  D04E               	goto	l4432
   7422                           
-  7423                           ;buttons.c: 52: if (Buttons[k].State != 0x00) {
+  7423                           ;buttons.c: 50: if (Buttons[k].State != 0x00) {
   7424  001B2E  5020               	movf	_k,w,c
   7425  001B30  0D07               	mullw	7
   7426  001B32  0E03               	movlw	3
@@ -7660,7 +7660,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7437  001B48  B4D8               	btfsc	status,2,c
   7438  001B4A  D020               	goto	l4430
   7439                           
-  7440                           ;buttons.c: 53: sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+  7440                           ;buttons.c: 51: sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
   7441  001B4C  5020               	movf	_k,w,c
   7442  001B4E  0D07               	mullw	7
   7443  001B50  0E02               	movlw	2
@@ -7692,11 +7692,11 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7469  001B84  50DF               	movf	indf2,w,c
   7470  001B86  ECC2  F011         	call	_sendMidiNoteOn
   7471                           
-  7472                           ;buttons.c: 55: } else {
+  7472                           ;buttons.c: 53: } else {
   7473  001B8A  D01F               	goto	l4432
   7474  001B8C                     l4430:
   7475                           
-  7476                           ;buttons.c: 56: sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+  7476                           ;buttons.c: 54: sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
   7477  001B8C  5020               	movf	_k,w,c
   7478  001B8E  0D07               	mullw	7
   7479  001B90  0E02               	movlw	2
@@ -7759,7 +7759,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7536                           
   7537 ;; *************** function _sendMidiNoteOn *****************
   7538 ;; Defined at:
-  7539 ;;		line 89 in file "buttons.c"
+  7539 ;;		line 7 in file "midi_interface.c"
   7540 ;; Parameters:    Size  Location     Type
   7541 ;;  cc              1    wreg     unsigned char 
   7542 ;;  velocity        1   25[COMRAM] unsigned char 
@@ -7804,8 +7804,8 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7576                           ;sendMidiNoteOn@cc stored from wreg
   7577  002384  6E45               	movwf	sendMidiNoteOn@cc,c
   7578                           
-  7579                           ;buttons.c: 90: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x8
-      +                          0) != 0x00))) {
+  7579                           ;midi_interface.c: 8: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle
+      +                           & 0x80) != 0x00))) {
   7580  002386  500D               	movf	_USBTxHandle,w,c
   7581  002388  100E               	iorwf	_USBTxHandle+1,w,c
   7582  00238A  B4D8               	btfsc	status,2,c
@@ -7816,44 +7816,44 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7587  002398  0012               	return	
   7588  00239A                     l4304:
   7589                           
-  7590                           ;buttons.c: 91: midiData.Val = 0;
+  7590                           ;midi_interface.c: 9: midiData.Val = 0;
   7591  00239A  0E00               	movlw	0
-  7592  00239C  6E23               	movwf	buttons@midiData,c
+  7592  00239C  6E23               	movwf	midi_interface@midiData,c
   7593  00239E  0E00               	movlw	0
-  7594  0023A0  6E24               	movwf	buttons@midiData+1,c
+  7594  0023A0  6E24               	movwf	midi_interface@midiData+1,c
   7595  0023A2  0E00               	movlw	0
-  7596  0023A4  6E25               	movwf	buttons@midiData+2,c
+  7596  0023A4  6E25               	movwf	midi_interface@midiData+2,c
   7597  0023A6  0E00               	movlw	0
-  7598  0023A8  6E26               	movwf	buttons@midiData+3,c
+  7598  0023A8  6E26               	movwf	midi_interface@midiData+3,c
   7599                           
-  7600                           ;buttons.c: 92: midiData.CableNumber = 0;
-  7601  0023AA  9823               	bcf	buttons@midiData,4,c
-  7602  0023AC  9A23               	bcf	buttons@midiData,5,c
-  7603  0023AE  9C23               	bcf	buttons@midiData,6,c
-  7604  0023B0  9E23               	bcf	buttons@midiData,7,c
+  7600                           ;midi_interface.c: 10: midiData.CableNumber = 0;
+  7601  0023AA  9823               	bcf	midi_interface@midiData,4,c
+  7602  0023AC  9A23               	bcf	midi_interface@midiData,5,c
+  7603  0023AE  9C23               	bcf	midi_interface@midiData,6,c
+  7604  0023B0  9E23               	bcf	midi_interface@midiData,7,c
   7605                           
-  7606                           ;buttons.c: 93: midiData.CodeIndexNumber = 0x9;
-  7607  0023B2  5023               	movf	buttons@midiData,w,c
+  7606                           ;midi_interface.c: 11: midiData.CodeIndexNumber = 0x9;
+  7607  0023B2  5023               	movf	midi_interface@midiData,w,c
   7608  0023B4  0BF0               	andlw	-16
   7609  0023B6  0909               	iorlw	9
-  7610  0023B8  6E23               	movwf	buttons@midiData,c
+  7610  0023B8  6E23               	movwf	midi_interface@midiData,c
   7611                           
-  7612                           ;buttons.c: 94: midiData.DATA_0 = 0x90;
+  7612                           ;midi_interface.c: 12: midiData.DATA_0 = 0x90;
   7613  0023BA  0E90               	movlw	144
-  7614  0023BC  6E24               	movwf	buttons@midiData+1,c
+  7614  0023BC  6E24               	movwf	midi_interface@midiData+1,c
   7615                           
-  7616                           ;buttons.c: 95: midiData.DATA_1 = cc;
-  7617  0023BE  C045  F025         	movff	sendMidiNoteOn@cc,buttons@midiData+2
+  7616                           ;midi_interface.c: 13: midiData.DATA_1 = cc;
+  7617  0023BE  C045  F025         	movff	sendMidiNoteOn@cc,midi_interface@midiData+2
   7618                           
-  7619                           ;buttons.c: 96: midiData.DATA_2 = velocity;
-  7620  0023C2  C043  F026         	movff	sendMidiNoteOn@velocity,buttons@midiData+3
+  7619                           ;midi_interface.c: 14: midiData.DATA_2 = velocity;
+  7620  0023C2  C043  F026         	movff	sendMidiNoteOn@velocity,midi_interface@midiData+3
   7621                           
-  7622                           ;buttons.c: 98: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
+  7622                           ;midi_interface.c: 16: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
   7623  0023C6  0E01               	movlw	1
   7624  0023C8  6E38               	movwf	USBTransferOnePacket@dir,c
-  7625  0023CA  0E23               	movlw	low buttons@midiData
+  7625  0023CA  0E23               	movlw	low midi_interface@midiData
   7626  0023CC  6E39               	movwf	USBTransferOnePacket@data,c
-  7627  0023CE  0E00               	movlw	high buttons@midiData
+  7627  0023CE  0E00               	movlw	high midi_interface@midiData
   7628  0023D0  6E3A               	movwf	USBTransferOnePacket@data+1,c
   7629  0023D2  0E04               	movlw	4
   7630  0023D4  6E3B               	movwf	USBTransferOnePacket@len,c
@@ -7891,7 +7891,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7662                           
   7663 ;; *************** function _sendMidiNoteOff *****************
   7664 ;; Defined at:
-  7665 ;;		line 102 in file "buttons.c"
+  7665 ;;		line 20 in file "midi_interface.c"
   7666 ;; Parameters:    Size  Location     Type
   7667 ;;  cc              1    wreg     unsigned char 
   7668 ;;  velocity        1   25[COMRAM] unsigned char 
@@ -7936,8 +7936,8 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7702                           ;sendMidiNoteOff@cc stored from wreg
   7703  0023E6  6E45               	movwf	sendMidiNoteOff@cc,c
   7704                           
-  7705                           ;buttons.c: 103: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x
-      +                          80) != 0x00))) {
+  7705                           ;midi_interface.c: 21: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandl
+      +                          e & 0x80) != 0x00))) {
   7706  0023E8  500D               	movf	_USBTxHandle,w,c
   7707  0023EA  100E               	iorwf	_USBTxHandle+1,w,c
   7708  0023EC  B4D8               	btfsc	status,2,c
@@ -7948,44 +7948,44 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7713  0023FA  0012               	return	
   7714  0023FC                     l4318:
   7715                           
-  7716                           ;buttons.c: 104: midiData.Val = 0;
+  7716                           ;midi_interface.c: 22: midiData.Val = 0;
   7717  0023FC  0E00               	movlw	0
-  7718  0023FE  6E23               	movwf	buttons@midiData,c
+  7718  0023FE  6E23               	movwf	midi_interface@midiData,c
   7719  002400  0E00               	movlw	0
-  7720  002402  6E24               	movwf	buttons@midiData+1,c
+  7720  002402  6E24               	movwf	midi_interface@midiData+1,c
   7721  002404  0E00               	movlw	0
-  7722  002406  6E25               	movwf	buttons@midiData+2,c
+  7722  002406  6E25               	movwf	midi_interface@midiData+2,c
   7723  002408  0E00               	movlw	0
-  7724  00240A  6E26               	movwf	buttons@midiData+3,c
+  7724  00240A  6E26               	movwf	midi_interface@midiData+3,c
   7725                           
-  7726                           ;buttons.c: 105: midiData.CableNumber = 0;
-  7727  00240C  9823               	bcf	buttons@midiData,4,c
-  7728  00240E  9A23               	bcf	buttons@midiData,5,c
-  7729  002410  9C23               	bcf	buttons@midiData,6,c
-  7730  002412  9E23               	bcf	buttons@midiData,7,c
+  7726                           ;midi_interface.c: 23: midiData.CableNumber = 0;
+  7727  00240C  9823               	bcf	midi_interface@midiData,4,c
+  7728  00240E  9A23               	bcf	midi_interface@midiData,5,c
+  7729  002410  9C23               	bcf	midi_interface@midiData,6,c
+  7730  002412  9E23               	bcf	midi_interface@midiData,7,c
   7731                           
-  7732                           ;buttons.c: 106: midiData.CodeIndexNumber = 0x8;
-  7733  002414  5023               	movf	buttons@midiData,w,c
+  7732                           ;midi_interface.c: 24: midiData.CodeIndexNumber = 0x8;
+  7733  002414  5023               	movf	midi_interface@midiData,w,c
   7734  002416  0BF0               	andlw	-16
   7735  002418  0908               	iorlw	8
-  7736  00241A  6E23               	movwf	buttons@midiData,c
+  7736  00241A  6E23               	movwf	midi_interface@midiData,c
   7737                           
-  7738                           ;buttons.c: 107: midiData.DATA_0 = 0x80;
+  7738                           ;midi_interface.c: 25: midiData.DATA_0 = 0x80;
   7739  00241C  0E80               	movlw	128
-  7740  00241E  6E24               	movwf	buttons@midiData+1,c
+  7740  00241E  6E24               	movwf	midi_interface@midiData+1,c
   7741                           
-  7742                           ;buttons.c: 108: midiData.DATA_1 = cc;
-  7743  002420  C045  F025         	movff	sendMidiNoteOff@cc,buttons@midiData+2
+  7742                           ;midi_interface.c: 26: midiData.DATA_1 = cc;
+  7743  002420  C045  F025         	movff	sendMidiNoteOff@cc,midi_interface@midiData+2
   7744                           
-  7745                           ;buttons.c: 109: midiData.DATA_2 = velocity;
-  7746  002424  C043  F026         	movff	sendMidiNoteOff@velocity,buttons@midiData+3
+  7745                           ;midi_interface.c: 27: midiData.DATA_2 = velocity;
+  7746  002424  C043  F026         	movff	sendMidiNoteOff@velocity,midi_interface@midiData+3
   7747                           
-  7748                           ;buttons.c: 111: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
+  7748                           ;midi_interface.c: 29: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
   7749  002428  0E01               	movlw	1
   7750  00242A  6E38               	movwf	USBTransferOnePacket@dir,c
-  7751  00242C  0E23               	movlw	low buttons@midiData
+  7751  00242C  0E23               	movlw	low midi_interface@midiData
   7752  00242E  6E39               	movwf	USBTransferOnePacket@data,c
-  7753  002430  0E00               	movlw	high buttons@midiData
+  7753  002430  0E00               	movlw	high midi_interface@midiData
   7754  002432  6E3A               	movwf	USBTransferOnePacket@data+1,c
   7755  002434  0E04               	movlw	4
   7756  002436  6E3B               	movwf	USBTransferOnePacket@len,c
@@ -8028,7 +8028,7 @@ Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010
   7793 ;;  ep              1    wreg     unsigned char 
   7794 ;;  dir             1   14[COMRAM] unsigned char 
   7795 ;;  data            2   15[COMRAM] PTR unsigned char 
-  7796 ;;		 -> buttons@midiData(4), ReceivedDataBuffer(64), 
+  7796 ;;		 -> midi_interface@midiData(4), ReceivedDataBuffer(64), 
   7797 ;;  len             1   17[COMRAM] unsigned char 
   7798 ;; Auto vars:     Size  Location     Type
   7799 ;;  ep              1   22[COMRAM] unsigned char 
@@ -8489,12 +8489,15 @@ Pointer List with Targets:
 		 -> SetupPkt(BIGRAMh[8]), 
 
     memcpy@s1	PTR const void  size(2) Largest target is 3759
-		 -> CtrlTrfData(BIGRAMh[8]), RAM(DATA[3759]), SetupPkt(BIGRAMh[8]), buttons@midiData(COMRAM[4]), 
+		 -> midi_interface@midiData(COMRAM[4]), CtrlTrfData(BIGRAMh[8]), RAM(DATA[3759]), SetupPkt(BIGRAMh[8]), 
 		 -> ReceivedDataBuffer(BANK0[64]), 
 
     memcpy@s	PTR const unsigned char  size(2) Largest target is 3759
-		 -> CtrlTrfData(BIGRAMh[8]), RAM(DATA[3759]), SetupPkt(BIGRAMh[8]), buttons@midiData(COMRAM[4]), 
+		 -> midi_interface@midiData(COMRAM[4]), CtrlTrfData(BIGRAMh[8]), RAM(DATA[3759]), SetupPkt(BIGRAMh[8]), 
 		 -> ReceivedDataBuffer(BANK0[64]), 
+
+    USBTxHandle	PTR void  size(2) Largest target is 3759
+		 -> RAM(DATA[3759]), BDT(BIGRAMl[32]), NULL(NULL[0]), 
 
     USBStdFeatureReqHandler@pUEP	PTR unsigned char  size(2) Largest target is 1
 		 -> UEP0(SFR_1[1]), 
@@ -8521,7 +8524,7 @@ Pointer List with Targets:
 		 -> RAM(DATA[3759]), BDT(BIGRAMl[32]), NULL(NULL[0]), 
 
     USBTransferOnePacket@data	PTR unsigned char  size(2) Largest target is 64
-		 -> buttons@midiData(COMRAM[4]), ReceivedDataBuffer(BANK0[64]), 
+		 -> midi_interface@midiData(COMRAM[4]), ReceivedDataBuffer(BANK0[64]), 
 
     USBTransferOnePacket@handle	PTR volatile struct __BDT size(2) Largest target is 3759
 		 -> RAM(DATA[3759]), BDT(BIGRAMl[32]), NULL(NULL[0]), 
@@ -8535,31 +8538,31 @@ Pointer List with Targets:
     pBDTEntryIn	PTR volatile struct __BDT[2] size(2) Largest target is 3759
 		 -> RAM(DATA[3759]), BDT(BIGRAMl[32]), NULL(NULL[0]), 
 
-    S879$pFunc	PTR FTN()void  size(2) Largest target is 0
+    S825$pFunc	PTR FTN()void  size(2) Largest target is 0
 
     outPipes.pFunc	PTR FTN()void  size(2) Largest target is 0
 
-    S869$wRam	PTR unsigned int  size(2) Largest target is 0
+    S815$wRam	PTR unsigned int  size(2) Largest target is 0
 
     outPipes.pDst.wRam	PTR unsigned int  size(2) Largest target is 0
 
-    S869$bRam	PTR unsigned char  size(2) Largest target is 0
+    S815$bRam	PTR unsigned char  size(2) Largest target is 0
 
     outPipes.pDst.bRam	PTR unsigned char  size(2) Largest target is 0
 
-    S845$wRom	PTR const unsigned int  size(2) Largest target is 0
+    S791$wRom	PTR const unsigned int  size(2) Largest target is 0
 
     inPipes.pSrc.wRom	PTR const unsigned int  size(2) Largest target is 0
 
-    S845$wRam	PTR unsigned int  size(2) Largest target is 0
+    S791$wRam	PTR unsigned int  size(2) Largest target is 0
 
     inPipes.pSrc.wRam	PTR unsigned int  size(2) Largest target is 0
 
-    S845$bRom	PTR const unsigned char  size(2) Largest target is 0
+    S791$bRom	PTR const unsigned char  size(2) Largest target is 0
 
     inPipes.pSrc.bRom	PTR const unsigned char  size(2) Largest target is 0
 
-    S845$bRam	PTR unsigned char  size(2) Largest target is 0
+    S791$bRam	PTR unsigned char  size(2) Largest target is 0
 
     inPipes.pSrc.bRam	PTR unsigned char  size(2) Largest target is 0
 
@@ -8571,9 +8574,6 @@ Pointer List with Targets:
 
     USB_CD_Ptr	const PTR const unsigned char [1] size(2) Largest target is 101
 		 -> configDescriptor1(CODE[101]), 
-
-    USBTxHandle	PTR void  size(2) Largest target is 3759
-		 -> RAM(DATA[3759]), BDT(BIGRAMl[32]), NULL(NULL[0]), 
 
     sp__USBTransferOnePacket	PTR void  size(2) Largest target is 3759
 		 -> RAM(DATA[3759]), BDT(BIGRAMl[32]), NULL(NULL[0]), 
@@ -9100,24 +9100,24 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.38 build -256452561 
-Symbol Table                                                                                   Thu Jan 12 16:26:52 2017
+Symbol Table                                                                                   Thu Jan 12 16:37:57 2017
 
                               _USB_SD_Ptr 0F01                                         _k 0020  
                                       _rx 0021                             _USBDeviceInit 146C  
                             __CFG_CP0$OFF 000000      USER_USB_CALLBACK_EVENT_HANDLER@event 00F8  
-    USER_USB_CALLBACK_EVENT_HANDLER@pdata 00FA               __end_of_USBStdGetDscHandler 16F0  
-                                     l430 1982                                       l175 2858  
-                                     l351 14D2                                       l506 25DA  
-                                     l362 12FC                                       l363 12FA  
-                                     l541 1E38                                       l368 133A  
-                                     l377 13E2                                       l570 0FFC  
-                                     l378 1468                                       l555 1BDE  
-                                     l379 13F8                                       l564 1C2C  
-                                     l493 1F18                                       l496 1FA0  
-                                     l497 1F26                                       l674 281A  
-                                     l666 27F8                                       l498 1F2A  
-                                     l676 281E                                       l668 27FC  
-                                     _BDT 000D00                                       l589 122E  
+    USER_USB_CALLBACK_EVENT_HANDLER@pdata 00FA                                       l151 2858  
+             __end_of_USBStdGetDscHandler 16F0                                       l406 1982  
+                                     l327 14D2                                       l344 133A  
+                                     l353 13E2                                       l354 1468  
+                                     l338 12FC                                       l531 1BDE  
+                                     l355 13F8                                       l339 12FA  
+                                     l540 1C2C                                       l517 1E38  
+                                     l472 1FA0                                       l473 1F26  
+                                     l650 281A                                       l642 27F8  
+                                     l546 0FFC                                       l474 1F2A  
+                                     l482 25DA                                       l652 281E  
+                                     l644 27FC                                       l565 122E  
+                                     l469 1F18                                       _BDT 000D00  
                                      _UIE 000F36                                       _UIR 000F62  
                   _APP_LEDUpdateUSBStatus 2218                                _USBSuspend 2716  
                     USBStdSetCfgHandler@i 00FE                               _USBRxHandle 00AD  
@@ -9163,20 +9163,20 @@ Symbol Table                                                                    
                                     l3808 2800                                      l3840 226C  
                                     l3832 2246                                      l3824 2224  
                                     l4704 1462                                      l4608 1304  
-                                    l3746 26B0                                      l3850 2288  
-                                    l4298 1C6C                                      l4482 1518  
-                                    l4466 14DE                                      l4554 25D6  
-                                    l4650 1388                                      l4626 1332  
-                                    l4618 1322                                      l3844 227E  
-                                    l3836 225C                                      l3852 2292  
-                                    l3828 2234                                      l3860 279A  
-                                    l4572 203C                                      l4644 135A  
-                                    l3766 1848                                      l3758 181E  
-                                    l4590 24F2                                      l3918 1D3A  
-                                    l3790 255C                                      l3870 2326  
-                                    l4574 2042                                      l4478 1510  
-                                    l4662 139C                                      l4638 134E  
-                                    l4734 2600                                      l3928 1D7A  
+                                    l4720 2600                                      l3746 26B0  
+                                    l3850 2288                                      l4298 1C6C  
+                                    l4482 1518                                      l4466 14DE  
+                                    l4554 25D6                                      l4650 1388  
+                                    l4626 1332                                      l4618 1322  
+                                    l3844 227E                                      l3836 225C  
+                                    l3852 2292                                      l3828 2234  
+                                    l3860 279A                                      l4572 203C  
+                                    l4644 135A                                      l3766 1848  
+                                    l3758 181E                                      l4590 24F2  
+                                    l3918 1D3A                                      l3790 255C  
+                                    l3870 2326                                      l4574 2042  
+                                    l4478 1510                                      l4662 139C  
+                                    l4638 134E                                      l3928 1D7A  
                                     l3944 1E8E                                      l3872 232C  
                                     l3864 2316                                      l3856 278A  
                                     l4488 1574                                      l3778 18C6  
@@ -9311,38 +9311,38 @@ Symbol Table                                                                    
                 _USBCtrlEPServiceComplete 190A                _USBStatusStageEnabledFlag1 001A  
               _USBStatusStageEnabledFlag2 001B                        USBEnableEndpoint@p 0041  
                         __CFG_DSBOREN$OFF 000000                  __size_of_ConfigSPIPeriph 0010  
-          ?_APP_DeviceAudioMIDISOFHandler 002A                   sendMidiNoteOff@velocity 0043  
-                        __CFG_CPUDIV$OSC1 000000                                 _TRISEbits 000F96  
-                      _ReceivedDataBuffer 00B8                        _BothEP0OutUOWNsSet 0013  
-               USBConfigureEndpoint@EPNum 003D         __size_of_APP_DeviceAudioMIDITasks 0058  
-              ?_USBCtrlEPAllowStatusStage 002A                 ?_APP_DeviceAudioMIDITasks 002A  
-     USER_USB_CALLBACK_EVENT_HANDLER@size 00FC                                 _USTATcopy 0029  
-                            ?_InitSPIPins 002A                             ?_SPIReadWrite 002A  
-            __end_of_USBTransferOnePacket 190A                            __end_of_LED_On 2816  
-                        __CFG_IOL1WAY$OFF 000000                         __CFG_WPEND$PAGE_0 000000  
-                     __CFG_MSSP7B_EN$MSK7 000000                    _USBCtrlTrfSetupHandler 2052  
-                       sendMidiNoteOff@cc 0045                     __end_of_USBDeviceInit 15BE  
-   __end_of_USBIncrement1msInternalTimers 27D2    __size_of_USBIncrement1msInternalTimers 0026  
-           _USBIncrement1msInternalTimers 27AC                                LED_Off@led 0038  
-                       initButtons@button 0048                            __end_of_memcpy 2662  
-                          __end_of_memset 27AC                          __CFG_DSWDTEN$OFF 000000  
-                       _USBBusIsSuspended 0015                       start_initialization 27D2  
-                 ?_USBStdGetStatusHandler 002A             USBCtrlTrfRxService@byteToRead 0039  
-            __end_of_USBConfigureEndpoint 2218           __end_of_USBStdFeatureReqHandler 12D6  
-                          ??_SPIReadWrite 0038                                  ??_LED_On 0038  
-       __end_of_USBCtrlEPAllowStatusStage 1F0A                  __end_of_USBCtrlEPService 2052  
-               ??_USBCtrlEPAllowDataStage 0039                            USBDeviceInit@i 0040  
-                  _pBDTEntryEP0OutCurrent 000F                   USBTransferOnePacket@dir 0038  
-                 USBTransferOnePacket@len 003B                                newButton@b 0040  
-                           ??_initButtons 0048  SYSTEM_Initialize@pll_startup_counter_732 003A  
-                   sendMidiNoteOn@channel 0044                          SPIReadWrite@byte 0038  
-                     _USBStdGetDscHandler 15BE                                  ??_memcpy 003E  
-                                ??_memset 003E                    _USBActiveConfiguration 0027  
-          __end_of_USBStdGetStatusHandler 1FB4                                  ?_LED_Off 002A  
-                             __pbssCOMRAM 0001                             __pcstackBANK0 00F8  
-                           __pcstackBANK1 0100              __size_of_USBCtrlTrfInHandler 00C6  
-                    ?_USBStdGetDscHandler 002A                         ??_ConfigSPIPeriph 0038  
-                         buttons@midiData 0023                __end_of_USBWakeFromSuspend 26A0  
+          ?_APP_DeviceAudioMIDISOFHandler 002A                    midi_interface@midiData 0023  
+                 sendMidiNoteOff@velocity 0043                          __CFG_CPUDIV$OSC1 000000  
+                               _TRISEbits 000F96                        _ReceivedDataBuffer 00B8  
+                      _BothEP0OutUOWNsSet 0013                 USBConfigureEndpoint@EPNum 003D  
+       __size_of_APP_DeviceAudioMIDITasks 0058                ?_USBCtrlEPAllowStatusStage 002A  
+               ?_APP_DeviceAudioMIDITasks 002A       USER_USB_CALLBACK_EVENT_HANDLER@size 00FC  
+                               _USTATcopy 0029                              ?_InitSPIPins 002A  
+                           ?_SPIReadWrite 002A              __end_of_USBTransferOnePacket 190A  
+                          __end_of_LED_On 2816                          __CFG_IOL1WAY$OFF 000000  
+                       __CFG_WPEND$PAGE_0 000000                       __CFG_MSSP7B_EN$MSK7 000000  
+                  _USBCtrlTrfSetupHandler 2052                         sendMidiNoteOff@cc 0045  
+                   __end_of_USBDeviceInit 15BE     __end_of_USBIncrement1msInternalTimers 27D2  
+  __size_of_USBIncrement1msInternalTimers 0026             _USBIncrement1msInternalTimers 27AC  
+                              LED_Off@led 0038                         initButtons@button 0048  
+                          __end_of_memcpy 2662                            __end_of_memset 27AC  
+                        __CFG_DSWDTEN$OFF 000000                         _USBBusIsSuspended 0015  
+                     start_initialization 27D2                   ?_USBStdGetStatusHandler 002A  
+           USBCtrlTrfRxService@byteToRead 0039              __end_of_USBConfigureEndpoint 2218  
+         __end_of_USBStdFeatureReqHandler 12D6                            ??_SPIReadWrite 0038  
+                                ??_LED_On 0038         __end_of_USBCtrlEPAllowStatusStage 1F0A  
+                __end_of_USBCtrlEPService 2052                 ??_USBCtrlEPAllowDataStage 0039  
+                          USBDeviceInit@i 0040                    _pBDTEntryEP0OutCurrent 000F  
+                 USBTransferOnePacket@dir 0038                   USBTransferOnePacket@len 003B  
+                              newButton@b 0040                             ??_initButtons 0048  
+SYSTEM_Initialize@pll_startup_counter_678 003A                     sendMidiNoteOn@channel 0044  
+                        SPIReadWrite@byte 0038                       _USBStdGetDscHandler 15BE  
+                                ??_memcpy 003E                                  ??_memset 003E  
+                  _USBActiveConfiguration 0027            __end_of_USBStdGetStatusHandler 1FB4  
+                                ?_LED_Off 002A                               __pbssCOMRAM 0001  
+                           __pcstackBANK0 00F8                             __pcstackBANK1 0100  
+            __size_of_USBCtrlTrfInHandler 00C6                      ?_USBStdGetDscHandler 002A  
+                       ??_ConfigSPIPeriph 0038                __end_of_USBWakeFromSuspend 26A0  
                          _USBStallHandler 2598                              _pBDTEntryOut 00A9  
           ?_APP_DeviceAudioMIDIInitialize 002A                    __size_of_handleButtons 00E4  
                                __pintcode 0008                       __end_of_initButtons 2598  

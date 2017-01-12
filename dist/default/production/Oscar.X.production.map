@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.38\dat\en_msgs.txt -cs \
   -h+dist/default/production\Oscar.X.production.sym \
   --cmf=dist/default/production\Oscar.X.production.cmf -z -Q18F47J53 \
-  -oC:\Users\matth\AppData\Local\Temp\s2hhg.2 \
+  -oC:\Users\matth\AppData\Local\Temp\s2mck.2 \
   -Mdist/default/production/Oscar.X.production.map -E1 -ver=XC8 \
   -ASTACK=0106h-0cffh -pstack=STACK -ACODE=00h-01FFF7h -ACONST=00h-01FFF7h \
   -ASMALLCONST=0F00h-0FFFhx496,01FF00h-01FFF7h \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\matth\AppData\Local\Temp\s2hhg.obj \
+  C:\Users\matth\AppData\Local\Temp\s2mck.obj \
   dist/default/production\Oscar.X.production.obj 
 
 Object code version is 3.11
@@ -39,7 +39,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\matth\AppData\Local\Temp\s2hhg.obj
+C:\Users\matth\AppData\Local\Temp\s2mck.obj
                 end_init                             7E       7E        4        4       0
                 reset_vec                             0        0        4        0       0
                 config                            1FFF8    1FFF8        8    1FFF8       0
@@ -270,7 +270,7 @@ LED_On@led                                cstackCOMRAM  00038
 SPIReadWrite@byte                         cstackCOMRAM  00038
 SPIReadWrite@r                            cstackCOMRAM  00039
 SYSTEM_Initialize@pll_startup_counter     cstackCOMRAM  00038
-SYSTEM_Initialize@pll_startup_counter_732 cstackCOMRAM  0003A
+SYSTEM_Initialize@pll_startup_counter_678 cstackCOMRAM  0003A
 SYSTEM_Initialize@state                   cstackCOMRAM  0003C
 USBConfigureEndpoint@EPNum                cstackCOMRAM  0003D
 USBConfigureEndpoint@direction            cstackCOMRAM  00038
@@ -827,7 +827,6 @@ _sendMidiNoteOff                          text41        023E6
 _sendMidiNoteOn                           text40        02384
 _shortPacketStatus                        bssCOMRAM     00022
 btemp                                     temp          00051
-buttons@midiData                          bssCOMRAM     00023
 end_of_initialization                     cinit         027EA
 initButtons@button                        cstackCOMRAM  00048
 int$flags                                 temp          00051
@@ -844,6 +843,7 @@ memset@c                                  cstackCOMRAM  0003A
 memset@n                                  cstackCOMRAM  0003C
 memset@p                                  cstackCOMRAM  0003E
 memset@p1                                 cstackCOMRAM  00038
+midi_interface@midiData                   bssCOMRAM     00023
 newButton@b                               cstackCOMRAM  00040
 newButton@button                          cstackCOMRAM  00041
 newButton@cc                              cstackCOMRAM  00038
@@ -1125,12 +1125,12 @@ Total ram usage:        1 bytes
   d1              2   14[COMRAM] PTR void 
 		 -> SetupPkt(8), 
   s1              2   16[COMRAM] PTR const void 
-		 -> CtrlTrfData(8), RAM(3759), SetupPkt(8), buttons@midiData(4), 
+		 -> midi_interface@midiData(4), CtrlTrfData(8), RAM(3759), SetupPkt(8), 
 		 -> ReceivedDataBuffer(64), 
   n               2   18[COMRAM] unsigned int 
  Auto vars:     Size  Location     Type
   s               2   22[COMRAM] PTR const unsigned char 
-		 -> CtrlTrfData(8), RAM(3759), SetupPkt(8), buttons@midiData(4), 
+		 -> midi_interface@midiData(4), CtrlTrfData(8), RAM(3759), SetupPkt(8), 
 		 -> ReceivedDataBuffer(64), 
   d               2   20[COMRAM] PTR unsigned char 
 		 -> SetupPkt(8), 
@@ -1449,7 +1449,7 @@ Total ram usage:        6 bytes
  Defined at:
 		line 30 in file "usb_events.c"
  Parameters:    Size  Location     Type
-  event           2    0[BANK0 ] enum E9258
+  event           2    0[BANK0 ] enum E9246
   pdata           2    2[BANK0 ] PTR void 
 		 -> RAM(3759), USTATcopy(1), USBActiveConfiguration(1), BDT(32), 
 		 -> NULL(0), 
@@ -1642,7 +1642,7 @@ Total ram usage:        0 bytes
 
  *************** function _initButtons *****************
  Defined at:
-		line 14 in file "buttons.c"
+		line 12 in file "buttons.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1926,9 +1926,9 @@ Total ram usage:        1 bytes
  Defined at:
 		line 58 in file "system.c"
  Parameters:    Size  Location     Type
-  state           1    wreg     enum E9201
+  state           1    wreg     enum E9189
  Auto vars:     Size  Location     Type
-  state           1   18[COMRAM] enum E9201
+  state           1   18[COMRAM] enum E9189
   pll_startup_    2   16[COMRAM] unsigned int 
   pll_startup_    2   14[COMRAM] unsigned int 
  Return value:  Size  Location     Type
@@ -2048,7 +2048,7 @@ Total ram usage:        4 bytes
 
  *************** function _scanButtonsHardware *****************
  Defined at:
-		line 21 in file "buttons.c"
+		line 19 in file "buttons.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2110,7 +2110,7 @@ Total ram usage:        2 bytes
 
  *************** function _handleButtons *****************
  Defined at:
-		line 40 in file "buttons.c"
+		line 38 in file "buttons.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2141,7 +2141,7 @@ Total ram usage:        2 bytes
 
  *************** function _sendMidiNoteOn *****************
  Defined at:
-		line 89 in file "buttons.c"
+		line 7 in file "midi_interface.c"
  Parameters:    Size  Location     Type
   cc              1    wreg     unsigned char 
   velocity        1   25[COMRAM] unsigned char 
@@ -2173,7 +2173,7 @@ Total ram usage:        3 bytes
 
  *************** function _sendMidiNoteOff *****************
  Defined at:
-		line 102 in file "buttons.c"
+		line 20 in file "midi_interface.c"
  Parameters:    Size  Location     Type
   cc              1    wreg     unsigned char 
   velocity        1   25[COMRAM] unsigned char 
@@ -2210,7 +2210,7 @@ Total ram usage:        3 bytes
   ep              1    wreg     unsigned char 
   dir             1   14[COMRAM] unsigned char 
   data            2   15[COMRAM] PTR unsigned char 
-		 -> buttons@midiData(4), ReceivedDataBuffer(64), 
+		 -> midi_interface@midiData(4), ReceivedDataBuffer(64), 
   len             1   17[COMRAM] unsigned char 
  Auto vars:     Size  Location     Type
   ep              1   22[COMRAM] unsigned char 
@@ -2294,13 +2294,11 @@ spi_interface.c
 spi_interface.c estimated size: 63
 
 buttons.c
-		_sendMidiNoteOn		CODE           	2384	0000	99
 		_handleButtons 		CODE           	1AEA	0000	229
 		_scanButtonsHardware		CODE           	2298	0000	125
 		_initButtons   		CODE           	2550	0000	73
-		_sendMidiNoteOff		CODE           	23E6	0000	99
 
-buttons.c estimated size: 625
+buttons.c estimated size: 427
 
 shared
 		_configDescriptor1		SMALLCONST     	0F09	0000	102
@@ -2363,6 +2361,12 @@ status_led.c
 		_APP_LEDUpdateUSBStatus		CODE           	2218	0000	129
 
 status_led.c estimated size: 129
+
+midi_interface.c
+		_sendMidiNoteOn		CODE           	2384	0000	99
+		_sendMidiNoteOff		CODE           	23E6	0000	99
+
+midi_interface.c estimated size: 198
 
 usb_events.c
 		_USER_USB_CALLBACK_EVENT_HANDLER		CODE           	2314	0000	113

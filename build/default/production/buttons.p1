@@ -2,19 +2,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "4 button.h
 [s S1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S1 . Bit CC Velocity State PreviousState Toggle Momentary ]
-"29 usb_device_midi.h
-[s S1343 :4 `uc 1 :4 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S1343 . CIN CN MIDI_0 MIDI_1 MIDI_2 ]
-"37
-[s S1344 :4 `uc 1 :4 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S1344 . CodeIndexNumber CableNumber DATA_0 DATA_1 DATA_2 ]
-"27
-[u S1342 `S1343 1 `S1344 1 ]
-[n S1342 . . . ]
-"23
-[u S1341 `ul 1 `uc -> 4 `i `S1342 1 ]
-[n S1341 . Val v . ]
-"14 button.h
+"14
 [v _newButton `(S1 ~T0 @X0 0 ef2`uc`uc ]
 "11041 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f47j53.h
 [s S747 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -41,12 +29,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATCbits `VS746 ~T0 @X0 0 e@3979 ]
 "8 spi_interface.h
 [v _SPIReadWrite `(uc ~T0 @X0 0 ef1`uc ]
-"19 buttons.h
+"6 midi_interface.h
 [v _sendMidiNoteOn `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"20
+"7
 [v _sendMidiNoteOff `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"444 usb_device.h
-[v _USBTransferOnePacket `(*v ~T0 @X0 0 ef4`uc`uc`*uc`uc ]
 [; ;button.h: 4: typedef struct {
 [; ;button.h: 5: char Bit;
 [; ;button.h: 6: char CC;
@@ -69,9 +55,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;buttons.h: 16: void readButtonsMemory(void);
 [; ;buttons.h: 17: void writeToButtonsMemory(char addr, char data);
 [; ;buttons.h: 18: void initButtonsMemory(void);
-[; ;buttons.h: 19: void sendMidiNoteOn(char cc, char velocity, char channel);
-[; ;buttons.h: 20: void sendMidiNoteOff(char cc, char velocity, char channel);
-[; ;buttons.h: 21: void sendMidiControlChange(char cc, char velocity, char channel);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
@@ -9340,385 +9323,256 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi_interface.h: 5: void ConfigSPIInterrupts(void);
 [; ;spi_interface.h: 6: void ConfigSPIPeriph(void);
 [; ;spi_interface.h: 8: unsigned char SPIReadWrite(unsigned char);
-"7 buttons.c
-[v _midiData `S1341 ~T0 @X0 1 s ]
-[; ;buttons.c: 7: static USB_AUDIO_MIDI_EVENT_PACKET midiData;
-"8
-[v _USBTxHandle `*v ~T0 @X0 1 s ]
-[; ;buttons.c: 8: static void* USBTxHandle;
-"10
+[; ;midi_interface.h: 6: void sendMidiNoteOn(char cc, char velocity, char channel);
+[; ;midi_interface.h: 7: void sendMidiNoteOff(char cc, char velocity, char channel);
+[; ;midi_interface.h: 8: void sendMidiControlChange(char cc, char velocity, char channel);
+"8 buttons.c
 [v _rx `uc ~T0 @X0 1 e ]
-[; ;buttons.c: 10: char rx;
-"11
+[; ;buttons.c: 8: char rx;
+"9
 [v _data `uc ~T0 @X0 1 e ]
-[; ;buttons.c: 11: unsigned char data;
-[; ;buttons.c: 12: char k;
-"14
+[; ;buttons.c: 9: unsigned char data;
+[; ;buttons.c: 10: char k;
+"12
 [v _initButtons `(v ~T0 @X0 1 ef ]
 {
-[; ;buttons.c: 14: void initButtons() {
+[; ;buttons.c: 12: void initButtons() {
 [e :U _initButtons ]
 [f ]
-[; ;buttons.c: 15: for (k=0; k<8; k++) {
-"15
+[; ;buttons.c: 13: for (k=0; k<8; k++) {
+"13
 {
 [e = _k -> -> 0 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1346  ]
 [e $U 1347  ]
 [e :U 1346 ]
 {
-"16
+"14
 [v _button `S1 ~T0 @X0 1 a ]
-[; ;buttons.c: 16: Button button = newButton(k, k + 60);
+[; ;buttons.c: 14: Button button = newButton(k, k + 60);
 [e = _button ( _newButton (2 , _k -> + -> _k `i -> 60 `i `uc ]
-[; ;buttons.c: 17: Buttons[k] = button;
-"17
-[e = *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux _button ]
-"18
-}
+[; ;buttons.c: 15: Buttons[k] = button;
 "15
+[e = *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux _button ]
+"16
+}
+"13
 [e ++ _k -> -> 1 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1346  ]
 [e :U 1347 ]
-"18
+"16
 }
-[; ;buttons.c: 18: }
-[; ;buttons.c: 19: }
-"19
+[; ;buttons.c: 16: }
+[; ;buttons.c: 17: }
+"17
 [e :UE 1345 ]
 }
-"21
+"19
 [v _scanButtonsHardware `(v ~T0 @X0 1 ef ]
 {
-[; ;buttons.c: 21: void scanButtonsHardware() {
+[; ;buttons.c: 19: void scanButtonsHardware() {
 [e :U _scanButtonsHardware ]
 [f ]
-[; ;buttons.c: 22: LATCbits.LATC0 = 0;
-"22
+[; ;buttons.c: 20: LATCbits.LATC0 = 0;
+"20
 [e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;buttons.c: 23: LATCbits.LATC0 = 1;
-"23
+[; ;buttons.c: 21: LATCbits.LATC0 = 1;
+"21
 [e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-[; ;buttons.c: 25: LATCbits.LATC1 = 0;
-"25
+[; ;buttons.c: 23: LATCbits.LATC1 = 0;
+"23
 [e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;buttons.c: 26: rx = SPIReadWrite(0);
-"26
+[; ;buttons.c: 24: rx = SPIReadWrite(0);
+"24
 [e = _rx ( _SPIReadWrite (1 -> -> 0 `i `uc ]
-[; ;buttons.c: 27: LATCbits.LATC1 = 1;
-"27
+[; ;buttons.c: 25: LATCbits.LATC1 = 1;
+"25
 [e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-"29
+"27
 [v _states `uc ~T0 @X0 1 a ]
-[; ;buttons.c: 29: char states = rx;
+[; ;buttons.c: 27: char states = rx;
 [e = _states _rx ]
-[; ;buttons.c: 30: for (k=0; k<8; k++) {
-"30
+[; ;buttons.c: 28: for (k=0; k<8; k++) {
+"28
 {
 [e = _k -> -> 0 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1350  ]
 [e $U 1351  ]
 [e :U 1350 ]
 {
-[; ;buttons.c: 31: Buttons[k].PreviousState = Buttons[k].State;
-"31
+[; ;buttons.c: 29: Buttons[k].PreviousState = Buttons[k].State;
+"29
 [e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 4 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 ]
-[; ;buttons.c: 32: Buttons[k].State = states & 0b00000001;
-"32
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 -> & -> _states `i -> 1 `i `uc ]
-[; ;buttons.c: 33: states = states >> 1;
-"33
-[e = _states -> >> -> _states `i -> 1 `i `uc ]
-"34
-}
+[; ;buttons.c: 30: Buttons[k].State = states & 0b00000001;
 "30
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 -> & -> _states `i -> 1 `i `uc ]
+[; ;buttons.c: 31: states = states >> 1;
+"31
+[e = _states -> >> -> _states `i -> 1 `i `uc ]
+"32
+}
+"28
 [e ++ _k -> -> 1 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1350  ]
 [e :U 1351 ]
-"34
+"32
 }
-[; ;buttons.c: 34: }
-[; ;buttons.c: 38: }
-"38
+[; ;buttons.c: 32: }
+[; ;buttons.c: 36: }
+"36
 [e :UE 1349 ]
 }
-"40
+"38
 [v _handleButtons `(v ~T0 @X0 1 ef ]
 {
-[; ;buttons.c: 40: void handleButtons() {
+[; ;buttons.c: 38: void handleButtons() {
 [e :U _handleButtons ]
 [f ]
-[; ;buttons.c: 41: for (k=0; k<8; k++) {
-"41
+[; ;buttons.c: 39: for (k=0; k<8; k++) {
+"39
 {
 [e = _k -> -> 0 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1354  ]
 [e $U 1355  ]
 [e :U 1354 ]
 {
-[; ;buttons.c: 42: if (Buttons[k].State != Buttons[k].PreviousState) {
-"42
+[; ;buttons.c: 40: if (Buttons[k].State != Buttons[k].PreviousState) {
+"40
 [e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 `i -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 4 `i 1357  ]
 {
-[; ;buttons.c: 52: if (Buttons[k].State != 0x00) {
-"52
+[; ;buttons.c: 50: if (Buttons[k].State != 0x00) {
+"50
 [e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 `i -> 0 `i 1358  ]
 {
-[; ;buttons.c: 53: sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
-"53
+[; ;buttons.c: 51: sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+"51
 [e ( _sendMidiNoteOn (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 -> -> 0 `i `uc ]
-"55
+"53
 }
-[; ;buttons.c: 55: } else {
+[; ;buttons.c: 53: } else {
 [e $U 1359  ]
 [e :U 1358 ]
 {
-[; ;buttons.c: 56: sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
-"56
+[; ;buttons.c: 54: sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+"54
 [e ( _sendMidiNoteOff (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 -> -> 0 `i `uc ]
-"57
+"55
 }
 [e :U 1359 ]
-"58
+"56
 }
 [e :U 1357 ]
-"59
+"57
 }
-"41
+"39
 [e ++ _k -> -> 1 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1354  ]
 [e :U 1355 ]
-"59
+"57
 }
+[; ;buttons.c: 55: }
+[; ;buttons.c: 56: }
 [; ;buttons.c: 57: }
 [; ;buttons.c: 58: }
-[; ;buttons.c: 59: }
-[; ;buttons.c: 60: }
-"60
+"58
 [e :UE 1353 ]
 }
-"63
+"61
 [v _readButtonsMemory `(v ~T0 @X0 1 ef ]
 {
-[; ;buttons.c: 63: void readButtonsMemory() {
+[; ;buttons.c: 61: void readButtonsMemory() {
 [e :U _readButtonsMemory ]
 [f ]
-[; ;buttons.c: 64: for (k=0; k<8; k++) {
-"64
+[; ;buttons.c: 62: for (k=0; k<8; k++) {
+"62
 {
 [e = _k -> -> 0 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1361  ]
 [e $U 1362  ]
 [e :U 1361 ]
 {
-[; ;buttons.c: 65: data = 0;
-"65
+[; ;buttons.c: 63: data = 0;
+"63
 [e = _data -> -> 0 `i `uc ]
-[; ;buttons.c: 66: Buttons[k].CC = data;
-"66
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 _data ]
-[; ;buttons.c: 68: data = 0;
-"68
-[e = _data -> -> 0 `i `uc ]
-[; ;buttons.c: 69: Buttons[k].Velocity = data;
-"69
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 _data ]
-[; ;buttons.c: 71: data = 0;
-"71
-[e = _data -> -> 0 `i `uc ]
-[; ;buttons.c: 72: Buttons[k].Toggle = data & 0x00000001;
-"72
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 5 -> & -> _data `i -> 1 `i `uc ]
-[; ;buttons.c: 73: Buttons[k].Momentary = (data & 0x00000010) >> 1;
-"73
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 6 -> >> & -> _data `i -> 16 `i -> 1 `i `uc ]
-"74
-}
+[; ;buttons.c: 64: Buttons[k].CC = data;
 "64
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 _data ]
+[; ;buttons.c: 66: data = 0;
+"66
+[e = _data -> -> 0 `i `uc ]
+[; ;buttons.c: 67: Buttons[k].Velocity = data;
+"67
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 _data ]
+[; ;buttons.c: 69: data = 0;
+"69
+[e = _data -> -> 0 `i `uc ]
+[; ;buttons.c: 70: Buttons[k].Toggle = data & 0x00000001;
+"70
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 5 -> & -> _data `i -> 1 `i `uc ]
+[; ;buttons.c: 71: Buttons[k].Momentary = (data & 0x00000010) >> 1;
+"71
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 6 -> >> & -> _data `i -> 16 `i -> 1 `i `uc ]
+"72
+}
+"62
 [e ++ _k -> -> 1 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1361  ]
 [e :U 1362 ]
-"74
+"72
 }
-[; ;buttons.c: 74: }
-[; ;buttons.c: 75: }
-"75
+[; ;buttons.c: 72: }
+[; ;buttons.c: 73: }
+"73
 [e :UE 1360 ]
 }
-"77
+"75
 [v _writeToButtonsMemory `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;buttons.c: 77: void writeToButtonsMemory(char addr, char data) {
+[; ;buttons.c: 75: void writeToButtonsMemory(char addr, char data) {
 [e :U _writeToButtonsMemory ]
 [v _addr `uc ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;buttons.c: 78: if (addr >= 0 && addr < 24) {
-"78
+[; ;buttons.c: 76: if (addr >= 0 && addr < 24) {
+"76
 [e $ ! && >= -> _addr `i -> 0 `i < -> _addr `i -> 24 `i 1365  ]
 {
-[; ;buttons.c: 79: ;
-"80
+[; ;buttons.c: 77: ;
+"78
 }
 [e :U 1365 ]
-[; ;buttons.c: 80: }
-[; ;buttons.c: 81: }
-"81
+[; ;buttons.c: 78: }
+[; ;buttons.c: 79: }
+"79
 [e :UE 1364 ]
 }
-"83
+"81
 [v _initButtonsMemory `(v ~T0 @X0 1 ef ]
 {
-[; ;buttons.c: 83: void initButtonsMemory() {
+[; ;buttons.c: 81: void initButtonsMemory() {
 [e :U _initButtonsMemory ]
 [f ]
-[; ;buttons.c: 84: for (k=0; k<8; k++) {
-"84
+[; ;buttons.c: 82: for (k=0; k<8; k++) {
+"82
 {
 [e = _k -> -> 0 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1367  ]
 [e $U 1368  ]
 [e :U 1367 ]
 {
-[; ;buttons.c: 85: writeToButtonsMemory(k, k);
-"85
+[; ;buttons.c: 83: writeToButtonsMemory(k, k);
+"83
 [e ( _writeToButtonsMemory (2 , _k _k ]
-"86
-}
 "84
+}
+"82
 [e ++ _k -> -> 1 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1367  ]
 [e :U 1368 ]
-"86
+"84
 }
-[; ;buttons.c: 86: }
-[; ;buttons.c: 87: }
-"87
+[; ;buttons.c: 84: }
+[; ;buttons.c: 85: }
+"85
 [e :UE 1366 ]
-}
-"89
-[v _sendMidiNoteOn `(v ~T0 @X0 1 ef3`uc`uc`uc ]
-{
-[; ;buttons.c: 89: void sendMidiNoteOn(char cc, char velocity, char channel) {
-[e :U _sendMidiNoteOn ]
-[v _cc `uc ~T0 @X0 1 r1 ]
-[v _velocity `uc ~T0 @X0 1 r2 ]
-[v _channel `uc ~T0 @X0 1 r3 ]
-[f ]
-[; ;buttons.c: 90: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
-"90
-[e $ ! ! && != _USBTxHandle -> -> 0 `i `*v != & -> *U -> _USBTxHandle `*Vuc `i -> 128 `i -> 0 `i 1371  ]
-{
-[; ;buttons.c: 91: midiData.Val = 0;
-"91
-[e = . _midiData 0 -> -> -> 0 `i `l `ul ]
-[; ;buttons.c: 92: midiData.CableNumber = 0;
-"92
-[e = . . . _midiData 2 1 1 -> -> 0 `i `uc ]
-[; ;buttons.c: 93: midiData.CodeIndexNumber = 0x9;
-"93
-[e = . . . _midiData 2 1 0 -> -> 9 `i `uc ]
-[; ;buttons.c: 94: midiData.DATA_0 = 0x90;
-"94
-[e = . . . _midiData 2 1 2 -> -> 144 `i `uc ]
-[; ;buttons.c: 95: midiData.DATA_1 = cc;
-"95
-[e = . . . _midiData 2 1 3 _cc ]
-[; ;buttons.c: 96: midiData.DATA_2 = velocity;
-"96
-[e = . . . _midiData 2 1 4 _velocity ]
-[; ;buttons.c: 98: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
-"98
-[e = _USBTxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _midiData `*uc -> -> 4 `i `uc ]
-"99
-}
-[e :U 1371 ]
-[; ;buttons.c: 99: }
-[; ;buttons.c: 100: }
-"100
-[e :UE 1370 ]
-}
-"102
-[v _sendMidiNoteOff `(v ~T0 @X0 1 ef3`uc`uc`uc ]
-{
-[; ;buttons.c: 102: void sendMidiNoteOff(char cc, char velocity, char channel) {
-[e :U _sendMidiNoteOff ]
-[v _cc `uc ~T0 @X0 1 r1 ]
-[v _velocity `uc ~T0 @X0 1 r2 ]
-[v _channel `uc ~T0 @X0 1 r3 ]
-[f ]
-[; ;buttons.c: 103: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
-"103
-[e $ ! ! && != _USBTxHandle -> -> 0 `i `*v != & -> *U -> _USBTxHandle `*Vuc `i -> 128 `i -> 0 `i 1373  ]
-{
-[; ;buttons.c: 104: midiData.Val = 0;
-"104
-[e = . _midiData 0 -> -> -> 0 `i `l `ul ]
-[; ;buttons.c: 105: midiData.CableNumber = 0;
-"105
-[e = . . . _midiData 2 1 1 -> -> 0 `i `uc ]
-[; ;buttons.c: 106: midiData.CodeIndexNumber = 0x8;
-"106
-[e = . . . _midiData 2 1 0 -> -> 8 `i `uc ]
-[; ;buttons.c: 107: midiData.DATA_0 = 0x80;
-"107
-[e = . . . _midiData 2 1 2 -> -> 128 `i `uc ]
-[; ;buttons.c: 108: midiData.DATA_1 = cc;
-"108
-[e = . . . _midiData 2 1 3 _cc ]
-[; ;buttons.c: 109: midiData.DATA_2 = velocity;
-"109
-[e = . . . _midiData 2 1 4 _velocity ]
-[; ;buttons.c: 111: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
-"111
-[e = _USBTxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _midiData `*uc -> -> 4 `i `uc ]
-"112
-}
-[e :U 1373 ]
-[; ;buttons.c: 112: }
-[; ;buttons.c: 113: }
-"113
-[e :UE 1372 ]
-}
-"115
-[v _sendMidiControlChange `(v ~T0 @X0 1 ef3`uc`uc`uc ]
-{
-[; ;buttons.c: 115: void sendMidiControlChange(char cc, char velocity, char channel) {
-[e :U _sendMidiControlChange ]
-[v _cc `uc ~T0 @X0 1 r1 ]
-[v _velocity `uc ~T0 @X0 1 r2 ]
-[v _channel `uc ~T0 @X0 1 r3 ]
-[f ]
-[; ;buttons.c: 116: if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
-"116
-[e $ ! ! && != _USBTxHandle -> -> 0 `i `*v != & -> *U -> _USBTxHandle `*Vuc `i -> 128 `i -> 0 `i 1375  ]
-{
-[; ;buttons.c: 117: midiData.Val = 0;
-"117
-[e = . _midiData 0 -> -> -> 0 `i `l `ul ]
-[; ;buttons.c: 118: midiData.CableNumber = 0;
-"118
-[e = . . . _midiData 2 1 1 -> -> 0 `i `uc ]
-[; ;buttons.c: 119: midiData.CodeIndexNumber = 0xB;
-"119
-[e = . . . _midiData 2 1 0 -> -> 11 `i `uc ]
-[; ;buttons.c: 120: midiData.DATA_0 = 0xB0;
-"120
-[e = . . . _midiData 2 1 2 -> -> 176 `i `uc ]
-[; ;buttons.c: 121: midiData.DATA_1 = cc;
-"121
-[e = . . . _midiData 2 1 3 _cc ]
-[; ;buttons.c: 122: midiData.DATA_2 = velocity;
-"122
-[e = . . . _midiData 2 1 4 _velocity ]
-[; ;buttons.c: 124: USBTxHandle = USBTransferOnePacket(1,1,(uint8_t*)&midiData,4);
-"124
-[e = _USBTxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> &U _midiData `*uc -> -> 4 `i `uc ]
-"125
-}
-[e :U 1375 ]
-[; ;buttons.c: 125: }
-[; ;buttons.c: 126: }
-"126
-[e :UE 1374 ]
 }
