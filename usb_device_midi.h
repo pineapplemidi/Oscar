@@ -1,40 +1,17 @@
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-Copyright 2015 Microchip Technology Inc. (www.microchip.com)
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-To request to license the code under the MLA license (www.microchip.com/mla_license), 
-please contact mla_licensing@microchip.com
-*******************************************************************************/
-//DOM-IGNORE-END
-
-typedef union
-{
+typedef union {
     uint32_t Val;
     uint8_t v[4];
-    union
-    {
-        struct
-        {
+    union {
+        struct {
             uint8_t CIN :4;
             uint8_t CN  :4;
             uint8_t MIDI_0;
             uint8_t MIDI_1;
             uint8_t MIDI_2;
         }; 
-        struct
-        {
+        struct {
             uint8_t CodeIndexNumber :4;
             uint8_t CableNumber     :4;
             uint8_t DATA_0;
