@@ -6,7 +6,7 @@ typedef struct {
     char Velocity;
     char State;
     char PreviousState;
-    char Flags; // .. / .. / .. / .. || .. / control change / momentary / toggle
+    char Flags; // toggle state / .. / .. / .. || .. / control change / momentary / toggle
 } Button;
 
 Button newButton(char b, char cc);

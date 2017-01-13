@@ -611,7 +611,7 @@ text17 FD4 28C1 CODE FD4 0
 %locals
 dist/default/production\Oscar.X.production.obj
 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f47j53.h
-C:\Users\matth\AppData\Local\Temp\s5qus.
+C:\Users\matth\AppData\Local\Temp\s5s90.
 8165 27FE 0 CODE 0
 8167 27FE 0 CODE 0
 8170 27FE 0 CODE 0
@@ -1314,10 +1314,10 @@ buttons.c
 38 19F4 0 CODE 0
 39 1A00 0 CODE 0
 40 1A38 0 CODE 0
-49 1A56 0 CODE 0
-50 1A74 0 CODE 0
-51 1AAA 0 CODE 0
-52 1AAC 0 CODE 0
+53 1A56 0 CODE 0
+54 1A74 0 CODE 0
+55 1AAA 0 CODE 0
+56 1AAC 0 CODE 0
 38 1AE2 0 CODE 0
 midi_interface.c
 7 238A 0 CODE 0

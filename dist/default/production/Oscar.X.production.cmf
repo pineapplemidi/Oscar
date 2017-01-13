@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\matth\AppData\Local\Temp\s5qus.obj
+$C:\Users\matth\AppData\Local\Temp\s5s90.obj
 reset_vec CODE 0 0 0 4 1
 end_init CODE 0 7E 7E 4 1
 config CONFIG 0 1FFF8 1FFF8 8 1
@@ -169,10 +169,10 @@ $dist/default/production\Oscar.X.production.obj
 19F4 text39 CODE >38:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 1A00 text39 CODE >39:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 1A38 text39 CODE >40:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
-1A56 text39 CODE >49:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
-1A74 text39 CODE >50:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
-1AAA text39 CODE >51:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
-1AAC text39 CODE >52:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
+1A56 text39 CODE >53:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
+1A74 text39 CODE >54:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
+1AAA text39 CODE >55:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
+1AAC text39 CODE >56:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 1AE2 text39 CODE >38:C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 289E text38 CODE >22:C:\Users\matth\MPLABXProjects\Oscar.X\spi_interface.c
 28A0 text38 CODE >24:C:\Users\matth\MPLABXProjects\Oscar.X\spi_interface.c
@@ -812,26 +812,26 @@ FFC text17 CODE >2813:C:\Users\matth\MPLABXProjects\Oscar.X\usb_device.c
 267A text0 CODE >37:C:\Users\matth\MPLABXProjects\Oscar.X\main.c
 2682 text0 CODE >38:C:\Users\matth\MPLABXProjects\Oscar.X\main.c
 2684 text0 CODE >26:C:\Users\matth\MPLABXProjects\Oscar.X\main.c
-27FE cinit CODE >8165:C:\Users\matth\AppData\Local\Temp\s5qus.
-27FE cinit CODE >8167:C:\Users\matth\AppData\Local\Temp\s5qus.
-27FE cinit CODE >8170:C:\Users\matth\AppData\Local\Temp\s5qus.
-27FE cinit CODE >8290:C:\Users\matth\AppData\Local\Temp\s5qus.
-2802 cinit CODE >8291:C:\Users\matth\AppData\Local\Temp\s5qus.
-2804 cinit CODE >8292:C:\Users\matth\AppData\Local\Temp\s5qus.
-2804 cinit CODE >8293:C:\Users\matth\AppData\Local\Temp\s5qus.
-2806 cinit CODE >8294:C:\Users\matth\AppData\Local\Temp\s5qus.
-2808 cinit CODE >8295:C:\Users\matth\AppData\Local\Temp\s5qus.
-280A cinit CODE >8298:C:\Users\matth\AppData\Local\Temp\s5qus.
-280E cinit CODE >8299:C:\Users\matth\AppData\Local\Temp\s5qus.
-2810 cinit CODE >8300:C:\Users\matth\AppData\Local\Temp\s5qus.
-2810 cinit CODE >8301:C:\Users\matth\AppData\Local\Temp\s5qus.
-2812 cinit CODE >8302:C:\Users\matth\AppData\Local\Temp\s5qus.
-2814 cinit CODE >8303:C:\Users\matth\AppData\Local\Temp\s5qus.
-2816 cinit CODE >8309:C:\Users\matth\AppData\Local\Temp\s5qus.
-2816 cinit CODE >8311:C:\Users\matth\AppData\Local\Temp\s5qus.
-2818 cinit CODE >8312:C:\Users\matth\AppData\Local\Temp\s5qus.
-281A cinit CODE >8313:C:\Users\matth\AppData\Local\Temp\s5qus.
-281C cinit CODE >8314:C:\Users\matth\AppData\Local\Temp\s5qus.
+27FE cinit CODE >8165:C:\Users\matth\AppData\Local\Temp\s5s90.
+27FE cinit CODE >8167:C:\Users\matth\AppData\Local\Temp\s5s90.
+27FE cinit CODE >8170:C:\Users\matth\AppData\Local\Temp\s5s90.
+27FE cinit CODE >8290:C:\Users\matth\AppData\Local\Temp\s5s90.
+2802 cinit CODE >8291:C:\Users\matth\AppData\Local\Temp\s5s90.
+2804 cinit CODE >8292:C:\Users\matth\AppData\Local\Temp\s5s90.
+2804 cinit CODE >8293:C:\Users\matth\AppData\Local\Temp\s5s90.
+2806 cinit CODE >8294:C:\Users\matth\AppData\Local\Temp\s5s90.
+2808 cinit CODE >8295:C:\Users\matth\AppData\Local\Temp\s5s90.
+280A cinit CODE >8298:C:\Users\matth\AppData\Local\Temp\s5s90.
+280E cinit CODE >8299:C:\Users\matth\AppData\Local\Temp\s5s90.
+2810 cinit CODE >8300:C:\Users\matth\AppData\Local\Temp\s5s90.
+2810 cinit CODE >8301:C:\Users\matth\AppData\Local\Temp\s5s90.
+2812 cinit CODE >8302:C:\Users\matth\AppData\Local\Temp\s5s90.
+2814 cinit CODE >8303:C:\Users\matth\AppData\Local\Temp\s5s90.
+2816 cinit CODE >8309:C:\Users\matth\AppData\Local\Temp\s5s90.
+2816 cinit CODE >8311:C:\Users\matth\AppData\Local\Temp\s5s90.
+2818 cinit CODE >8312:C:\Users\matth\AppData\Local\Temp\s5s90.
+281A cinit CODE >8313:C:\Users\matth\AppData\Local\Temp\s5s90.
+281C cinit CODE >8314:C:\Users\matth\AppData\Local\Temp\s5s90.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -858,7 +858,7 @@ _SSP1STATbits FC7 0 ABS 0 - dist/default/production\Oscar.X.production.obj
 USBTransferOnePacket@dir 3F 0 COMRAM 1 cstackCOMRAM dist/default/production\Oscar.X.production.obj
 USBTransferOnePacket@len 42 0 COMRAM 1 cstackCOMRAM dist/default/production\Oscar.X.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\Oscar.X.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\matth\AppData\Local\Temp\s5qus.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\matth\AppData\Local\Temp\s5s90.obj
 __size_of_USBCtrlEPServiceComplete 0 0 ABS 0 - dist/default/production\Oscar.X.production.obj
 __end_of_USBStdSetCfgHandler 1BD4 0 CODE 0 text13 dist/default/production\Oscar.X.production.obj
 USBEnableEndpoint@options 47 0 COMRAM 1 cstackCOMRAM dist/default/production\Oscar.X.production.obj
@@ -877,13 +877,13 @@ _UEIE F37 0 ABS 0 - dist/default/production\Oscar.X.production.obj
 _UEIR F63 0 ABS 0 - dist/default/production\Oscar.X.production.obj
 _UEP0 F26 0 ABS 0 - dist/default/production\Oscar.X.production.obj
 _UEP1 F27 0 ABS 0 - dist/default/production\Oscar.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\matth\AppData\Local\Temp\s5qus.obj
+___sp 0 0 STACK 2 stack C:\Users\matth\AppData\Local\Temp\s5s90.obj
 _data 25 0 COMRAM 1 bssCOMRAM dist/default/production\Oscar.X.production.obj
 _main 2642 0 CODE 0 text0 dist/default/production\Oscar.X.production.obj
 _pDst 9F 0 BANK0 1 bssBANK0 dist/default/production\Oscar.X.production.obj
 btemp 51 0 COMRAM 1 temp dist/default/production\Oscar.X.production.obj
 __size_of_USBCtrlTrfTxService 0 0 ABS 0 - dist/default/production\Oscar.X.production.obj
-start 7E 0 CODE 0 init C:\Users\matth\AppData\Local\Temp\s5qus.obj
+start 7E 0 CODE 0 init C:\Users\matth\AppData\Local\Temp\s5s90.obj
 _USBTransferOnePacket 1800 0 CODE 0 text43 dist/default/production\Oscar.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\Oscar.X.production.obj
 __CFG_WDTEN$OFF 0 0 ABS 0 - dist/default/production\Oscar.X.production.obj
@@ -906,11 +906,11 @@ _CtrlTrfData D28 0 ABS 1 - dist/default/production\Oscar.X.production.obj
 __end_of_initButtons 25FC 0 CODE 0 text24 dist/default/production\Oscar.X.production.obj
 __size_of_ConfigSPIPeriph 0 0 ABS 0 - dist/default/production\Oscar.X.production.obj
 __size_of_SYSTEM_Initialize 0 0 ABS 0 - dist/default/production\Oscar.X.production.obj
-__accesstop 60 0 ABS 0 - C:\Users\matth\AppData\Local\Temp\s5qus.obj
-intlevel0 0 0 CODE 0 text C:\Users\matth\AppData\Local\Temp\s5qus.obj
-intlevel1 0 0 CODE 0 text C:\Users\matth\AppData\Local\Temp\s5qus.obj
-intlevel2 0 0 CODE 0 text C:\Users\matth\AppData\Local\Temp\s5qus.obj
-intlevel3 0 0 CODE 0 text C:\Users\matth\AppData\Local\Temp\s5qus.obj
+__accesstop 60 0 ABS 0 - C:\Users\matth\AppData\Local\Temp\s5s90.obj
+intlevel0 0 0 CODE 0 text C:\Users\matth\AppData\Local\Temp\s5s90.obj
+intlevel1 0 0 CODE 0 text C:\Users\matth\AppData\Local\Temp\s5s90.obj
+intlevel2 0 0 CODE 0 text C:\Users\matth\AppData\Local\Temp\s5s90.obj
+intlevel3 0 0 CODE 0 text C:\Users\matth\AppData\Local\Temp\s5s90.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\Oscar.X.production.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\Oscar.X.production.obj
 _pBDTEntryIn 7 0 COMRAM 1 bssCOMRAM dist/default/production\Oscar.X.production.obj
@@ -930,8 +930,8 @@ USBDeviceInit@i 47 0 COMRAM 1 cstackCOMRAM dist/default/production\Oscar.X.produ
 sendMidiNoteOn@velocity 4A 0 COMRAM 1 cstackCOMRAM dist/default/production\Oscar.X.production.obj
 APP_DeviceAudioMIDITasks@midiRecieve E1 0 BANK0 1 cstackBANK0 dist/default/production\Oscar.X.production.obj
 _APP_DeviceAudioMIDITasks 2560 0 CODE 0 text36 dist/default/production\Oscar.X.production.obj
-___inthi_sp 0 0 STACK 2 stack C:\Users\matth\AppData\Local\Temp\s5qus.obj
-___intlo_sp 0 0 STACK 2 stack C:\Users\matth\AppData\Local\Temp\s5qus.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\matth\AppData\Local\Temp\s5s90.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\matth\AppData\Local\Temp\s5s90.obj
 _SPIReadWrite 289E 0 CODE 0 text38 dist/default/production\Oscar.X.production.obj
 __size_of_handleButtons 0 0 ABS 0 - dist/default/production\Oscar.X.production.obj
 __end_of_USBCtrlEPServiceComplete 19F4 0 CODE 0 text10 dist/default/production\Oscar.X.production.obj
@@ -1041,7 +1041,7 @@ __size_of_USBCtrlEPAllowStatusStage 0 0 ABS 0 - dist/default/production\Oscar.X.
 __size_of_APP_DeviceAudioMIDIInitialize 0 0 ABS 0 - dist/default/production\Oscar.X.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\Oscar.X.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production\Oscar.X.production.obj
-__smallconst F00 0 SMALLCONST 0 smallconst C:\Users\matth\AppData\Local\Temp\s5qus.obj
+__smallconst F00 0 SMALLCONST 0 smallconst C:\Users\matth\AppData\Local\Temp\s5s90.obj
 _USBCheckStdRequest 1BD4 0 CODE 0 text12 dist/default/production\Oscar.X.production.obj
 _USBTxHandle F 0 COMRAM 1 bssCOMRAM dist/default/production\Oscar.X.production.obj
 _USBIncrement1msInternalTimers 2864 0 CODE 0 text5 dist/default/production\Oscar.X.production.obj
@@ -1268,8 +1268,8 @@ __end_of_USBDeviceTasks 1466 0 CODE 0 text1 dist/default/production\Oscar.X.prod
 _ep_data_out 13 0 COMRAM 1 bssCOMRAM dist/default/production\Oscar.X.production.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\Oscar.X.production.obj
 USBEnableEndpoint@p 48 0 COMRAM 1 cstackCOMRAM dist/default/production\Oscar.X.production.obj
-stackhi CFF 0 ABS 0 - C:\Users\matth\AppData\Local\Temp\s5qus.obj
-stacklo EF 0 ABS 0 - C:\Users\matth\AppData\Local\Temp\s5qus.obj
+stackhi CFF 0 ABS 0 - C:\Users\matth\AppData\Local\Temp\s5s90.obj
+stacklo EF 0 ABS 0 - C:\Users\matth\AppData\Local\Temp\s5s90.obj
 __end_of_USBConfigureEndpoint 221E 0 CODE 0 text27 dist/default/production\Oscar.X.production.obj
 _USBCtrlEPAllowDataStage 20F2 0 CODE 0 text11 dist/default/production\Oscar.X.production.obj
 __Lintcode 8 0 CODE 0 intcode dist/default/production\Oscar.X.production.obj
@@ -1359,7 +1359,7 @@ __Ltext41 0 0 ABS 0 text41 dist/default/production\Oscar.X.production.obj
 __Ltext42 0 0 ABS 0 text42 dist/default/production\Oscar.X.production.obj
 __Ltext43 0 0 ABS 0 text43 dist/default/production\Oscar.X.production.obj
 __end_of_USBCtrlTrfInHandler 1E4E 0 CODE 0 text31 dist/default/production\Oscar.X.production.obj
-__ramtop F00 0 RAM 0 ramtop C:\Users\matth\AppData\Local\Temp\s5qus.obj
+__ramtop F00 0 RAM 0 ramtop C:\Users\matth\AppData\Local\Temp\s5s90.obj
 __end_of_APP_LEDUpdateUSBStatus 229E 0 CODE 0 text19 dist/default/production\Oscar.X.production.obj
 _APP_DeviceAudioMIDIInitialize 2774 0 CODE 0 text23 dist/default/production\Oscar.X.production.obj
 _USBCtrlEPServiceComplete 1902 0 CODE 0 text10 dist/default/production\Oscar.X.production.obj
