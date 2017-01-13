@@ -25,9 +25,7 @@ please contact mla_licensing@microchip.com
 
 //#include "buttons.h"
 #include "leds.h"
-
 #include "io_mapping.h"
-
 #include "usb_config.h"
 
 #define MAIN_RETURN void

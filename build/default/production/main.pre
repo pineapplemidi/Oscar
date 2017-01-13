@@ -11205,7 +11205,7 @@ void readButtonsMemory(void);
 void writeToButtonsMemory(char addr, char data);
 void initButtonsMemory(void);
 
-# 36 "system.h"
+# 34 "system.h"
 typedef enum
 {
 SYSTEM_STATE_USB_START,
@@ -11213,7 +11213,7 @@ SYSTEM_STATE_USB_SUSPEND,
 SYSTEM_STATE_USB_RESUME
 } SYSTEM_STATE;
 
-# 55
+# 53
 void SYSTEM_Initialize( SYSTEM_STATE state );
 
 # 4 "app.h"

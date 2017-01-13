@@ -8736,13 +8736,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;buttons.h: 16: void readButtonsMemory(void);
 [; ;buttons.h: 17: void writeToButtonsMemory(char addr, char data);
 [; ;buttons.h: 18: void initButtonsMemory(void);
-[; ;system.h: 36: typedef enum
-[; ;system.h: 37: {
-[; ;system.h: 38: SYSTEM_STATE_USB_START,
-[; ;system.h: 39: SYSTEM_STATE_USB_SUSPEND,
-[; ;system.h: 40: SYSTEM_STATE_USB_RESUME
-[; ;system.h: 41: } SYSTEM_STATE;
-[; ;system.h: 55: void SYSTEM_Initialize( SYSTEM_STATE state );
+[; ;system.h: 34: typedef enum
+[; ;system.h: 35: {
+[; ;system.h: 36: SYSTEM_STATE_USB_START,
+[; ;system.h: 37: SYSTEM_STATE_USB_SUSPEND,
+[; ;system.h: 38: SYSTEM_STATE_USB_RESUME
+[; ;system.h: 39: } SYSTEM_STATE;
+[; ;system.h: 53: void SYSTEM_Initialize( SYSTEM_STATE state );
 "23 system.c
 [p x WDTEN=OFF ]
 "24

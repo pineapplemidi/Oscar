@@ -1,14 +1,17 @@
 #include "usb.h"
 #include "usb_device_midi.h"
 
+unsigned long midiInData;
 static USB_HANDLE USBTxHandle;
 static USB_HANDLE USBRxHandle;
 static USB_AUDIO_MIDI_EVENT_PACKET midiData;
 static uint8_t ReceivedDataBuffer[64];
+//unsigned long midiInData;
 
 void handleMidi() {
     if(!USBHandleBusy(USBRxHandle)) {
         //INSERT MIDI PROCESSING CODE HERE
+        midiData = USBRxHandle;
         
         USBRxHandle = USBRxOnePacket(USB_DEVICE_AUDIO_MIDI_ENDPOINT,(uint8_t*)&ReceivedDataBuffer,64); //Get ready for next packet (this will overwrite the old data)
     }

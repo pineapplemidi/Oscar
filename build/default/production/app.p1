@@ -8785,13 +8785,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;buttons.h: 16: void readButtonsMemory(void);
 [; ;buttons.h: 17: void writeToButtonsMemory(char addr, char data);
 [; ;buttons.h: 18: void initButtonsMemory(void);
-[; ;system.h: 36: typedef enum
-[; ;system.h: 37: {
-[; ;system.h: 38: SYSTEM_STATE_USB_START,
-[; ;system.h: 39: SYSTEM_STATE_USB_SUSPEND,
-[; ;system.h: 40: SYSTEM_STATE_USB_RESUME
-[; ;system.h: 41: } SYSTEM_STATE;
-[; ;system.h: 55: void SYSTEM_Initialize( SYSTEM_STATE state );
+[; ;system.h: 34: typedef enum
+[; ;system.h: 35: {
+[; ;system.h: 36: SYSTEM_STATE_USB_START,
+[; ;system.h: 37: SYSTEM_STATE_USB_SUSPEND,
+[; ;system.h: 38: SYSTEM_STATE_USB_RESUME
+[; ;system.h: 39: } SYSTEM_STATE;
+[; ;system.h: 53: void SYSTEM_Initialize( SYSTEM_STATE state );
 [; ;usb_common.h: 132: typedef union
 [; ;usb_common.h: 133: {
 [; ;usb_common.h: 134: uint8_t bitmap;
@@ -9398,33 +9398,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 1348 ]
 [; ;app.c: 41: }
-[; ;app.c: 43: if(!((USBRxHandle != 0x0000) && ((*(volatile uint8_t*)USBRxHandle & 0x80) != 0x00))) {
+[; ;app.c: 43: handleMidi();
 "43
-[e $ ! ! && != _USBRxHandle -> -> 0 `i `*v != & -> *U -> _USBRxHandle `*Vuc `i -> 128 `i -> 0 `i 1349  ]
-{
-"45
-[v _midiRecieve `l ~T0 @X0 1 a ]
-[; ;app.c: 45: long midiRecieve;
-[; ;app.c: 46: midiRecieve = USBRxHandle;
-"46
-[e = _midiRecieve -> _USBRxHandle `l ]
-[; ;app.c: 48: USBRxHandle = USBTransferOnePacket(1,0,(uint8_t*)&ReceivedDataBuffer,64);
-"48
-[e = _USBRxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 0 `i `uc &U _ReceivedDataBuffer -> -> 64 `i `uc ]
-"49
-}
-[e :U 1349 ]
-[; ;app.c: 49: }
-[; ;app.c: 51: handleMidi();
-"51
 [e ( _handleMidi ..  ]
-[; ;app.c: 52: scanButtonsHardware();
-"52
+[; ;app.c: 44: scanButtonsHardware();
+"44
 [e ( _scanButtonsHardware ..  ]
-[; ;app.c: 53: handleButtons();
-"53
+[; ;app.c: 45: handleButtons();
+"45
 [e ( _handleButtons ..  ]
-[; ;app.c: 54: }
-"54
+[; ;app.c: 46: }
+"46
 [e :UE 1347 ]
 }

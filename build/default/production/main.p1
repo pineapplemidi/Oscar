@@ -21,7 +21,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "19 main.c
 [c E9187 0 1 2 .. ]
 [n E9187 . SYSTEM_STATE_USB_START SYSTEM_STATE_USB_SUSPEND SYSTEM_STATE_USB_RESUME  ]
-"55 system.h
+"53 system.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef1`E9187 ]
 "195 usb_device.h
 [v _USBDeviceInit `(v ~T0 @X0 0 ef ]
@@ -8781,13 +8781,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;buttons.h: 16: void readButtonsMemory(void);
 [; ;buttons.h: 17: void writeToButtonsMemory(char addr, char data);
 [; ;buttons.h: 18: void initButtonsMemory(void);
-[; ;system.h: 36: typedef enum
-[; ;system.h: 37: {
-[; ;system.h: 38: SYSTEM_STATE_USB_START,
-[; ;system.h: 39: SYSTEM_STATE_USB_SUSPEND,
-[; ;system.h: 40: SYSTEM_STATE_USB_RESUME
-[; ;system.h: 41: } SYSTEM_STATE;
-[; ;system.h: 55: void SYSTEM_Initialize( SYSTEM_STATE state );
+[; ;system.h: 34: typedef enum
+[; ;system.h: 35: {
+[; ;system.h: 36: SYSTEM_STATE_USB_START,
+[; ;system.h: 37: SYSTEM_STATE_USB_SUSPEND,
+[; ;system.h: 38: SYSTEM_STATE_USB_RESUME
+[; ;system.h: 39: } SYSTEM_STATE;
+[; ;system.h: 53: void SYSTEM_Initialize( SYSTEM_STATE state );
 [; ;app.h: 4: void APP_DeviceAudioMIDIInitialize(void);
 [; ;app.h: 5: void APP_DeviceAudioMIDITasks(void);
 [; ;app.h: 6: void APP_DeviceAudioMIDISOFHandler(void);
