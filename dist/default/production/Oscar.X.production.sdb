@@ -165,9 +165,9 @@ LED_D2 2
 [v _initButtons initButtons `(v  1 e 1 0 ]
 "19
 [v _scanButtonsHardware scanButtonsHardware `(v  1 e 1 0 ]
-"38
+"37
 [v _handleButtons handleButtons `(v  1 e 1 0 ]
-"75
+"74
 [v _writeToButtonsMemory writeToButtonsMemory `(v  1 e 1 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.38\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
@@ -1215,7 +1215,7 @@ LED_D2 2
 {
 "27
 [v scanButtonsHardware@states states `uc  1 a 1 16 ]
-"36
+"35
 } 0
 "25 C:\Users\matth\MPLABXProjects\Oscar.X\spi_interface.c
 [v _SPIReadWrite SPIReadWrite `(uc  1 e 1 0 ]
@@ -1229,10 +1229,10 @@ LED_D2 2
 [v SPIReadWrite@byte byte `uc  1 a 1 14 ]
 "32
 } 0
-"38 C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
+"37 C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 [v _handleButtons handleButtons `(v  1 e 1 0 ]
 {
-"58
+"57
 } 0
 "7 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
 [v _sendMidiNoteOn sendMidiNoteOn `(v  1 e 1 0 ]

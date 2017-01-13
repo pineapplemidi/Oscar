@@ -30,7 +30,6 @@ void scanButtonsHardware() {
         Buttons[k].State = states & 0b00000001;
         states = states >> 1;
     }
-    
 //    initButtonsMemory(); // Writing to EEPROM is not working
 //    readButtonsMemory(); // right now nothing is valid in the EEPROM..
 }

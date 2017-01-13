@@ -12163,14 +12163,13 @@ states = states >> 1;
 }
 
 
-
 }
 
 void handleButtons() {
 for (k=0; k<8; k++) {
 if (Buttons[k].State != Buttons[k].PreviousState) {
 
-# 50
+# 49
 if (Buttons[k].State != 0x00) {
 sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
 

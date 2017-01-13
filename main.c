@@ -29,7 +29,7 @@ MAIN_RETURN main(void) {
             USBDeviceTasks();
         #endif
         APP_DeviceAudioMIDITasks();
-
+        
         LATDbits.LATD0 = 0; //enable CS // load data
         SPIReadWrite(0x18); // Send start byte and input addr
         SPIReadWrite(0x00); // Send blank data to fill ADC register

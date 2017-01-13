@@ -607,7 +607,7 @@ text17 FD4 2875 CODE FD4 0
 %locals
 dist/default/production\Oscar.X.production.obj
 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f47j53.h
-C:\Users\matth\AppData\Local\Temp\s2mck.
+C:\Users\matth\AppData\Local\Temp\s53es.
 8163 27D2 0 CODE 0
 8165 27D2 0 CODE 0
 8168 27D2 0 CODE 0
@@ -1308,14 +1308,14 @@ spi_interface.c
 31 2860 0 CODE 0
 32 2862 0 CODE 0
 buttons.c
+37 1AEA 0 CODE 0
 38 1AEA 0 CODE 0
-39 1AEA 0 CODE 0
-40 1AF6 0 CODE 0
-50 1B2E 0 CODE 0
-51 1B4C 0 CODE 0
-53 1B8A 0 CODE 0
-54 1B8C 0 CODE 0
-39 1BCA 0 CODE 0
+39 1AF6 0 CODE 0
+49 1B2E 0 CODE 0
+50 1B4C 0 CODE 0
+52 1B8A 0 CODE 0
+53 1B8C 0 CODE 0
+38 1BCA 0 CODE 0
 midi_interface.c
 7 2384 0 CODE 0
 8 2386 0 CODE 0
