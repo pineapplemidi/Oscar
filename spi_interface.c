@@ -1,7 +1,4 @@
-#include <xc.h>
-#include <stdio.h>
 #include <pic18f47j53.h>
-
 #include "spi_interface.h"
 
 void InitSPIPins(void) {    

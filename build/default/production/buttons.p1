@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "4 button.h
-[s S1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S1 . Bit CC Velocity State PreviousState Toggle Momentary ]
-"14
+[s S1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1 . CC Velocity State PreviousState Flags ]
+"12
 [v _newButton `(S1 ~T0 @X0 0 ef2`uc`uc ]
 "11041 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f47j53.h
 [s S747 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -34,15 +34,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "7
 [v _sendMidiNoteOff `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 [; ;button.h: 4: typedef struct {
-[; ;button.h: 5: char Bit;
-[; ;button.h: 6: char CC;
-[; ;button.h: 7: char Velocity;
-[; ;button.h: 8: char State;
-[; ;button.h: 9: char PreviousState;
-[; ;button.h: 10: char Toggle;
-[; ;button.h: 11: char Momentary;
-[; ;button.h: 12: } Button;
-[; ;button.h: 14: Button newButton(char b, char cc);
+[; ;button.h: 5: char CC;
+[; ;button.h: 6: char Velocity;
+[; ;button.h: 7: char State;
+[; ;button.h: 8: char PreviousState;
+[; ;button.h: 9: char Flags;
+[; ;button.h: 10: } Button;
+[; ;button.h: 12: Button newButton(char b, char cc);
 "10 buttons.h
 [v _k `uc ~T0 @X0 1 e ]
 [; ;buttons.h: 10: char k;
@@ -9295,30 +9293,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usb_hal.h: 537: unsigned int size );
 [; ;usb_hal.h: 575: bool USBHALSetEpConfiguration ( uint8_t ep_num, uint16_t max_pkt_size, uint16_t flags );
 [; ;usb_hal.h: 603: bool USBHALInitialize ( unsigned long flags );
-[; ;usb_device_midi.h: 22: typedef union
-[; ;usb_device_midi.h: 23: {
-[; ;usb_device_midi.h: 24: uint32_t Val;
-[; ;usb_device_midi.h: 25: uint8_t v[4];
-[; ;usb_device_midi.h: 26: union
-[; ;usb_device_midi.h: 27: {
-[; ;usb_device_midi.h: 28: struct
-[; ;usb_device_midi.h: 29: {
-[; ;usb_device_midi.h: 30: uint8_t CIN :4;
-[; ;usb_device_midi.h: 31: uint8_t CN :4;
-[; ;usb_device_midi.h: 32: uint8_t MIDI_0;
-[; ;usb_device_midi.h: 33: uint8_t MIDI_1;
-[; ;usb_device_midi.h: 34: uint8_t MIDI_2;
-[; ;usb_device_midi.h: 35: };
-[; ;usb_device_midi.h: 36: struct
-[; ;usb_device_midi.h: 37: {
-[; ;usb_device_midi.h: 38: uint8_t CodeIndexNumber :4;
-[; ;usb_device_midi.h: 39: uint8_t CableNumber :4;
-[; ;usb_device_midi.h: 40: uint8_t DATA_0;
-[; ;usb_device_midi.h: 41: uint8_t DATA_1;
-[; ;usb_device_midi.h: 42: uint8_t DATA_2;
-[; ;usb_device_midi.h: 43: };
-[; ;usb_device_midi.h: 44: };
-[; ;usb_device_midi.h: 45: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
+[; ;usb_device_midi.h: 2: typedef union {
+[; ;usb_device_midi.h: 3: uint32_t Val;
+[; ;usb_device_midi.h: 4: uint8_t v[4];
+[; ;usb_device_midi.h: 5: union {
+[; ;usb_device_midi.h: 6: struct {
+[; ;usb_device_midi.h: 7: uint8_t CIN :4;
+[; ;usb_device_midi.h: 8: uint8_t CN :4;
+[; ;usb_device_midi.h: 9: uint8_t MIDI_0;
+[; ;usb_device_midi.h: 10: uint8_t MIDI_1;
+[; ;usb_device_midi.h: 11: uint8_t MIDI_2;
+[; ;usb_device_midi.h: 12: };
+[; ;usb_device_midi.h: 13: struct {
+[; ;usb_device_midi.h: 14: uint8_t CodeIndexNumber :4;
+[; ;usb_device_midi.h: 15: uint8_t CableNumber :4;
+[; ;usb_device_midi.h: 16: uint8_t DATA_0;
+[; ;usb_device_midi.h: 17: uint8_t DATA_1;
+[; ;usb_device_midi.h: 18: uint8_t DATA_2;
+[; ;usb_device_midi.h: 19: };
+[; ;usb_device_midi.h: 20: };
+[; ;usb_device_midi.h: 21: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
 [; ;spi_interface.h: 4: void InitSPIPins(void);
 [; ;spi_interface.h: 5: void ConfigSPIInterrupts(void);
 [; ;spi_interface.h: 6: void ConfigSPIPeriph(void);
@@ -9402,10 +9396,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;buttons.c: 29: Buttons[k].PreviousState = Buttons[k].State;
 "29
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 4 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 ]
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 ]
 [; ;buttons.c: 30: Buttons[k].State = states & 0b00000001;
 "30
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 -> & -> _states `i -> 1 `i `uc ]
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 -> & -> _states `i -> 1 `i `uc ]
 [; ;buttons.c: 31: states = states >> 1;
 "31
 [e = _states -> >> -> _states `i -> 1 `i `uc ]
@@ -9438,15 +9432,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;buttons.c: 39: if (Buttons[k].State != Buttons[k].PreviousState) {
 "39
-[e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 `i -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 4 `i 1357  ]
+[e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 `i -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 `i 1357  ]
 {
 [; ;buttons.c: 49: if (Buttons[k].State != 0x00) {
 "49
-[e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 `i -> 0 `i 1358  ]
+[e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 `i -> 0 `i 1358  ]
 {
 [; ;buttons.c: 50: sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
 "50
-[e ( _sendMidiNoteOn (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 -> -> 0 `i `uc ]
+[e ( _sendMidiNoteOn (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 0 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 -> -> 0 `i `uc ]
 "52
 }
 [; ;buttons.c: 52: } else {
@@ -9455,7 +9449,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;buttons.c: 53: sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
 "53
-[e ( _sendMidiNoteOff (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 -> -> 0 `i `uc ]
+[e ( _sendMidiNoteOff (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 0 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 -> -> 0 `i `uc ]
 "54
 }
 [e :U 1359 ]
@@ -9496,83 +9490,80 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _data -> -> 0 `i `uc ]
 [; ;buttons.c: 63: Buttons[k].CC = data;
 "63
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 _data ]
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 0 _data ]
 [; ;buttons.c: 65: data = 0;
 "65
 [e = _data -> -> 0 `i `uc ]
 [; ;buttons.c: 66: Buttons[k].Velocity = data;
 "66
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 _data ]
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 _data ]
 [; ;buttons.c: 68: data = 0;
 "68
 [e = _data -> -> 0 `i `uc ]
-[; ;buttons.c: 69: Buttons[k].Toggle = data & 0x00000001;
+[; ;buttons.c: 69: Buttons[k].Flags = data;
 "69
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 5 -> & -> _data `i -> 1 `i `uc ]
-[; ;buttons.c: 70: Buttons[k].Momentary = (data & 0x00000010) >> 1;
+[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 4 _data ]
 "70
-[e = . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 6 -> >> & -> _data `i -> 16 `i -> 1 `i `uc ]
-"71
 }
 "61
 [e ++ _k -> -> 1 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1361  ]
 [e :U 1362 ]
-"71
+"70
 }
+[; ;buttons.c: 70: }
 [; ;buttons.c: 71: }
-[; ;buttons.c: 72: }
-"72
+"71
 [e :UE 1360 ]
 }
-"74
+"73
 [v _writeToButtonsMemory `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;buttons.c: 74: void writeToButtonsMemory(char addr, char data) {
+[; ;buttons.c: 73: void writeToButtonsMemory(char addr, char data) {
 [e :U _writeToButtonsMemory ]
 [v _addr `uc ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;buttons.c: 75: if (addr >= 0 && addr < 24) {
-"75
+[; ;buttons.c: 74: if (addr >= 0 && addr < 24) {
+"74
 [e $ ! && >= -> _addr `i -> 0 `i < -> _addr `i -> 24 `i 1365  ]
 {
-[; ;buttons.c: 76: ;
-"77
+[; ;buttons.c: 75: ;
+"76
 }
 [e :U 1365 ]
+[; ;buttons.c: 76: }
 [; ;buttons.c: 77: }
-[; ;buttons.c: 78: }
-"78
+"77
 [e :UE 1364 ]
 }
-"80
+"79
 [v _initButtonsMemory `(v ~T0 @X0 1 ef ]
 {
-[; ;buttons.c: 80: void initButtonsMemory() {
+[; ;buttons.c: 79: void initButtonsMemory() {
 [e :U _initButtonsMemory ]
 [f ]
-[; ;buttons.c: 81: for (k=0; k<8; k++) {
-"81
+[; ;buttons.c: 80: for (k=0; k<8; k++) {
+"80
 {
 [e = _k -> -> 0 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1367  ]
 [e $U 1368  ]
 [e :U 1367 ]
 {
-[; ;buttons.c: 82: writeToButtonsMemory(k, k);
-"82
-[e ( _writeToButtonsMemory (2 , _k _k ]
-"83
-}
+[; ;buttons.c: 81: writeToButtonsMemory(k, k);
 "81
+[e ( _writeToButtonsMemory (2 , _k _k ]
+"82
+}
+"80
 [e ++ _k -> -> 1 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1367  ]
 [e :U 1368 ]
-"83
+"82
 }
+[; ;buttons.c: 82: }
 [; ;buttons.c: 83: }
-[; ;buttons.c: 84: }
-"84
+"83
 [e :UE 1366 ]
 }

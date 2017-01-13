@@ -1,10 +1,10 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "4 button.h
-[s S1287 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S1287 . Bit CC Velocity State PreviousState Toggle Momentary ]
+[s S1287 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1287 . CC Velocity State PreviousState Flags ]
 "31 usb_events.c
-[c E9246 0 1 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 400 500 600 700 800 900 1000 10000 32767 .. ]
-[n E9246 . EVENT_NONE EVENT_DEVICE_STACK_BASE EVENT_HOST_STACK_BASE EVENT_HUB_ATTACH EVENT_STALL EVENT_VBUS_SES_REQUEST EVENT_VBUS_OVERCURRENT EVENT_VBUS_REQUEST_POWER EVENT_VBUS_RELEASE_POWER EVENT_VBUS_POWER_AVAILABLE EVENT_UNSUPPORTED_DEVICE EVENT_CANNOT_ENUMERATE EVENT_CLIENT_INIT_ERROR EVENT_OUT_OF_MEMORY EVENT_UNSPECIFIED_ERROR EVENT_DETACH EVENT_TRANSFER EVENT_SOF EVENT_RESUME EVENT_SUSPEND EVENT_RESET EVENT_DATA_ISOC_READ EVENT_DATA_ISOC_WRITE EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION EVENT_1MS EVENT_ALT_INTERFACE EVENT_HOLD_BEFORE_CONFIGURATION EVENT_GENERIC_BASE EVENT_MSD_BASE EVENT_HID_BASE EVENT_PRINTER_BASE EVENT_CDC_BASE EVENT_CHARGER_BASE EVENT_AUDIO_BASE EVENT_USER_BASE EVENT_BUS_ERROR  ]
+[c E9244 0 1 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 400 500 600 700 800 900 1000 10000 32767 .. ]
+[n E9244 . EVENT_NONE EVENT_DEVICE_STACK_BASE EVENT_HOST_STACK_BASE EVENT_HUB_ATTACH EVENT_STALL EVENT_VBUS_SES_REQUEST EVENT_VBUS_OVERCURRENT EVENT_VBUS_REQUEST_POWER EVENT_VBUS_RELEASE_POWER EVENT_VBUS_POWER_AVAILABLE EVENT_UNSUPPORTED_DEVICE EVENT_CANNOT_ENUMERATE EVENT_CLIENT_INIT_ERROR EVENT_OUT_OF_MEMORY EVENT_UNSPECIFIED_ERROR EVENT_DETACH EVENT_TRANSFER EVENT_SOF EVENT_RESUME EVENT_SUSPEND EVENT_RESET EVENT_DATA_ISOC_READ EVENT_DATA_ISOC_WRITE EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION EVENT_1MS EVENT_ALT_INTERFACE EVENT_HOLD_BEFORE_CONFIGURATION EVENT_GENERIC_BASE EVENT_MSD_BASE EVENT_HID_BASE EVENT_PRINTER_BASE EVENT_CDC_BASE EVENT_CHARGER_BASE EVENT_AUDIO_BASE EVENT_USER_BASE EVENT_BUS_ERROR  ]
 "4 status_led.h
 [v _APP_LEDUpdateUSBStatus `(v ~T0 @X0 0 ef ]
 "6 app.h
@@ -12,8 +12,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "4
 [v _APP_DeviceAudioMIDIInitialize `(v ~T0 @X0 0 ef ]
 "32 usb_events.c
-[c E9314 1 2 3 4 5 .. ]
-[n E9314 . EVENT_CONFIGURED EVENT_SET_DESCRIPTOR EVENT_EP0_REQUEST EVENT_ATTACH EVENT_TRANSFER_TERMINATED  ]
+[c E9312 1 2 3 4 5 .. ]
+[n E9312 . EVENT_CONFIGURED EVENT_SET_DESCRIPTOR EVENT_EP0_REQUEST EVENT_ATTACH EVENT_TRANSFER_TERMINATED  ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -8713,15 +8713,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;leds.h: 108: bool LED_Get(LED led);
 [; ;leds.h: 125: void LED_Enable(LED led);
 [; ;button.h: 4: typedef struct {
-[; ;button.h: 5: char Bit;
-[; ;button.h: 6: char CC;
-[; ;button.h: 7: char Velocity;
-[; ;button.h: 8: char State;
-[; ;button.h: 9: char PreviousState;
-[; ;button.h: 10: char Toggle;
-[; ;button.h: 11: char Momentary;
-[; ;button.h: 12: } Button;
-[; ;button.h: 14: Button newButton(char b, char cc);
+[; ;button.h: 5: char CC;
+[; ;button.h: 6: char Velocity;
+[; ;button.h: 7: char State;
+[; ;button.h: 8: char PreviousState;
+[; ;button.h: 9: char Flags;
+[; ;button.h: 10: } Button;
+[; ;button.h: 12: Button newButton(char b, char cc);
 "10 buttons.h
 [v _k `uc ~T0 @X0 1 e ]
 [; ;buttons.h: 10: char k;
@@ -9083,39 +9081,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usb_hal.h: 537: unsigned int size );
 [; ;usb_hal.h: 575: bool USBHALSetEpConfiguration ( uint8_t ep_num, uint16_t max_pkt_size, uint16_t flags );
 [; ;usb_hal.h: 603: bool USBHALInitialize ( unsigned long flags );
-[; ;usb_device_midi.h: 22: typedef union
-[; ;usb_device_midi.h: 23: {
-[; ;usb_device_midi.h: 24: uint32_t Val;
-[; ;usb_device_midi.h: 25: uint8_t v[4];
-[; ;usb_device_midi.h: 26: union
-[; ;usb_device_midi.h: 27: {
-[; ;usb_device_midi.h: 28: struct
-[; ;usb_device_midi.h: 29: {
-[; ;usb_device_midi.h: 30: uint8_t CIN :4;
-[; ;usb_device_midi.h: 31: uint8_t CN :4;
-[; ;usb_device_midi.h: 32: uint8_t MIDI_0;
-[; ;usb_device_midi.h: 33: uint8_t MIDI_1;
-[; ;usb_device_midi.h: 34: uint8_t MIDI_2;
-[; ;usb_device_midi.h: 35: };
-[; ;usb_device_midi.h: 36: struct
-[; ;usb_device_midi.h: 37: {
-[; ;usb_device_midi.h: 38: uint8_t CodeIndexNumber :4;
-[; ;usb_device_midi.h: 39: uint8_t CableNumber :4;
-[; ;usb_device_midi.h: 40: uint8_t DATA_0;
-[; ;usb_device_midi.h: 41: uint8_t DATA_1;
-[; ;usb_device_midi.h: 42: uint8_t DATA_2;
-[; ;usb_device_midi.h: 43: };
-[; ;usb_device_midi.h: 44: };
-[; ;usb_device_midi.h: 45: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
+[; ;usb_device_midi.h: 2: typedef union {
+[; ;usb_device_midi.h: 3: uint32_t Val;
+[; ;usb_device_midi.h: 4: uint8_t v[4];
+[; ;usb_device_midi.h: 5: union {
+[; ;usb_device_midi.h: 6: struct {
+[; ;usb_device_midi.h: 7: uint8_t CIN :4;
+[; ;usb_device_midi.h: 8: uint8_t CN :4;
+[; ;usb_device_midi.h: 9: uint8_t MIDI_0;
+[; ;usb_device_midi.h: 10: uint8_t MIDI_1;
+[; ;usb_device_midi.h: 11: uint8_t MIDI_2;
+[; ;usb_device_midi.h: 12: };
+[; ;usb_device_midi.h: 13: struct {
+[; ;usb_device_midi.h: 14: uint8_t CodeIndexNumber :4;
+[; ;usb_device_midi.h: 15: uint8_t CableNumber :4;
+[; ;usb_device_midi.h: 16: uint8_t DATA_0;
+[; ;usb_device_midi.h: 17: uint8_t DATA_1;
+[; ;usb_device_midi.h: 18: uint8_t DATA_2;
+[; ;usb_device_midi.h: 19: };
+[; ;usb_device_midi.h: 20: };
+[; ;usb_device_midi.h: 21: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
 "30 usb_events.c
-[v _USER_USB_CALLBACK_EVENT_HANDLER `(uc ~T0 @X0 1 ef3`E9246`*v`ui ]
+[v _USER_USB_CALLBACK_EVENT_HANDLER `(uc ~T0 @X0 1 ef3`E9244`*v`ui ]
 "31
 {
 [; ;usb_events.c: 30: bool USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, uint16_t size)
 [; ;usb_events.c: 31: {
 [e :U _USER_USB_CALLBACK_EVENT_HANDLER ]
 "30
-[v _event `E9246 ~T0 @X0 1 r1 ]
+[v _event `E9244 ~T0 @X0 1 r1 ]
 [v _pdata `*v ~T0 @X0 1 r2 ]
 [v _size `ui ~T0 @X0 1 r3 ]
 "31
@@ -9207,15 +9201,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1319  ]
 "32
 [e :U 1320 ]
-[e [\ -> _event `i , $ -> . `E9246 16 `i 1321
- , $ -> . `E9246 17 `i 1322
- , $ -> . `E9246 19 `i 1323
- , $ -> . `E9246 18 `i 1324
- , $ -> . `E9314 0 `i 1325
- , $ -> . `E9314 1 `i 1326
- , $ -> . `E9314 2 `i 1327
- , $ -> . `E9246 35 `i 1328
- , $ -> . `E9314 4 `i 1329
+[e [\ -> _event `i , $ -> . `E9244 16 `i 1321
+ , $ -> . `E9244 17 `i 1322
+ , $ -> . `E9244 19 `i 1323
+ , $ -> . `E9244 18 `i 1324
+ , $ -> . `E9312 0 `i 1325
+ , $ -> . `E9312 1 `i 1326
+ , $ -> . `E9312 2 `i 1327
+ , $ -> . `E9244 35 `i 1328
+ , $ -> . `E9312 4 `i 1329
  1330 ]
 "74
 [e :U 1319 ]

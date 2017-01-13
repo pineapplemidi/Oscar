@@ -11185,13 +11185,11 @@ void LED_Enable(LED led);
 
 # 4 "button.h"
 typedef struct {
-char Bit;
 char CC;
 char Velocity;
 char State;
 char PreviousState;
-char Toggle;
-char Momentary;
+char Flags;
 } Button;
 
 Button newButton(char b, char cc);
@@ -11897,23 +11895,19 @@ bool USBHALSetEpConfiguration ( uint8_t ep_num, uint16_t max_pkt_size, uint16_t 
 # 603
 bool USBHALInitialize ( unsigned long flags );
 
-# 22 "usb_device_midi.h"
-typedef union
-{
+# 2 "usb_device_midi.h"
+typedef union {
 uint32_t Val;
 uint8_t v[4];
-union
-{
-struct
-{
+union {
+struct {
 uint8_t CIN :4;
 uint8_t CN :4;
 uint8_t MIDI_0;
 uint8_t MIDI_1;
 uint8_t MIDI_2;
 };
-struct
-{
+struct {
 uint8_t CodeIndexNumber :4;
 uint8_t CableNumber :4;
 uint8_t DATA_0;

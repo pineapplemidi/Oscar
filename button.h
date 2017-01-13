@@ -2,13 +2,11 @@
 #define __BUTTON_
 
 typedef struct {
-    char Bit;
     char CC;
     char Velocity;
     char State;
     char PreviousState;
-    char Toggle;
-    char Momentary;
+    char Flags; // .. / .. / .. / .. || .. / .. / momentary / toggle
 } Button;
 
 Button newButton(char b, char cc);

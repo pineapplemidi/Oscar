@@ -1,17 +1,17 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "4 button.h
-[s S1287 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S1287 . Bit CC Velocity State PreviousState Toggle Momentary ]
-"29 usb_device_midi.h
+[s S1287 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1287 . CC Velocity State PreviousState Flags ]
+"6 usb_device_midi.h
 [s S1343 :4 `uc 1 :4 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S1343 . CIN CN MIDI_0 MIDI_1 MIDI_2 ]
-"37
+"13
 [s S1344 :4 `uc 1 :4 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S1344 . CodeIndexNumber CableNumber DATA_0 DATA_1 DATA_2 ]
-"27
+"5
 [u S1342 `S1343 1 `S1344 1 ]
 [n S1342 . . . ]
-"23
+"2
 [u S1341 `ul 1 `uc -> 4 `i `S1342 1 ]
 [n S1341 . Val v . ]
 "351 usb_device.h
@@ -21,10 +21,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "13 buttons.h
 [v _initButtons `(v ~T0 @X0 0 ef ]
 "38 app.c
-[c E9485 0 1 2 4 8 16 32 .. ]
-[n E9485 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
+[c E9483 0 1 2 4 8 16 32 .. ]
+[n E9483 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
 "2046 usb_device.h
-[v _USBDeviceState `E9485 ~T0 @X0 0 e ]
+[v _USBDeviceState `E9483 ~T0 @X0 0 e ]
 "7111 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f47j53.h
 [s S435 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S435 . . SUSPND RESUME USBEN PKTDIS SE0 PPBRST ]
@@ -8764,15 +8764,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;leds.h: 108: bool LED_Get(LED led);
 [; ;leds.h: 125: void LED_Enable(LED led);
 [; ;button.h: 4: typedef struct {
-[; ;button.h: 5: char Bit;
-[; ;button.h: 6: char CC;
-[; ;button.h: 7: char Velocity;
-[; ;button.h: 8: char State;
-[; ;button.h: 9: char PreviousState;
-[; ;button.h: 10: char Toggle;
-[; ;button.h: 11: char Momentary;
-[; ;button.h: 12: } Button;
-[; ;button.h: 14: Button newButton(char b, char cc);
+[; ;button.h: 5: char CC;
+[; ;button.h: 6: char Velocity;
+[; ;button.h: 7: char State;
+[; ;button.h: 8: char PreviousState;
+[; ;button.h: 9: char Flags;
+[; ;button.h: 10: } Button;
+[; ;button.h: 12: Button newButton(char b, char cc);
 "10 buttons.h
 [v _k `uc ~T0 @X0 1 e ]
 [; ;buttons.h: 10: char k;
@@ -9317,30 +9315,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usb_hal.h: 537: unsigned int size );
 [; ;usb_hal.h: 575: bool USBHALSetEpConfiguration ( uint8_t ep_num, uint16_t max_pkt_size, uint16_t flags );
 [; ;usb_hal.h: 603: bool USBHALInitialize ( unsigned long flags );
-[; ;usb_device_midi.h: 22: typedef union
-[; ;usb_device_midi.h: 23: {
-[; ;usb_device_midi.h: 24: uint32_t Val;
-[; ;usb_device_midi.h: 25: uint8_t v[4];
-[; ;usb_device_midi.h: 26: union
-[; ;usb_device_midi.h: 27: {
-[; ;usb_device_midi.h: 28: struct
-[; ;usb_device_midi.h: 29: {
-[; ;usb_device_midi.h: 30: uint8_t CIN :4;
-[; ;usb_device_midi.h: 31: uint8_t CN :4;
-[; ;usb_device_midi.h: 32: uint8_t MIDI_0;
-[; ;usb_device_midi.h: 33: uint8_t MIDI_1;
-[; ;usb_device_midi.h: 34: uint8_t MIDI_2;
-[; ;usb_device_midi.h: 35: };
-[; ;usb_device_midi.h: 36: struct
-[; ;usb_device_midi.h: 37: {
-[; ;usb_device_midi.h: 38: uint8_t CodeIndexNumber :4;
-[; ;usb_device_midi.h: 39: uint8_t CableNumber :4;
-[; ;usb_device_midi.h: 40: uint8_t DATA_0;
-[; ;usb_device_midi.h: 41: uint8_t DATA_1;
-[; ;usb_device_midi.h: 42: uint8_t DATA_2;
-[; ;usb_device_midi.h: 43: };
-[; ;usb_device_midi.h: 44: };
-[; ;usb_device_midi.h: 45: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
+[; ;usb_device_midi.h: 2: typedef union {
+[; ;usb_device_midi.h: 3: uint32_t Val;
+[; ;usb_device_midi.h: 4: uint8_t v[4];
+[; ;usb_device_midi.h: 5: union {
+[; ;usb_device_midi.h: 6: struct {
+[; ;usb_device_midi.h: 7: uint8_t CIN :4;
+[; ;usb_device_midi.h: 8: uint8_t CN :4;
+[; ;usb_device_midi.h: 9: uint8_t MIDI_0;
+[; ;usb_device_midi.h: 10: uint8_t MIDI_1;
+[; ;usb_device_midi.h: 11: uint8_t MIDI_2;
+[; ;usb_device_midi.h: 12: };
+[; ;usb_device_midi.h: 13: struct {
+[; ;usb_device_midi.h: 14: uint8_t CodeIndexNumber :4;
+[; ;usb_device_midi.h: 15: uint8_t CableNumber :4;
+[; ;usb_device_midi.h: 16: uint8_t DATA_0;
+[; ;usb_device_midi.h: 17: uint8_t DATA_1;
+[; ;usb_device_midi.h: 18: uint8_t DATA_2;
+[; ;usb_device_midi.h: 19: };
+[; ;usb_device_midi.h: 20: };
+[; ;usb_device_midi.h: 21: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
 "20 app.c
 [v _ReceivedDataBuffer `uc ~T0 @X0 -> 64 `i s ]
 [; ;app.c: 20: static uint8_t ReceivedDataBuffer[64];
@@ -9389,7 +9383,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;app.c: 37: if ((USBDeviceState < CONFIGURED_STATE) ||
 [; ;app.c: 38: (UCONbits.SUSPND == 1)) {
 "38
-[e $ ! || < -> _USBDeviceState `i -> . `E9485 6 `i == -> . . _UCONbits 0 1 `i -> 1 `i 1348  ]
+[e $ ! || < -> _USBDeviceState `i -> . `E9483 6 `i == -> . . _UCONbits 0 1 `i -> 1 `i 1348  ]
 {
 [; ;app.c: 39: return;
 "39

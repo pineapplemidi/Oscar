@@ -11275,13 +11275,11 @@ void LED_Enable(LED led);
 
 # 4 "button.h"
 typedef struct {
-char Bit;
 char CC;
 char Velocity;
 char State;
 char PreviousState;
-char Toggle;
-char Momentary;
+char Flags;
 } Button;
 
 Button newButton(char b, char cc);

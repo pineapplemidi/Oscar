@@ -1,14 +1,14 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"29 usb_device_midi.h
+"6 usb_device_midi.h
 [s S1342 :4 `uc 1 :4 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S1342 . CIN CN MIDI_0 MIDI_1 MIDI_2 ]
-"37
+"13
 [s S1343 :4 `uc 1 :4 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S1343 . CodeIndexNumber CableNumber DATA_0 DATA_1 DATA_2 ]
-"27
+"5
 [u S1341 `S1342 1 `S1343 1 ]
 [n S1341 . . . ]
-"23
+"2
 [u S1340 `ul 1 `uc -> 4 `i `S1341 1 ]
 [n S1340 . Val v . ]
 "444 usb_device.h
@@ -9253,30 +9253,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usb_hal.h: 537: unsigned int size );
 [; ;usb_hal.h: 575: bool USBHALSetEpConfiguration ( uint8_t ep_num, uint16_t max_pkt_size, uint16_t flags );
 [; ;usb_hal.h: 603: bool USBHALInitialize ( unsigned long flags );
-[; ;usb_device_midi.h: 22: typedef union
-[; ;usb_device_midi.h: 23: {
-[; ;usb_device_midi.h: 24: uint32_t Val;
-[; ;usb_device_midi.h: 25: uint8_t v[4];
-[; ;usb_device_midi.h: 26: union
-[; ;usb_device_midi.h: 27: {
-[; ;usb_device_midi.h: 28: struct
-[; ;usb_device_midi.h: 29: {
-[; ;usb_device_midi.h: 30: uint8_t CIN :4;
-[; ;usb_device_midi.h: 31: uint8_t CN :4;
-[; ;usb_device_midi.h: 32: uint8_t MIDI_0;
-[; ;usb_device_midi.h: 33: uint8_t MIDI_1;
-[; ;usb_device_midi.h: 34: uint8_t MIDI_2;
-[; ;usb_device_midi.h: 35: };
-[; ;usb_device_midi.h: 36: struct
-[; ;usb_device_midi.h: 37: {
-[; ;usb_device_midi.h: 38: uint8_t CodeIndexNumber :4;
-[; ;usb_device_midi.h: 39: uint8_t CableNumber :4;
-[; ;usb_device_midi.h: 40: uint8_t DATA_0;
-[; ;usb_device_midi.h: 41: uint8_t DATA_1;
-[; ;usb_device_midi.h: 42: uint8_t DATA_2;
-[; ;usb_device_midi.h: 43: };
-[; ;usb_device_midi.h: 44: };
-[; ;usb_device_midi.h: 45: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
+[; ;usb_device_midi.h: 2: typedef union {
+[; ;usb_device_midi.h: 3: uint32_t Val;
+[; ;usb_device_midi.h: 4: uint8_t v[4];
+[; ;usb_device_midi.h: 5: union {
+[; ;usb_device_midi.h: 6: struct {
+[; ;usb_device_midi.h: 7: uint8_t CIN :4;
+[; ;usb_device_midi.h: 8: uint8_t CN :4;
+[; ;usb_device_midi.h: 9: uint8_t MIDI_0;
+[; ;usb_device_midi.h: 10: uint8_t MIDI_1;
+[; ;usb_device_midi.h: 11: uint8_t MIDI_2;
+[; ;usb_device_midi.h: 12: };
+[; ;usb_device_midi.h: 13: struct {
+[; ;usb_device_midi.h: 14: uint8_t CodeIndexNumber :4;
+[; ;usb_device_midi.h: 15: uint8_t CableNumber :4;
+[; ;usb_device_midi.h: 16: uint8_t DATA_0;
+[; ;usb_device_midi.h: 17: uint8_t DATA_1;
+[; ;usb_device_midi.h: 18: uint8_t DATA_2;
+[; ;usb_device_midi.h: 19: };
+[; ;usb_device_midi.h: 20: };
+[; ;usb_device_midi.h: 21: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
 "4 midi_interface.c
 [v _midiData `S1340 ~T0 @X0 1 s ]
 [; ;midi_interface.c: 4: static USB_AUDIO_MIDI_EVENT_PACKET midiData;

@@ -1,7 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "4 button.h
-[s S1287 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S1287 . Bit CC Velocity State PreviousState Toggle Momentary ]
+[s S1287 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1287 . CC Velocity State PreviousState Flags ]
 [p mainexit ]
 "12151 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f47j53.h
 [s S765 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -19,10 +19,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "6
 [v _ConfigSPIPeriph `(v ~T0 @X0 0 ef ]
 "19 main.c
-[c E9189 0 1 2 .. ]
-[n E9189 . SYSTEM_STATE_USB_START SYSTEM_STATE_USB_SUSPEND SYSTEM_STATE_USB_RESUME  ]
+[c E9187 0 1 2 .. ]
+[n E9187 . SYSTEM_STATE_USB_START SYSTEM_STATE_USB_SUSPEND SYSTEM_STATE_USB_RESUME  ]
 "55 system.h
-[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef1`E9189 ]
+[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef1`E9187 ]
 "195 usb_device.h
 [v _USBDeviceInit `(v ~T0 @X0 0 ef ]
 "299
@@ -8762,15 +8762,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;leds.h: 108: bool LED_Get(LED led);
 [; ;leds.h: 125: void LED_Enable(LED led);
 [; ;button.h: 4: typedef struct {
-[; ;button.h: 5: char Bit;
-[; ;button.h: 6: char CC;
-[; ;button.h: 7: char Velocity;
-[; ;button.h: 8: char State;
-[; ;button.h: 9: char PreviousState;
-[; ;button.h: 10: char Toggle;
-[; ;button.h: 11: char Momentary;
-[; ;button.h: 12: } Button;
-[; ;button.h: 14: Button newButton(char b, char cc);
+[; ;button.h: 5: char CC;
+[; ;button.h: 6: char Velocity;
+[; ;button.h: 7: char State;
+[; ;button.h: 8: char PreviousState;
+[; ;button.h: 9: char Flags;
+[; ;button.h: 10: } Button;
+[; ;button.h: 12: Button newButton(char b, char cc);
 "10 buttons.h
 [v _k `uc ~T0 @X0 1 e ]
 [; ;buttons.h: 10: char k;
@@ -9132,30 +9130,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usb_hal.h: 537: unsigned int size );
 [; ;usb_hal.h: 575: bool USBHALSetEpConfiguration ( uint8_t ep_num, uint16_t max_pkt_size, uint16_t flags );
 [; ;usb_hal.h: 603: bool USBHALInitialize ( unsigned long flags );
-[; ;usb_device_midi.h: 22: typedef union
-[; ;usb_device_midi.h: 23: {
-[; ;usb_device_midi.h: 24: uint32_t Val;
-[; ;usb_device_midi.h: 25: uint8_t v[4];
-[; ;usb_device_midi.h: 26: union
-[; ;usb_device_midi.h: 27: {
-[; ;usb_device_midi.h: 28: struct
-[; ;usb_device_midi.h: 29: {
-[; ;usb_device_midi.h: 30: uint8_t CIN :4;
-[; ;usb_device_midi.h: 31: uint8_t CN :4;
-[; ;usb_device_midi.h: 32: uint8_t MIDI_0;
-[; ;usb_device_midi.h: 33: uint8_t MIDI_1;
-[; ;usb_device_midi.h: 34: uint8_t MIDI_2;
-[; ;usb_device_midi.h: 35: };
-[; ;usb_device_midi.h: 36: struct
-[; ;usb_device_midi.h: 37: {
-[; ;usb_device_midi.h: 38: uint8_t CodeIndexNumber :4;
-[; ;usb_device_midi.h: 39: uint8_t CableNumber :4;
-[; ;usb_device_midi.h: 40: uint8_t DATA_0;
-[; ;usb_device_midi.h: 41: uint8_t DATA_1;
-[; ;usb_device_midi.h: 42: uint8_t DATA_2;
-[; ;usb_device_midi.h: 43: };
-[; ;usb_device_midi.h: 44: };
-[; ;usb_device_midi.h: 45: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
+[; ;usb_device_midi.h: 2: typedef union {
+[; ;usb_device_midi.h: 3: uint32_t Val;
+[; ;usb_device_midi.h: 4: uint8_t v[4];
+[; ;usb_device_midi.h: 5: union {
+[; ;usb_device_midi.h: 6: struct {
+[; ;usb_device_midi.h: 7: uint8_t CIN :4;
+[; ;usb_device_midi.h: 8: uint8_t CN :4;
+[; ;usb_device_midi.h: 9: uint8_t MIDI_0;
+[; ;usb_device_midi.h: 10: uint8_t MIDI_1;
+[; ;usb_device_midi.h: 11: uint8_t MIDI_2;
+[; ;usb_device_midi.h: 12: };
+[; ;usb_device_midi.h: 13: struct {
+[; ;usb_device_midi.h: 14: uint8_t CodeIndexNumber :4;
+[; ;usb_device_midi.h: 15: uint8_t CableNumber :4;
+[; ;usb_device_midi.h: 16: uint8_t DATA_0;
+[; ;usb_device_midi.h: 17: uint8_t DATA_1;
+[; ;usb_device_midi.h: 18: uint8_t DATA_2;
+[; ;usb_device_midi.h: 19: };
+[; ;usb_device_midi.h: 20: };
+[; ;usb_device_midi.h: 21: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
 [; ;spi_interface.h: 4: void InitSPIPins(void);
 [; ;spi_interface.h: 5: void ConfigSPIInterrupts(void);
 [; ;spi_interface.h: 6: void ConfigSPIPeriph(void);
@@ -9183,7 +9177,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ConfigSPIPeriph ..  ]
 [; ;main.c: 19: SYSTEM_Initialize(SYSTEM_STATE_USB_START);
 "19
-[e ( _SYSTEM_Initialize (1 . `E9189 0 ]
+[e ( _SYSTEM_Initialize (1 . `E9187 0 ]
 [; ;main.c: 20: USBDeviceInit();
 "20
 [e ( _USBDeviceInit ..  ]

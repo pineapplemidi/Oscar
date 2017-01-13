@@ -66,8 +66,7 @@ void readButtonsMemory() {
         Buttons[k].Velocity = data;
         
         data = eeprom_read(k+16);
-        Buttons[k].Toggle = data & 0x00000001; // Toggle flag is the bit 0
-        Buttons[k].Momentary = (data & 0x00000010) >> 1; // Momentary flag is the bit 1 
+        Buttons[k].Flags = data;
     }   
 }
 

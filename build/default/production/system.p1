@@ -1,10 +1,10 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "4 button.h
-[s S1287 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S1287 . Bit CC Velocity State PreviousState Toggle Momentary ]
+[s S1287 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1287 . CC Velocity State PreviousState Flags ]
 "59 system.c
-[c E9189 0 1 2 .. ]
-[n E9189 . SYSTEM_STATE_USB_START SYSTEM_STATE_USB_SUSPEND SYSTEM_STATE_USB_RESUME  ]
+[c E9187 0 1 2 .. ]
+[n E9187 . SYSTEM_STATE_USB_START SYSTEM_STATE_USB_SUSPEND SYSTEM_STATE_USB_RESUME  ]
 "12151 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f47j53.h
 [s S765 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S765 . TUN PLLEN INTSRC ]
@@ -8717,15 +8717,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;leds.h: 108: bool LED_Get(LED led);
 [; ;leds.h: 125: void LED_Enable(LED led);
 [; ;button.h: 4: typedef struct {
-[; ;button.h: 5: char Bit;
-[; ;button.h: 6: char CC;
-[; ;button.h: 7: char Velocity;
-[; ;button.h: 8: char State;
-[; ;button.h: 9: char PreviousState;
-[; ;button.h: 10: char Toggle;
-[; ;button.h: 11: char Momentary;
-[; ;button.h: 12: } Button;
-[; ;button.h: 14: Button newButton(char b, char cc);
+[; ;button.h: 5: char CC;
+[; ;button.h: 6: char Velocity;
+[; ;button.h: 7: char State;
+[; ;button.h: 8: char PreviousState;
+[; ;button.h: 9: char Flags;
+[; ;button.h: 10: } Button;
+[; ;button.h: 12: Button newButton(char b, char cc);
 "10 buttons.h
 [v _k `uc ~T0 @X0 1 e ]
 [; ;buttons.h: 10: char k;
@@ -8790,14 +8788,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 "44
 [p x CFGPLLEN=ON ]
 "58
-[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef1`E9189 ]
+[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef1`E9187 ]
 "59
 {
 [; ;system.c: 58: void SYSTEM_Initialize( SYSTEM_STATE state )
 [; ;system.c: 59: {
 [e :U _SYSTEM_Initialize ]
 "58
-[v _state `E9189 ~T0 @X0 1 r1 ]
+[v _state `E9187 ~T0 @X0 1 r1 ]
 "59
 [f ]
 [; ;system.c: 60: switch(state)
@@ -8870,9 +8868,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1289  ]
 "60
 [e :U 1290 ]
-[e [\ _state , $ . `E9189 0 1291
- , $ . `E9189 1 1295
- , $ . `E9189 2 1296
+[e [\ _state , $ . `E9187 0 1291
+ , $ . `E9187 1 1295
+ , $ . `E9187 2 1296
  1289 ]
 "94
 [e :U 1289 ]
@@ -8880,9 +8878,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "95
 [e :UE 1288 ]
 }
-[v F9201 `(v ~T0 @X0 1 tf ]
+[v F9199 `(v ~T0 @X0 1 tf ]
 "100
-[v _SYS_InterruptHigh `IF9201 ~T0 @X0 1 e ]
+[v _SYS_InterruptHigh `IF9199 ~T0 @X0 1 e ]
 "101
 {
 [; ;system.c: 100: void interrupt SYS_InterruptHigh(void)
