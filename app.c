@@ -4,6 +4,7 @@
 #include "usb.h"
 #include "usb_device_midi.h"
 #include "buttons.h"
+#include "midi_interface.h"
 
 #if defined(FIXED_ADDRESS_MEMORY)
     #if defined(COMPILER_MPLAB_C18)
@@ -47,6 +48,7 @@ void APP_DeviceAudioMIDITasks() {
         USBRxHandle = USBRxOnePacket(USB_DEVICE_AUDIO_MIDI_ENDPOINT,(uint8_t*)&ReceivedDataBuffer,64); //Get ready for next packet (this will overwrite the old data)
     }
     
+    handleMidi();
     scanButtonsHardware();
     handleButtons();
 }

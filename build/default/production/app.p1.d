@@ -8,6 +8,7 @@ usb.h  \
 usb_hal_pic18.h  \
 usb_device_midi.h  \
 button.h  \
+midi_interface.h  \
 usb_common.h  \
 usb_hal.h  \
 system.h  \

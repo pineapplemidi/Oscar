@@ -20,7 +20,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _USBTransferOnePacket `(*v ~T0 @X0 0 ef4`uc`uc`*uc`uc ]
 "13 buttons.h
 [v _initButtons `(v ~T0 @X0 0 ef ]
-"38 app.c
+"39 app.c
 [c E9483 0 1 2 4 8 16 32 .. ]
 [n E9483 . DETACHED_STATE ATTACHED_STATE POWERED_STATE DEFAULT_STATE ADR_PENDING_STATE ADDRESS_STATE CONFIGURED_STATE  ]
 "2046 usb_device.h
@@ -33,6 +33,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S434 . . ]
 "7121
 [v _UCONbits `VS434 ~T0 @X0 0 e@3941 ]
+"6 midi_interface.h
+[v _handleMidi `(v ~T0 @X0 0 ef ]
 "14 buttons.h
 [v _scanButtonsHardware `(v ~T0 @X0 0 ef ]
 "15
@@ -9335,87 +9337,94 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usb_device_midi.h: 19: };
 [; ;usb_device_midi.h: 20: };
 [; ;usb_device_midi.h: 21: } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
-"20 app.c
+[; ;midi_interface.h: 6: void handleMidi(void);
+[; ;midi_interface.h: 7: void sendMidiNoteOn(char cc, char velocity, char channel);
+[; ;midi_interface.h: 8: void sendMidiNoteOff(char cc, char velocity, char channel);
+[; ;midi_interface.h: 9: void sendMidiControlChange(char cc, char velocity, char channel);
+"21 app.c
 [v _ReceivedDataBuffer `uc ~T0 @X0 -> 64 `i s ]
-[; ;app.c: 20: static uint8_t ReceivedDataBuffer[64];
-"21
+[; ;app.c: 21: static uint8_t ReceivedDataBuffer[64];
+"22
 [v _midiData `S1341 ~T0 @X0 1 s ]
-[; ;app.c: 21: static USB_AUDIO_MIDI_EVENT_PACKET midiData;
-"24
+[; ;app.c: 22: static USB_AUDIO_MIDI_EVENT_PACKET midiData;
+"25
 [v _USBRxHandle `*v ~T0 @X0 1 s ]
-[; ;app.c: 24: static void* USBRxHandle;
-"26
+[; ;app.c: 25: static void* USBRxHandle;
+"27
 [v _APP_DeviceAudioMIDIInitialize `(v ~T0 @X0 1 ef ]
 {
-[; ;app.c: 26: void APP_DeviceAudioMIDIInitialize() {
+[; ;app.c: 27: void APP_DeviceAudioMIDIInitialize() {
 [e :U _APP_DeviceAudioMIDIInitialize ]
 [f ]
-[; ;app.c: 27: USBRxHandle = (0);
-"27
-[e = _USBRxHandle -> -> 0 `i `*v ]
-[; ;app.c: 28: USBEnableEndpoint(1,0x04|0x02|0x10|0x08);
+[; ;app.c: 28: USBRxHandle = (0);
 "28
-[e ( _USBEnableEndpoint (2 , -> -> 1 `i `uc -> | | | -> 4 `i -> 2 `i -> 16 `i -> 8 `i `uc ]
-[; ;app.c: 29: USBRxHandle = USBTransferOnePacket(1,0,(uint8_t*)&ReceivedDataBuffer,64);
+[e = _USBRxHandle -> -> 0 `i `*v ]
+[; ;app.c: 29: USBEnableEndpoint(1,0x04|0x02|0x10|0x08);
 "29
+[e ( _USBEnableEndpoint (2 , -> -> 1 `i `uc -> | | | -> 4 `i -> 2 `i -> 16 `i -> 8 `i `uc ]
+[; ;app.c: 30: USBRxHandle = USBTransferOnePacket(1,0,(uint8_t*)&ReceivedDataBuffer,64);
+"30
 [e = _USBRxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 0 `i `uc &U _ReceivedDataBuffer -> -> 64 `i `uc ]
-[; ;app.c: 31: initButtons();
-"31
-[e ( _initButtons ..  ]
-[; ;app.c: 32: }
+[; ;app.c: 32: initButtons();
 "32
+[e ( _initButtons ..  ]
+[; ;app.c: 33: }
+"33
 [e :UE 1345 ]
 }
-"34
+"35
 [v _APP_DeviceAudioMIDISOFHandler `(v ~T0 @X0 1 ef ]
 {
-[; ;app.c: 34: void APP_DeviceAudioMIDISOFHandler() {}
+[; ;app.c: 35: void APP_DeviceAudioMIDISOFHandler() {}
 [e :U _APP_DeviceAudioMIDISOFHandler ]
 [f ]
 [e :UE 1346 ]
 }
-"36
+"37
 [v _APP_DeviceAudioMIDITasks `(v ~T0 @X0 1 ef ]
 {
-[; ;app.c: 36: void APP_DeviceAudioMIDITasks() {
+[; ;app.c: 37: void APP_DeviceAudioMIDITasks() {
 [e :U _APP_DeviceAudioMIDITasks ]
 [f ]
-[; ;app.c: 37: if ((USBDeviceState < CONFIGURED_STATE) ||
-[; ;app.c: 38: (UCONbits.SUSPND == 1)) {
-"38
+[; ;app.c: 38: if ((USBDeviceState < CONFIGURED_STATE) ||
+[; ;app.c: 39: (UCONbits.SUSPND == 1)) {
+"39
 [e $ ! || < -> _USBDeviceState `i -> . `E9483 6 `i == -> . . _UCONbits 0 1 `i -> 1 `i 1348  ]
 {
-[; ;app.c: 39: return;
-"39
-[e $UE 1347  ]
+[; ;app.c: 40: return;
 "40
+[e $UE 1347  ]
+"41
 }
 [e :U 1348 ]
-[; ;app.c: 40: }
-[; ;app.c: 42: if(!((USBRxHandle != 0x0000) && ((*(volatile uint8_t*)USBRxHandle & 0x80) != 0x00))) {
-"42
+[; ;app.c: 41: }
+[; ;app.c: 43: if(!((USBRxHandle != 0x0000) && ((*(volatile uint8_t*)USBRxHandle & 0x80) != 0x00))) {
+"43
 [e $ ! ! && != _USBRxHandle -> -> 0 `i `*v != & -> *U -> _USBRxHandle `*Vuc `i -> 128 `i -> 0 `i 1349  ]
 {
-"44
-[v _midiRecieve `l ~T0 @X0 1 a ]
-[; ;app.c: 44: long midiRecieve;
-[; ;app.c: 45: midiRecieve = USBRxHandle;
 "45
+[v _midiRecieve `l ~T0 @X0 1 a ]
+[; ;app.c: 45: long midiRecieve;
+[; ;app.c: 46: midiRecieve = USBRxHandle;
+"46
 [e = _midiRecieve -> _USBRxHandle `l ]
-[; ;app.c: 47: USBRxHandle = USBTransferOnePacket(1,0,(uint8_t*)&ReceivedDataBuffer,64);
-"47
-[e = _USBRxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 0 `i `uc &U _ReceivedDataBuffer -> -> 64 `i `uc ]
+[; ;app.c: 48: USBRxHandle = USBTransferOnePacket(1,0,(uint8_t*)&ReceivedDataBuffer,64);
 "48
+[e = _USBRxHandle ( _USBTransferOnePacket (4 , , , -> -> 1 `i `uc -> -> 0 `i `uc &U _ReceivedDataBuffer -> -> 64 `i `uc ]
+"49
 }
 [e :U 1349 ]
-[; ;app.c: 48: }
-[; ;app.c: 50: scanButtonsHardware();
-"50
-[e ( _scanButtonsHardware ..  ]
-[; ;app.c: 51: handleButtons();
+[; ;app.c: 49: }
+[; ;app.c: 51: handleMidi();
 "51
-[e ( _handleButtons ..  ]
-[; ;app.c: 52: }
+[e ( _handleMidi ..  ]
+[; ;app.c: 52: scanButtonsHardware();
 "52
+[e ( _scanButtonsHardware ..  ]
+[; ;app.c: 53: handleButtons();
+"53
+[e ( _handleButtons ..  ]
+[; ;app.c: 54: }
+"54
 [e :UE 1347 ]
 }

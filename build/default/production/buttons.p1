@@ -29,11 +29,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATCbits `VS746 ~T0 @X0 0 e@3979 ]
 "8 spi_interface.h
 [v _SPIReadWrite `(uc ~T0 @X0 0 ef1`uc ]
-"6 midi_interface.h
+"7 midi_interface.h
 [v _sendMidiNoteOn `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"8
+"9
 [v _sendMidiControlChange `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"7
+"8
 [v _sendMidiNoteOff `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 [; ;button.h: 4: typedef struct {
 [; ;button.h: 5: char CC;
@@ -9319,9 +9319,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi_interface.h: 5: void ConfigSPIInterrupts(void);
 [; ;spi_interface.h: 6: void ConfigSPIPeriph(void);
 [; ;spi_interface.h: 8: unsigned char SPIReadWrite(unsigned char);
-[; ;midi_interface.h: 6: void sendMidiNoteOn(char cc, char velocity, char channel);
-[; ;midi_interface.h: 7: void sendMidiNoteOff(char cc, char velocity, char channel);
-[; ;midi_interface.h: 8: void sendMidiControlChange(char cc, char velocity, char channel);
+[; ;midi_interface.h: 6: void handleMidi(void);
+[; ;midi_interface.h: 7: void sendMidiNoteOn(char cc, char velocity, char channel);
+[; ;midi_interface.h: 8: void sendMidiNoteOff(char cc, char velocity, char channel);
+[; ;midi_interface.h: 9: void sendMidiControlChange(char cc, char velocity, char channel);
 "8 buttons.c
 [v _rx `uc ~T0 @X0 1 e ]
 [; ;buttons.c: 8: char rx;

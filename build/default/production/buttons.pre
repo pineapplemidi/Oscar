@@ -12125,6 +12125,7 @@ void ConfigSPIPeriph(void);
 unsigned char SPIReadWrite(unsigned char);
 
 # 6 "midi_interface.h"
+void handleMidi(void);
 void sendMidiNoteOn(char cc, char velocity, char channel);
 void sendMidiNoteOff(char cc, char velocity, char channel);
 void sendMidiControlChange(char cc, char velocity, char channel);

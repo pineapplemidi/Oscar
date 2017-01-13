@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 18F47J53 ]
 [d frameptr 4065 ]
-"38 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
+"39 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
 [e E9483 . `uc
 DETACHED_STATE 0
 ATTACHED_STATE 1
@@ -151,11 +151,11 @@ LED_NONE 0
 LED_D1 1
 LED_D2 2
 ]
-"26 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
+"27 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
 [v _APP_DeviceAudioMIDIInitialize APP_DeviceAudioMIDIInitialize `(v  1 e 1 0 ]
-"34
+"35
 [v _APP_DeviceAudioMIDISOFHandler APP_DeviceAudioMIDISOFHandler `(v  1 e 1 0 ]
-"36
+"37
 [v _APP_DeviceAudioMIDITasks APP_DeviceAudioMIDITasks `(v  1 e 1 0 ]
 "4 C:\Users\matth\MPLABXProjects\Oscar.X\button.h
 [s S21 . 5 `uc 1 CC 1 0 `uc 1 Velocity 1 1 `uc 1 State 1 2 `uc 1 PreviousState 1 3 `uc 1 Flags 1 4 ]
@@ -199,11 +199,13 @@ LED_D2 2
 [v _LED_Off LED_Off `(v  1 e 1 0 ]
 "13 C:\Users\matth\MPLABXProjects\Oscar.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"7 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
+"9 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
+[v _handleMidi handleMidi `(v  1 e 1 0 ]
+"17
 [v _sendMidiNoteOn sendMidiNoteOn `(v  1 e 1 0 ]
-"20
+"30
 [v _sendMidiNoteOff sendMidiNoteOff `(v  1 e 1 0 ]
-"33
+"43
 [v _sendMidiControlChange sendMidiControlChange `(v  1 e 1 0 ]
 "4 C:\Users\matth\MPLABXProjects\Oscar.X\spi_interface.c
 [v _InitSPIPins InitSPIPins `(v  1 e 1 0 ]
@@ -265,9 +267,9 @@ LED_D2 2
 [v _USBIncrement1msInternalTimers USBIncrement1msInternalTimers `(v  1 e 1 0 ]
 "30 C:\Users\matth\MPLABXProjects\Oscar.X\usb_events.c
 [v _USER_USB_CALLBACK_EVENT_HANDLER USER_USB_CALLBACK_EVENT_HANDLER `(uc  1 e 1 0 ]
-"20 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
+"21 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
 [v _ReceivedDataBuffer ReceivedDataBuffer `[64]uc  1 s 64 ReceivedDataBuffer ]
-"24
+"25
 [v _USBRxHandle USBRxHandle `*.39v  1 s 2 USBRxHandle ]
 "9 C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 [v _data data `uc  1 e 1 0 ]
@@ -278,48 +280,48 @@ LED_D2 2
 [v _Buttons Buttons `[8]S21  1 e 40 0 ]
 "3070 C:\Program Files (x86)\Microchip\xc8\v1.38\include\pic18f47j53.h
 [v _UEP0 UEP0 `VEuc  1 e 1 @3878 ]
-[s S1198 . 1 `uc 1 EPSTALL 1 0 :1:0 
+[s S1202 . 1 `uc 1 EPSTALL 1 0 :1:0 
 `uc 1 EPINEN 1 0 :1:1 
 `uc 1 EPOUTEN 1 0 :1:2 
 `uc 1 EPCONDIS 1 0 :1:3 
 `uc 1 EPHSHK 1 0 :1:4 
 ]
 "3122
-[s S1204 . 1 `uc 1 . 1 0 :3:0 
+[s S1208 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 EP0CONDIS 1 0 :1:3 
 ]
-[s S1207 . 1 `uc 1 . 1 0 :4:0 
+[s S1211 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 EP0HSHK 1 0 :1:4 
 ]
-[s S1210 . 1 `uc 1 . 1 0 :1:0 
+[s S1214 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 EP0INEN 1 0 :1:1 
 ]
-[s S1213 . 1 `uc 1 . 1 0 :2:0 
+[s S1217 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 EP0OUTEN 1 0 :1:2 
 ]
-[s S1216 . 1 `uc 1 EP0STALL 1 0 :1:0 
+[s S1220 . 1 `uc 1 EP0STALL 1 0 :1:0 
 ]
-[s S1218 . 1 `uc 1 . 1 0 :3:0 
+[s S1222 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 EPCONDIS0 1 0 :1:3 
 ]
-[s S1221 . 1 `uc 1 . 1 0 :4:0 
+[s S1225 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 EPHSHK0 1 0 :1:4 
 ]
-[s S1224 . 1 `uc 1 . 1 0 :1:0 
+[s S1228 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 EPINEN0 1 0 :1:1 
 ]
-[s S1227 . 1 `uc 1 . 1 0 :2:0 
+[s S1231 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 EPOUTEN0 1 0 :1:2 
 ]
-[s S1230 . 1 `uc 1 EPSTALL0 1 0 :1:0 
+[s S1234 . 1 `uc 1 EPSTALL0 1 0 :1:0 
 ]
-[u S1232 . 1 `S1198 1 . 1 0 `S1204 1 . 1 0 `S1207 1 . 1 0 `S1210 1 . 1 0 `S1213 1 . 1 0 `S1216 1 . 1 0 `S1218 1 . 1 0 `S1221 1 . 1 0 `S1224 1 . 1 0 `S1227 1 . 1 0 `S1230 1 . 1 0 ]
-[v _UEP0bits UEP0bits `VES1232  1 e 1 @3878 ]
+[u S1236 . 1 `S1202 1 . 1 0 `S1208 1 . 1 0 `S1211 1 . 1 0 `S1214 1 . 1 0 `S1217 1 . 1 0 `S1220 1 . 1 0 `S1222 1 . 1 0 `S1225 1 . 1 0 `S1228 1 . 1 0 `S1231 1 . 1 0 `S1234 1 . 1 0 ]
+[v _UEP0bits UEP0bits `VES1236  1 e 1 @3878 ]
 "3201
 [v _UEP1 UEP1 `VEuc  1 e 1 @3879 ]
 "4814
 [v _UIE UIE `VEuc  1 e 1 @3894 ]
-[s S1074 . 1 `uc 1 URSTIE 1 0 :1:0 
+[s S1078 . 1 `uc 1 URSTIE 1 0 :1:0 
 `uc 1 UERRIE 1 0 :1:1 
 `uc 1 ACTVIE 1 0 :1:2 
 `uc 1 TRNIE 1 0 :1:3 
@@ -328,8 +330,8 @@ LED_D2 2
 `uc 1 SOFIE 1 0 :1:6 
 ]
 "4830
-[u S1082 . 1 `S1074 1 . 1 0 ]
-[v _UIEbits UIEbits `VES1082  1 e 1 @3894 ]
+[u S1086 . 1 `S1078 1 . 1 0 ]
+[v _UIEbits UIEbits `VES1086  1 e 1 @3894 ]
 "4869
 [v _UEIE UEIE `VEuc  1 e 1 @3895 ]
 "4919
@@ -338,7 +340,7 @@ LED_D2 2
 [v _UCFG UCFG `VEuc  1 e 1 @3897 ]
 "6941
 [v _UIR UIR `VEuc  1 e 1 @3938 ]
-[s S1017 . 1 `uc 1 URSTIF 1 0 :1:0 
+[s S1021 . 1 `uc 1 URSTIF 1 0 :1:0 
 `uc 1 UERRIF 1 0 :1:1 
 `uc 1 ACTVIF 1 0 :1:2 
 `uc 1 TRNIF 1 0 :1:3 
@@ -347,8 +349,8 @@ LED_D2 2
 `uc 1 SOFIF 1 0 :1:6 
 ]
 "6957
-[u S1025 . 1 `S1017 1 . 1 0 ]
-[v _UIRbits UIRbits `VES1025  1 e 1 @3938 ]
+[u S1029 . 1 `S1021 1 . 1 0 ]
+[v _UIRbits UIRbits `VES1029  1 e 1 @3938 ]
 "6996
 [v _UEIR UEIR `VEuc  1 e 1 @3939 ]
 "7046
@@ -370,7 +372,7 @@ LED_D2 2
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
 "11035
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
-[s S198 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S202 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
@@ -378,25 +380,25 @@ LED_D2 2
 `uc 1 LATC7 1 0 :1:7 
 ]
 "11069
-[s S205 . 1 `uc 1 LC0 1 0 :1:0 
+[s S209 . 1 `uc 1 LC0 1 0 :1:0 
 ]
-[s S207 . 1 `uc 1 . 1 0 :1:0 
+[s S211 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 ]
-[s S210 . 1 `uc 1 . 1 0 :2:0 
+[s S214 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LC2 1 0 :1:2 
 ]
-[s S213 . 1 `uc 1 . 1 0 :6:0 
+[s S217 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 LC6 1 0 :1:6 
 ]
-[s S216 . 1 `uc 1 . 1 0 :7:0 
+[s S220 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S219 . 1 `S198 1 . 1 0 `S205 1 . 1 0 `S207 1 . 1 0 `S210 1 . 1 0 `S213 1 . 1 0 `S216 1 . 1 0 ]
-[v _LATCbits LATCbits `VES219  1 e 1 @3979 ]
+[u S223 . 1 `S202 1 . 1 0 `S209 1 . 1 0 `S211 1 . 1 0 `S214 1 . 1 0 `S217 1 . 1 0 `S220 1 . 1 0 ]
+[v _LATCbits LATCbits `VES223  1 e 1 @3979 ]
 "11123
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
-[s S2042 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S2046 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -406,53 +408,53 @@ LED_D2 2
 `uc 1 LATD7 1 0 :1:7 
 ]
 "11171
-[s S2051 . 1 `uc 1 LD0 1 0 :1:0 
+[s S2055 . 1 `uc 1 LD0 1 0 :1:0 
 ]
-[s S2053 . 1 `uc 1 . 1 0 :1:0 
+[s S2057 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 ]
-[s S2056 . 1 `uc 1 . 1 0 :2:0 
+[s S2060 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LD2 1 0 :1:2 
 ]
-[s S2059 . 1 `uc 1 . 1 0 :3:0 
+[s S2063 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 LD3 1 0 :1:3 
 ]
-[s S2062 . 1 `uc 1 . 1 0 :4:0 
+[s S2066 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 LD4 1 0 :1:4 
 ]
-[s S2065 . 1 `uc 1 . 1 0 :5:0 
+[s S2069 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 LD5 1 0 :1:5 
 ]
-[s S2068 . 1 `uc 1 . 1 0 :6:0 
+[s S2072 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 LD6 1 0 :1:6 
 ]
-[s S2071 . 1 `uc 1 . 1 0 :7:0 
+[s S2075 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S2074 . 1 `S2042 1 . 1 0 `S2051 1 . 1 0 `S2053 1 . 1 0 `S2056 1 . 1 0 `S2059 1 . 1 0 `S2062 1 . 1 0 `S2065 1 . 1 0 `S2068 1 . 1 0 `S2071 1 . 1 0 ]
-[v _LATDbits LATDbits `VES2074  1 e 1 @3980 ]
-[s S2140 . 1 `uc 1 LATE0 1 0 :1:0 
+[u S2078 . 1 `S2046 1 . 1 0 `S2055 1 . 1 0 `S2057 1 . 1 0 `S2060 1 . 1 0 `S2063 1 . 1 0 `S2066 1 . 1 0 `S2069 1 . 1 0 `S2072 1 . 1 0 `S2075 1 . 1 0 ]
+[v _LATDbits LATDbits `VES2078  1 e 1 @3980 ]
+[s S2144 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
 ]
 "11278
-[s S2144 . 1 `uc 1 LE0 1 0 :1:0 
+[s S2148 . 1 `uc 1 LE0 1 0 :1:0 
 ]
-[s S2146 . 1 `uc 1 . 1 0 :1:0 
+[s S2150 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 LE1 1 0 :1:1 
 ]
-[s S2149 . 1 `uc 1 . 1 0 :2:0 
+[s S2153 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LE2 1 0 :1:2 
 ]
-[u S2152 . 1 `S2140 1 . 1 0 `S2144 1 . 1 0 `S2146 1 . 1 0 `S2149 1 . 1 0 ]
-[v _LATEbits LATEbits `VES2152  1 e 1 @3981 ]
+[u S2156 . 1 `S2144 1 . 1 0 `S2148 1 . 1 0 `S2150 1 . 1 0 `S2153 1 . 1 0 ]
+[v _LATEbits LATEbits `VES2156  1 e 1 @3981 ]
 "11608
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
 "11669
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
 "11713
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-[s S2170 . 1 `uc 1 TRISE0 1 0 :1:0 
+[s S2174 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
@@ -460,23 +462,23 @@ LED_D2 2
 `uc 1 RDPU 1 0 :1:7 
 ]
 "11789
-[u S2177 . 1 `S2170 1 . 1 0 ]
-[v _TRISEbits TRISEbits `VES2177  1 e 1 @3990 ]
-[s S634 . 1 `uc 1 TUN 1 0 :6:0 
+[u S2181 . 1 `S2174 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES2181  1 e 1 @3990 ]
+[s S638 . 1 `uc 1 TUN 1 0 :6:0 
 `uc 1 PLLEN 1 0 :1:6 
 `uc 1 INTSRC 1 0 :1:7 
 ]
 "12165
-[s S638 . 1 `uc 1 TUN0 1 0 :1:0 
+[s S642 . 1 `uc 1 TUN0 1 0 :1:0 
 `uc 1 TUN1 1 0 :1:1 
 `uc 1 TUN2 1 0 :1:2 
 `uc 1 TUN3 1 0 :1:3 
 `uc 1 TUN4 1 0 :1:4 
 `uc 1 TUN5 1 0 :1:5 
 ]
-[u S645 . 1 `S634 1 . 1 0 `S638 1 . 1 0 ]
-[v _OSCTUNEbits OSCTUNEbits `VES645  1 e 1 @3995 ]
-[s S954 . 1 `uc 1 CCP2IE 1 0 :1:0 
+[u S649 . 1 `S638 1 . 1 0 `S642 1 . 1 0 ]
+[v _OSCTUNEbits OSCTUNEbits `VES649  1 e 1 @3995 ]
+[s S958 . 1 `uc 1 CCP2IE 1 0 :1:0 
 `uc 1 TMR3IE 1 0 :1:1 
 `uc 1 LVDIE 1 0 :1:2 
 `uc 1 BCL1IE 1 0 :1:3 
@@ -486,16 +488,16 @@ LED_D2 2
 `uc 1 OSCFIE 1 0 :1:7 
 ]
 "12650
-[s S963 . 1 `uc 1 . 1 0 :2:0 
+[s S967 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 HLVDIE 1 0 :1:2 
 `uc 1 BCLIE 1 0 :1:3 
 ]
-[s S967 . 1 `uc 1 . 1 0 :6:0 
+[s S971 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 CMIE 1 0 :1:6 
 ]
-[u S970 . 1 `S954 1 . 1 0 `S963 1 . 1 0 `S967 1 . 1 0 ]
-[v _PIE2bits PIE2bits `VES970  1 e 1 @4000 ]
-[s S1037 . 1 `uc 1 CCP2IF 1 0 :1:0 
+[u S974 . 1 `S958 1 . 1 0 `S967 1 . 1 0 `S971 1 . 1 0 ]
+[v _PIE2bits PIE2bits `VES974  1 e 1 @4000 ]
+[s S1041 . 1 `uc 1 CCP2IF 1 0 :1:0 
 `uc 1 TMR3IF 1 0 :1:1 
 `uc 1 LVDIF 1 0 :1:2 
 `uc 1 BCL1IF 1 0 :1:3 
@@ -505,60 +507,60 @@ LED_D2 2
 `uc 1 OSCFIF 1 0 :1:7 
 ]
 "12735
-[s S1046 . 1 `uc 1 . 1 0 :2:0 
+[s S1050 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 HLVDIF 1 0 :1:2 
 `uc 1 BCLIF 1 0 :1:3 
 ]
-[s S1050 . 1 `uc 1 . 1 0 :6:0 
+[s S1054 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 CMIF 1 0 :1:6 
 ]
-[u S1053 . 1 `S1037 1 . 1 0 `S1046 1 . 1 0 `S1050 1 . 1 0 ]
-[v _PIR2bits PIR2bits `VES1053  1 e 1 @4001 ]
-[s S525 . 1 `uc 1 SSPM 1 0 :4:0 
+[u S1057 . 1 `S1041 1 . 1 0 `S1050 1 . 1 0 `S1054 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES1057  1 e 1 @4001 ]
+[s S529 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "16418
-[s S531 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S535 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S536 . 1 `uc 1 . 1 0 :4:0 
+[s S540 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 CKP1 1 0 :1:4 
 ]
-[s S539 . 1 `uc 1 . 1 0 :5:0 
+[s S543 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SSPEN1 1 0 :1:5 
 ]
-[s S542 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S546 . 1 `uc 1 SSPM01 1 0 :1:0 
 ]
-[s S544 . 1 `uc 1 . 1 0 :1:0 
+[s S548 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 ]
-[s S547 . 1 `uc 1 . 1 0 :2:0 
+[s S551 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 SSPM21 1 0 :1:2 
 ]
-[s S550 . 1 `uc 1 . 1 0 :3:0 
+[s S554 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPM31 1 0 :1:3 
 ]
-[s S553 . 1 `uc 1 . 1 0 :6:0 
+[s S557 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 SSPOV1 1 0 :1:6 
 ]
-[s S556 . 1 `uc 1 . 1 0 :7:0 
+[s S560 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S559 . 1 `S525 1 . 1 0 `S531 1 . 1 0 `S536 1 . 1 0 `S539 1 . 1 0 `S542 1 . 1 0 `S544 1 . 1 0 `S547 1 . 1 0 `S550 1 . 1 0 `S553 1 . 1 0 `S556 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES559  1 e 1 @4038 ]
-[s S312 . 1 `uc 1 . 1 0 :2:0 
+[u S563 . 1 `S529 1 . 1 0 `S535 1 . 1 0 `S540 1 . 1 0 `S543 1 . 1 0 `S546 1 . 1 0 `S548 1 . 1 0 `S551 1 . 1 0 `S554 1 . 1 0 `S557 1 . 1 0 `S560 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES563  1 e 1 @4038 ]
+[s S316 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "16771
-[s S315 . 1 `uc 1 . 1 0 :5:0 
+[s S319 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S318 . 1 `uc 1 BF 1 0 :1:0 
+[s S322 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -567,86 +569,86 @@ LED_D2 2
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S327 . 1 `uc 1 . 1 0 :2:0 
+[s S331 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S332 . 1 `uc 1 . 1 0 :2:0 
+[s S336 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S337 . 1 `uc 1 . 1 0 :2:0 
+[s S341 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S342 . 1 `uc 1 . 1 0 :2:0 
+[s S346 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S345 . 1 `uc 1 . 1 0 :5:0 
+[s S349 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S348 . 1 `uc 1 . 1 0 :2:0 
+[s S352 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S353 . 1 `uc 1 . 1 0 :2:0 
+[s S357 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S358 . 1 `uc 1 . 1 0 :2:0 
+[s S362 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S364 . 1 `uc 1 BF1 1 0 :1:0 
+[s S368 . 1 `uc 1 BF1 1 0 :1:0 
 ]
-[s S366 . 1 `uc 1 . 1 0 :6:0 
+[s S370 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 CKE1 1 0 :1:6 
 ]
-[s S369 . 1 `uc 1 . 1 0 :5:0 
+[s S373 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S372 . 1 `uc 1 . 1 0 :5:0 
+[s S376 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S375 . 1 `uc 1 . 1 0 :2:0 
+[s S379 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 ]
-[s S378 . 1 `uc 1 . 1 0 :2:0 
+[s S382 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 ]
-[s S381 . 1 `uc 1 . 1 0 :7:0 
+[s S385 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S384 . 1 `uc 1 . 1 0 :3:0 
+[s S388 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 START 1 0 :1:3 
 ]
-[s S387 . 1 `uc 1 . 1 0 :3:0 
+[s S391 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 START1 1 0 :1:3 
 ]
-[s S390 . 1 `uc 1 . 1 0 :4:0 
+[s S394 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 STOP 1 0 :1:4 
 ]
-[s S393 . 1 `uc 1 . 1 0 :4:0 
+[s S397 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 STOP1 1 0 :1:4 
 ]
-[s S396 . 1 `uc 1 . 1 0 :1:0 
+[s S400 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 ]
-[s S399 . 1 `uc 1 . 1 0 :2:0 
+[s S403 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 ]
-[s S402 . 1 `uc 1 . 1 0 :5:0 
+[s S406 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S405 . 1 `S312 1 . 1 0 `S315 1 . 1 0 `S318 1 . 1 0 `S327 1 . 1 0 `S332 1 . 1 0 `S337 1 . 1 0 `S342 1 . 1 0 `S345 1 . 1 0 `S348 1 . 1 0 `S353 1 . 1 0 `S358 1 . 1 0 `S364 1 . 1 0 `S366 1 . 1 0 `S369 1 . 1 0 `S372 1 . 1 0 `S375 1 . 1 0 `S378 1 . 1 0 `S381 1 . 1 0 `S384 1 . 1 0 `S387 1 . 1 0 `S390 1 . 1 0 `S393 1 . 1 0 `S396 1 . 1 0 `S399 1 . 1 0 `S402 1 . 1 0 ]
-[v _SSP1STATbits SSP1STATbits `VES405  1 e 1 @4039 ]
+[u S409 . 1 `S316 1 . 1 0 `S319 1 . 1 0 `S322 1 . 1 0 `S331 1 . 1 0 `S336 1 . 1 0 `S341 1 . 1 0 `S346 1 . 1 0 `S349 1 . 1 0 `S352 1 . 1 0 `S357 1 . 1 0 `S362 1 . 1 0 `S368 1 . 1 0 `S370 1 . 1 0 `S373 1 . 1 0 `S376 1 . 1 0 `S379 1 . 1 0 `S382 1 . 1 0 `S385 1 . 1 0 `S388 1 . 1 0 `S391 1 . 1 0 `S394 1 . 1 0 `S397 1 . 1 0 `S400 1 . 1 0 `S403 1 . 1 0 `S406 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES409  1 e 1 @4039 ]
 "17680
 [v _SSP1BUF SSP1BUF `VEuc  1 e 1 @4041 ]
 "18845
@@ -655,32 +657,36 @@ LED_D2 2
 [v _count count `i  1 e 2 0 ]
 "11
 [v _rx rx `uc  1 e 1 0 ]
+"4 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
+[v _USBTxHandle USBTxHandle `*.39v  1 s 2 USBTxHandle ]
+"5
+[v midi_interface@USBRxHandle USBRxHandle `*.39v  1 s 2 USBRxHandle ]
 [s S27 . 4 `uc 1 CIN 1 0 :4:0 
 `uc 1 CN 1 0 :4:4 
 `uc 1 MIDI_0 1 1 `uc 1 MIDI_1 1 2 `uc 1 MIDI_2 1 3 ]
-"4 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
+"6
 [s S33 . 4 `uc 1 CodeIndexNumber 1 0 :4:0 
 `uc 1 CableNumber 1 0 :4:4 
 `uc 1 DATA_0 1 1 `uc 1 DATA_1 1 2 `uc 1 DATA_2 1 3 ]
 [u S39 . 4 `S27 1 . 4 0 `S33 1 . 4 0 ]
 [u S42 . 4 `ul 1 Val 4 0 `[4]uc 1 v 4 0 `S39 1 . 4 0 ]
 [v midi_interface@midiData midiData `S42  1 s 4 midiData ]
-"5
-[v _USBTxHandle USBTxHandle `*.39v  1 s 2 USBTxHandle ]
-[s S672 _USB_DEVICE_DESCRIPTOR 18 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 bcdUSB 2 2 `uc 1 bDeviceClass 1 4 `uc 1 bDeviceSubClass 1 5 `uc 1 bDeviceProtocol 1 6 `uc 1 bMaxPacketSize0 1 7 `ui 1 idVendor 2 8 `ui 1 idProduct 2 10 `ui 1 bcdDevice 2 12 `uc 1 iManufacturer 1 14 `uc 1 iProduct 1 15 `uc 1 iSerialNumber 1 16 `uc 1 bNumConfigurations 1 17 ]
+"7
+[v midi_interface@ReceivedDataBuffer ReceivedDataBuffer `[64]uc  1 s 64 ReceivedDataBuffer ]
+[s S676 _USB_DEVICE_DESCRIPTOR 18 `uc 1 bLength 1 0 `uc 1 bDescriptorType 1 1 `ui 1 bcdUSB 2 2 `uc 1 bDeviceClass 1 4 `uc 1 bDeviceSubClass 1 5 `uc 1 bDeviceProtocol 1 6 `uc 1 bMaxPacketSize0 1 7 `ui 1 idVendor 2 8 `ui 1 idProduct 2 10 `ui 1 bcdDevice 2 12 `uc 1 iManufacturer 1 14 `uc 1 iProduct 1 15 `uc 1 iSerialNumber 1 16 `uc 1 bNumConfigurations 1 17 ]
 "151 C:\Users\matth\MPLABXProjects\Oscar.X\usb_descriptor.c
-[v _device_dsc device_dsc `CS672  1 e 18 0 ]
+[v _device_dsc device_dsc `CS676  1 e 18 0 ]
 "171
 [v _configDescriptor1 configDescriptor1 `C[101]uc  1 e 101 0 ]
-[s S687 . 4 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[1]ui 1 string 2 2 ]
+[s S691 . 4 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[1]ui 1 string 2 2 ]
 "295
-[v _sd000 sd000 `CS687  1 e 4 0 ]
-[s S691 . 52 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[25]ui 1 string 50 2 ]
+[v _sd000 sd000 `CS691  1 e 4 0 ]
+[s S695 . 52 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[25]ui 1 string 50 2 ]
 "300
-[v _sd001 sd001 `CS691  1 e 52 0 ]
-[s S695 . 26 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[12]ui 1 string 24 2 ]
+[v _sd001 sd001 `CS695  1 e 52 0 ]
+[s S699 . 26 `uc 1 bLength 1 0 `uc 1 bDscType 1 1 `[12]ui 1 string 24 2 ]
 "307
-[v _sd002 sd002 `CS695  1 e 26 0 ]
+[v _sd002 sd002 `CS699  1 e 26 0 ]
 "312
 [v _USB_CD_Ptr USB_CD_Ptr `C[1]*.32Cuc  1 e 2 0 ]
 "318
@@ -691,7 +697,7 @@ LED_D2 2
 [v _USBActiveConfiguration USBActiveConfiguration `uc  1 e 1 0 ]
 "143
 [v _USBAlternateInterface USBAlternateInterface `[1]uc  1 e 1 0 ]
-[s S743 . 1 `uc 1 BC8 1 0 :1:0 
+[s S747 . 1 `uc 1 BC8 1 0 :1:0 
 `uc 1 BC9 1 0 :1:1 
 `uc 1 BSTALL 1 0 :1:2 
 `uc 1 DTSEN 1 0 :1:3 
@@ -701,80 +707,80 @@ LED_D2 2
 `uc 1 UOWN 1 0 :1:7 
 ]
 "144
-[s S752 . 1 `uc 1 . 1 0 :2:0 
+[s S756 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID0 1 0 :1:2 
 `uc 1 PID1 1 0 :1:3 
 `uc 1 PID2 1 0 :1:4 
 `uc 1 PID3 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 ]
-[s S759 . 1 `uc 1 . 1 0 :2:0 
+[s S763 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID 1 0 :4:2 
 `uc 1 . 1 0 :2:6 
 ]
-[u S763 _BD_STAT 1 `uc 1 Val 1 0 `S743 1 . 1 0 `S752 1 . 1 0 `S759 1 . 1 0 ]
-[s S768 . 4 `S763 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
-[s S773 . 4 `uc 1 . 1 0 :8:0 
+[u S767 _BD_STAT 1 `uc 1 Val 1 0 `S747 1 . 1 0 `S756 1 . 1 0 `S763 1 . 1 0 ]
+[s S772 . 4 `S767 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S777 . 4 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `ui 1 ADR 2 2 ]
-[u S777 __BDT 4 `S768 1 . 4 0 `S773 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
-[v _pBDTEntryEP0OutCurrent pBDTEntryEP0OutCurrent `*.39VES777  1 e 2 0 ]
+[u S781 __BDT 4 `S772 1 . 4 0 `S777 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v _pBDTEntryEP0OutCurrent pBDTEntryEP0OutCurrent `*.39VES781  1 e 2 0 ]
 "145
-[v _pBDTEntryEP0OutNext pBDTEntryEP0OutNext `*.39VES777  1 e 2 0 ]
+[v _pBDTEntryEP0OutNext pBDTEntryEP0OutNext `*.39VES781  1 e 2 0 ]
 "146
-[v _pBDTEntryOut pBDTEntryOut `[2]*.39VES777  1 e 4 0 ]
+[v _pBDTEntryOut pBDTEntryOut `[2]*.39VES781  1 e 4 0 ]
 "147
-[v _pBDTEntryIn pBDTEntryIn `[2]*.39VES777  1 e 4 0 ]
+[v _pBDTEntryIn pBDTEntryIn `[2]*.39VES781  1 e 4 0 ]
 "148
 [v _shortPacketStatus shortPacketStatus `uc  1 e 1 0 ]
 "149
 [v _controlTransferState controlTransferState `uc  1 e 1 0 ]
-[u S782 . 3 `*.2uc 1 bRam 3 0 `*.2Cuc 1 bRom 3 0 `*.2ui 1 wRam 3 0 `*.2Cui 1 wRom 3 0 ]
+[u S786 . 3 `*.2uc 1 bRam 3 0 `*.2Cuc 1 bRom 3 0 `*.2ui 1 wRam 3 0 `*.2Cui 1 wRom 3 0 ]
 "150
-[s S787 . 1 `uc 1 ctrl_trf_mem 1 0 :1:0 
+[s S791 . 1 `uc 1 ctrl_trf_mem 1 0 :1:0 
 `uc 1 reserved 1 0 :5:1 
 `uc 1 includeZero 1 0 :1:6 
 `uc 1 busy 1 0 :1:7 
 ]
-[u S792 . 1 `S787 1 bits 1 0 `uc 1 Val 1 0 ]
-[s S795 . 2 `uc 1 LB 1 0 `uc 1 HB 1 1 ]
-[u S798 . 2 `ui 1 Val 2 0 `[2]uc 1 v 2 0 `S795 1 byte 2 0 ]
-[s S802 . 6 `S782 1 pSrc 3 0 `S792 1 info 1 3 `S798 1 wCount 2 4 ]
-[v _inPipes inPipes `[1]S802  1 e 6 0 ]
-[u S806 . 3 `*.2uc 1 bRam 3 0 `*.2ui 1 wRam 3 0 ]
+[u S796 . 1 `S791 1 bits 1 0 `uc 1 Val 1 0 ]
+[s S799 . 2 `uc 1 LB 1 0 `uc 1 HB 1 1 ]
+[u S802 . 2 `ui 1 Val 2 0 `[2]uc 1 v 2 0 `S799 1 byte 2 0 ]
+[s S806 . 6 `S786 1 pSrc 3 0 `S796 1 info 1 3 `S802 1 wCount 2 4 ]
+[v _inPipes inPipes `[1]S806  1 e 6 0 ]
+[u S810 . 3 `*.2uc 1 bRam 3 0 `*.2ui 1 wRam 3 0 ]
 "151
-[s S809 . 1 `uc 1 reserved 1 0 :7:0 
+[s S813 . 1 `uc 1 reserved 1 0 :7:0 
 `uc 1 busy 1 0 :1:7 
 ]
-[u S812 . 1 `S809 1 bits 1 0 `uc 1 Val 1 0 ]
-[s S816 . 9 `S806 1 pDst 3 0 `S812 1 info 1 3 `S798 1 wCount 2 4 `*.37(v 1 pFunc 3 6 ]
-[v _outPipes outPipes `[1]S816  1 e 9 0 ]
+[u S816 . 1 `S813 1 bits 1 0 `uc 1 Val 1 0 ]
+[s S820 . 9 `S810 1 pDst 3 0 `S816 1 info 1 3 `S802 1 wCount 2 4 `*.37(v 1 pFunc 3 6 ]
+[v _outPipes outPipes `[1]S820  1 e 9 0 ]
 "152
 [v _pDst pDst `*.39uc  1 e 2 0 ]
 "153
 [v _RemoteWakeup RemoteWakeup `uc  1 e 1 0 ]
 "154
 [v _USBBusIsSuspended USBBusIsSuspended `uc  1 e 1 0 ]
-[s S821 . 1 `uc 1 filler1 1 0 :1:0 
+[s S825 . 1 `uc 1 filler1 1 0 :1:0 
 `uc 1 ping_pong 1 0 :1:1 
 `uc 1 direction 1 0 :1:2 
 `uc 1 endpoint_number 1 0 :4:3 
 ]
 "155
-[u S826 __USTAT 1 `S821 1 . 1 0 `uc 1 Val 1 0 ]
-[v _USTATcopy USTATcopy `S826  1 e 1 0 ]
+[u S830 __USTAT 1 `S825 1 . 1 0 `uc 1 Val 1 0 ]
+[v _USTATcopy USTATcopy `S830  1 e 1 0 ]
 "156
 [v _endpoint_number endpoint_number `uc  1 e 1 0 ]
 "157
 [v _BothEP0OutUOWNsSet BothEP0OutUOWNsSet `uc  1 e 1 0 ]
-[s S829 . 1 `uc 1 ping_pong_state 1 0 :1:0 
+[s S833 . 1 `uc 1 ping_pong_state 1 0 :1:0 
 `uc 1 transfer_terminated 1 0 :1:1 
 ]
 "158
-[u S832 . 1 `S829 1 bits 1 0 `uc 1 Val 1 0 ]
-[v _ep_data_in ep_data_in `[2]S832  1 e 2 0 ]
+[u S836 . 1 `S833 1 bits 1 0 `uc 1 Val 1 0 ]
+[v _ep_data_in ep_data_in `[2]S836  1 e 2 0 ]
 "159
-[v _ep_data_out ep_data_out `[2]S832  1 e 2 0 ]
+[v _ep_data_out ep_data_out `[2]S836  1 e 2 0 ]
 "160
 [v _USBStatusStageTimeoutCounter USBStatusStageTimeoutCounter `uc  1 e 1 0 ]
 "161
@@ -792,13 +798,13 @@ LED_D2 2
 "167
 [v _USBTicksSinceSuspendEnd USBTicksSinceSuspendEnd `uc  1 e 1 0 ]
 "174
-[v _BDT BDT `VE[8]S777  1 e 32 @3328 ]
-[s S835 . 8 `uc 1 bmRequestType 1 0 `uc 1 bRequest 1 1 `ui 1 wValue 2 2 `ui 1 wIndex 2 4 `ui 1 wLength 2 6 ]
+[v _BDT BDT `VE[8]S781  1 e 32 @3328 ]
+[s S839 . 8 `uc 1 bmRequestType 1 0 `uc 1 bRequest 1 1 `ui 1 wValue 2 2 `ui 1 wIndex 2 4 `ui 1 wLength 2 6 ]
 "179
-[s S862 . 8 `uc 1 . 1 0 :8:0 
+[s S866 . 8 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
-`S798 1 W_Value 2 2 `S798 1 W_Index 2 4 `S798 1 W_Length 2 6 ]
-[s S868 . 8 `uc 1 Recipient 1 0 :5:0 
+`S802 1 W_Value 2 2 `S802 1 W_Index 2 4 `S802 1 W_Length 2 6 ]
+[s S872 . 8 `uc 1 Recipient 1 0 :5:0 
 `uc 1 RequestType 1 0 :2:5 
 `uc 1 DataDir 1 0 :1:7 
 `uc 1 . 1 1 :8:0 
@@ -808,44 +814,44 @@ LED_D2 2
 `uc 1 . 1 6 :8:0 
 `uc 1 . 1 7 :8:0 
 ]
-[s S879 . 1 `uc 1 recipient 1 0 :5:0 
+[s S883 . 1 `uc 1 recipient 1 0 :5:0 
 `uc 1 type 1 0 :2:5 
 `uc 1 direction 1 0 :1:7 
 ]
-[u S883 . 1 `uc 1 bmRequestType 1 0 `S879 1 . 1 0 ]
-[s S886 . 1 `S883 1 requestInfo 1 0 ]
-[s S888 . 8 `uc 1 . 1 0 :8:0 
+[u S887 . 1 `uc 1 bmRequestType 1 0 `S883 1 . 1 0 ]
+[s S890 . 1 `S887 1 requestInfo 1 0 ]
+[s S892 . 8 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `uc 1 bDscIndex 1 2 `uc 1 bDescriptorType 1 3 `ui 1 wLangID 2 4 `uc 1 . 1 6 :8:0 
 `uc 1 . 1 7 :8:0 
 ]
-[s S896 . 8 `uc 1 . 1 0 :8:0 
+[s S900 . 8 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `uc 1 bDevADR 1 2 `uc 1 bDevADRH 1 3 `uc 1 . 1 4 :8:0 
 `uc 1 . 1 5 :8:0 
 `uc 1 . 1 6 :8:0 
 `uc 1 . 1 7 :8:0 
 ]
-[s S905 . 8 `uc 1 . 1 0 :8:0 
+[s S909 . 8 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `uc 1 bConfigurationValue 1 2 `uc 1 bCfgRSD 1 3 `uc 1 . 1 4 :8:0 
 `uc 1 . 1 5 :8:0 
 `uc 1 . 1 6 :8:0 
 `uc 1 . 1 7 :8:0 
 ]
-[s S914 . 8 `uc 1 . 1 0 :8:0 
+[s S918 . 8 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `uc 1 bAltID 1 2 `uc 1 bAltID_H 1 3 `uc 1 bIntfID 1 4 `uc 1 bIntfID_H 1 5 `uc 1 . 1 6 :8:0 
 `uc 1 . 1 7 :8:0 
 ]
-[s S923 . 8 `uc 1 . 1 0 :8:0 
+[s S927 . 8 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `uc 1 . 1 2 :8:0 
 `uc 1 . 1 3 :8:0 
 `uc 1 bEPID 1 4 `uc 1 bEPID_H 1 5 `uc 1 . 1 6 :8:0 
 `uc 1 . 1 7 :8:0 
 ]
-[s S932 . 8 `uc 1 . 1 0 :8:0 
+[s S936 . 8 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `uc 1 . 1 2 :8:0 
 `uc 1 . 1 3 :8:0 
@@ -856,8 +862,8 @@ LED_D2 2
 `uc 1 . 1 6 :8:0 
 `uc 1 . 1 7 :8:0 
 ]
-[u S943 . 8 `S835 1 . 8 0 `S862 1 . 8 0 `S868 1 . 8 0 `S886 1 . 1 0 `S888 1 . 8 0 `S896 1 . 8 0 `S905 1 . 8 0 `S914 1 . 8 0 `S923 1 . 8 0 `S932 1 . 8 0 ]
-[v _SetupPkt SetupPkt `VES943  1 e 8 @3360 ]
+[u S947 . 8 `S839 1 . 8 0 `S866 1 . 8 0 `S872 1 . 8 0 `S890 1 . 1 0 `S892 1 . 8 0 `S900 1 . 8 0 `S909 1 . 8 0 `S918 1 . 8 0 `S927 1 . 8 0 `S936 1 . 8 0 ]
+[v _SetupPkt SetupPkt `VES947  1 e 8 @3360 ]
 "180
 [v _CtrlTrfData CtrlTrfData `VE[8]uc  1 e 8 @3368 ]
 "13 C:\Users\matth\MPLABXProjects\Oscar.X\main.c
@@ -958,7 +964,7 @@ LED_D2 2
 "2129 C:\Users\matth\MPLABXProjects\Oscar.X\usb_device.c
 [v _USBStdGetStatusHandler USBStdGetStatusHandler `(v  1 s 1 USBStdGetStatusHandler ]
 {
-[s S743 . 1 `uc 1 BC8 1 0 :1:0 
+[s S747 . 1 `uc 1 BC8 1 0 :1:0 
 `uc 1 BC9 1 0 :1:1 
 `uc 1 BSTALL 1 0 :1:2 
 `uc 1 DTSEN 1 0 :1:3 
@@ -968,24 +974,24 @@ LED_D2 2
 `uc 1 UOWN 1 0 :1:7 
 ]
 "2161
-[s S752 . 1 `uc 1 . 1 0 :2:0 
+[s S756 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID0 1 0 :1:2 
 `uc 1 PID1 1 0 :1:3 
 `uc 1 PID2 1 0 :1:4 
 `uc 1 PID3 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 ]
-[s S759 . 1 `uc 1 . 1 0 :2:0 
+[s S763 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID 1 0 :4:2 
 `uc 1 . 1 0 :2:6 
 ]
-[u S763 _BD_STAT 1 `uc 1 Val 1 0 `S743 1 . 1 0 `S752 1 . 1 0 `S759 1 . 1 0 ]
-[s S768 . 4 `S763 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
-[s S773 . 4 `uc 1 . 1 0 :8:0 
+[u S767 _BD_STAT 1 `uc 1 Val 1 0 `S747 1 . 1 0 `S756 1 . 1 0 `S763 1 . 1 0 ]
+[s S772 . 4 `S767 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S777 . 4 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `ui 1 ADR 2 2 ]
-[u S777 __BDT 4 `S768 1 . 4 0 `S773 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
-[v USBStdGetStatusHandler@p p `*.39S777  1 a 2 15 ]
+[u S781 __BDT 4 `S772 1 . 4 0 `S777 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBStdGetStatusHandler@p p `*.39S781  1 a 2 15 ]
 "2184
 } 0
 "2043
@@ -996,7 +1002,7 @@ LED_D2 2
 "2754
 [v _USBStdFeatureReqHandler USBStdFeatureReqHandler `(v  1 s 1 USBStdFeatureReqHandler ]
 {
-[s S743 . 1 `uc 1 BC8 1 0 :1:0 
+[s S747 . 1 `uc 1 BC8 1 0 :1:0 
 `uc 1 BC9 1 0 :1:1 
 `uc 1 BSTALL 1 0 :1:2 
 `uc 1 DTSEN 1 0 :1:3 
@@ -1006,32 +1012,32 @@ LED_D2 2
 `uc 1 UOWN 1 0 :1:7 
 ]
 "2756
-[s S752 . 1 `uc 1 . 1 0 :2:0 
+[s S756 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID0 1 0 :1:2 
 `uc 1 PID1 1 0 :1:3 
 `uc 1 PID2 1 0 :1:4 
 `uc 1 PID3 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 ]
-[s S759 . 1 `uc 1 . 1 0 :2:0 
+[s S763 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID 1 0 :4:2 
 `uc 1 . 1 0 :2:6 
 ]
-[u S763 _BD_STAT 1 `uc 1 Val 1 0 `S743 1 . 1 0 `S752 1 . 1 0 `S759 1 . 1 0 ]
-[s S768 . 4 `S763 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
-[s S773 . 4 `uc 1 . 1 0 :8:0 
+[u S767 _BD_STAT 1 `uc 1 Val 1 0 `S747 1 . 1 0 `S756 1 . 1 0 `S763 1 . 1 0 ]
+[s S772 . 4 `S767 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S777 . 4 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `ui 1 ADR 2 2 ]
-[u S777 __BDT 4 `S768 1 . 4 0 `S773 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
-[v USBStdFeatureReqHandler@p p `*.39S777  1 a 2 10 ]
+[u S781 __BDT 4 `S772 1 . 4 0 `S777 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBStdFeatureReqHandler@p p `*.39S781  1 a 2 10 ]
 "2761
 [v USBStdFeatureReqHandler@pUEP pUEP `*.39uc  1 a 2 7 ]
-[s S829 . 1 `uc 1 ping_pong_state 1 0 :1:0 
+[s S833 . 1 `uc 1 ping_pong_state 1 0 :1:0 
 `uc 1 transfer_terminated 1 0 :1:1 
 ]
 "2757
-[u S832 . 1 `S829 1 bits 1 0 `uc 1 Val 1 0 ]
-[v USBStdFeatureReqHandler@current_ep_data current_ep_data `S832  1 a 1 9 ]
+[u S836 . 1 `S833 1 bits 1 0 `uc 1 Val 1 0 ]
+[v USBStdFeatureReqHandler@current_ep_data current_ep_data `S836  1 a 1 9 ]
 "2980
 } 0
 "30 C:\Users\matth\MPLABXProjects\Oscar.X\usb_events.c
@@ -1065,14 +1071,14 @@ LED_D2 2
 [v LED_Off@led led `E2  1 a 1 14 ]
 "103
 } 0
-"34 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
+"35 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
 [v _APP_DeviceAudioMIDISOFHandler APP_DeviceAudioMIDISOFHandler `(v  1 e 1 0 ]
 {
 } 0
-"26
+"27
 [v _APP_DeviceAudioMIDIInitialize APP_DeviceAudioMIDIInitialize `(v  1 e 1 0 ]
 {
-"32
+"33
 } 0
 "12 C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 [v _initButtons initButtons `(v  1 e 1 0 ]
@@ -1110,7 +1116,7 @@ LED_D2 2
 [v _USBConfigureEndpoint USBConfigureEndpoint `(v  1 s 1 USBConfigureEndpoint ]
 {
 [v USBConfigureEndpoint@EPNum EPNum `uc  1 a 1 wreg ]
-[s S743 . 1 `uc 1 BC8 1 0 :1:0 
+[s S747 . 1 `uc 1 BC8 1 0 :1:0 
 `uc 1 BC9 1 0 :1:1 
 `uc 1 BSTALL 1 0 :1:2 
 `uc 1 DTSEN 1 0 :1:3 
@@ -1120,24 +1126,24 @@ LED_D2 2
 `uc 1 UOWN 1 0 :1:7 
 ]
 "1545
-[s S752 . 1 `uc 1 . 1 0 :2:0 
+[s S756 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID0 1 0 :1:2 
 `uc 1 PID1 1 0 :1:3 
 `uc 1 PID2 1 0 :1:4 
 `uc 1 PID3 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 ]
-[s S759 . 1 `uc 1 . 1 0 :2:0 
+[s S763 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID 1 0 :4:2 
 `uc 1 . 1 0 :2:6 
 ]
-[u S763 _BD_STAT 1 `uc 1 Val 1 0 `S743 1 . 1 0 `S752 1 . 1 0 `S759 1 . 1 0 ]
-[s S768 . 4 `S763 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
-[s S773 . 4 `uc 1 . 1 0 :8:0 
+[u S767 _BD_STAT 1 `uc 1 Val 1 0 `S747 1 . 1 0 `S756 1 . 1 0 `S763 1 . 1 0 ]
+[s S772 . 4 `S767 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S777 . 4 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `ui 1 ADR 2 2 ]
-[u S777 __BDT 4 `S768 1 . 4 0 `S773 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
-[v USBConfigureEndpoint@handle handle `*.39VES777  1 a 2 20 ]
+[u S781 __BDT 4 `S772 1 . 4 0 `S777 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBConfigureEndpoint@handle handle `*.39VES781  1 a 2 20 ]
 "1543
 [v USBConfigureEndpoint@EPNum EPNum `uc  1 a 1 wreg ]
 [v USBConfigureEndpoint@direction direction `uc  1 p 1 14 ]
@@ -1183,7 +1189,7 @@ LED_D2 2
 {
 [v SYSTEM_Initialize@state state `E9187  1 a 1 wreg ]
 "90
-[v SYSTEM_Initialize@pll_startup_counter_669 pll_startup_counter `ui  1 a 2 16 ]
+[v SYSTEM_Initialize@pll_startup_counter_673 pll_startup_counter `ui  1 a 2 16 ]
 "70
 [v SYSTEM_Initialize@pll_startup_counter pll_startup_counter `ui  1 a 2 14 ]
 "58
@@ -1201,12 +1207,12 @@ LED_D2 2
 {
 "20
 } 0
-"36 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
+"37 C:\Users\matth\MPLABXProjects\Oscar.X\app.c
 [v _APP_DeviceAudioMIDITasks APP_DeviceAudioMIDITasks `(v  1 e 1 0 ]
 {
-"44
+"45
 [v APP_DeviceAudioMIDITasks@midiRecieve midiRecieve `l  1 a 4 0 ]
-"52
+"54
 } 0
 "19 C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 [v _scanButtonsHardware scanButtonsHardware `(v  1 e 1 0 ]
@@ -1227,12 +1233,17 @@ LED_D2 2
 [v SPIReadWrite@byte byte `uc  1 a 1 14 ]
 "29
 } 0
+"9 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
+[v _handleMidi handleMidi `(v  1 e 1 0 ]
+{
+"15
+} 0
 "37 C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 [v _handleButtons handleButtons `(v  1 e 1 0 ]
 {
 "61
 } 0
-"7 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
+"17 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
 [v _sendMidiNoteOn sendMidiNoteOn `(v  1 e 1 0 ]
 {
 [v sendMidiNoteOn@cc cc `uc  1 a 1 wreg ]
@@ -1240,9 +1251,9 @@ LED_D2 2
 [v sendMidiNoteOn@velocity velocity `uc  1 p 1 25 ]
 [v sendMidiNoteOn@channel channel `uc  1 p 1 26 ]
 [v sendMidiNoteOn@cc cc `uc  1 a 1 27 ]
-"18
+"28
 } 0
-"20
+"30
 [v _sendMidiNoteOff sendMidiNoteOff `(v  1 e 1 0 ]
 {
 [v sendMidiNoteOff@cc cc `uc  1 a 1 wreg ]
@@ -1250,9 +1261,9 @@ LED_D2 2
 [v sendMidiNoteOff@velocity velocity `uc  1 p 1 25 ]
 [v sendMidiNoteOff@channel channel `uc  1 p 1 26 ]
 [v sendMidiNoteOff@cc cc `uc  1 a 1 27 ]
-"31
+"41
 } 0
-"33
+"43
 [v _sendMidiControlChange sendMidiControlChange `(v  1 e 1 0 ]
 {
 [v sendMidiControlChange@cc cc `uc  1 a 1 wreg ]
@@ -1260,13 +1271,13 @@ LED_D2 2
 [v sendMidiControlChange@velocity velocity `uc  1 p 1 25 ]
 [v sendMidiControlChange@channel channel `uc  1 p 1 26 ]
 [v sendMidiControlChange@cc cc `uc  1 a 1 27 ]
-"44
+"54
 } 0
 "995 C:\Users\matth\MPLABXProjects\Oscar.X\usb_device.c
 [v _USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]
 {
 [v USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
-[s S743 . 1 `uc 1 BC8 1 0 :1:0 
+[s S747 . 1 `uc 1 BC8 1 0 :1:0 
 `uc 1 BC9 1 0 :1:1 
 `uc 1 BSTALL 1 0 :1:2 
 `uc 1 DTSEN 1 0 :1:3 
@@ -1276,24 +1287,24 @@ LED_D2 2
 `uc 1 UOWN 1 0 :1:7 
 ]
 "997
-[s S752 . 1 `uc 1 . 1 0 :2:0 
+[s S756 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID0 1 0 :1:2 
 `uc 1 PID1 1 0 :1:3 
 `uc 1 PID2 1 0 :1:4 
 `uc 1 PID3 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 ]
-[s S759 . 1 `uc 1 . 1 0 :2:0 
+[s S763 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PID 1 0 :4:2 
 `uc 1 . 1 0 :2:6 
 ]
-[u S763 _BD_STAT 1 `uc 1 Val 1 0 `S743 1 . 1 0 `S752 1 . 1 0 `S759 1 . 1 0 ]
-[s S768 . 4 `S763 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
-[s S773 . 4 `uc 1 . 1 0 :8:0 
+[u S767 _BD_STAT 1 `uc 1 Val 1 0 `S747 1 . 1 0 `S756 1 . 1 0 `S763 1 . 1 0 ]
+[s S772 . 4 `S767 1 STAT 1 0 `uc 1 CNT 1 1 `uc 1 ADRL 1 2 `uc 1 ADRH 1 3 ]
+[s S777 . 4 `uc 1 . 1 0 :8:0 
 `uc 1 . 1 1 :8:0 
 `ui 1 ADR 2 2 ]
-[u S777 __BDT 4 `S768 1 . 4 0 `S773 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
-[v USBTransferOnePacket@handle handle `*.39VES777  1 a 2 23 ]
+[u S781 __BDT 4 `S772 1 . 4 0 `S777 1 . 4 0 `ul 1 Val 4 0 `[4]uc 1 v 4 0 ]
+[v USBTransferOnePacket@handle handle `*.39VES781  1 a 2 23 ]
 "995
 [v USBTransferOnePacket@ep ep `uc  1 a 1 wreg ]
 [v USBTransferOnePacket@dir dir `uc  1 p 1 14 ]

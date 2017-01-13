@@ -12151,7 +12151,13 @@ uint8_t DATA_2;
 };
 } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
 
-# 20 "app.c"
+# 6 "midi_interface.h"
+void handleMidi(void);
+void sendMidiNoteOn(char cc, char velocity, char channel);
+void sendMidiNoteOff(char cc, char velocity, char channel);
+void sendMidiControlChange(char cc, char velocity, char channel);
+
+# 21 "app.c"
 static uint8_t ReceivedDataBuffer[64];
 static USB_AUDIO_MIDI_EVENT_PACKET midiData;
 
@@ -12182,6 +12188,7 @@ midiRecieve = USBRxHandle;
 USBRxHandle = USBTransferOnePacket(1,0,(uint8_t*)&ReceivedDataBuffer,64);
 }
 
+handleMidi();
 scanButtonsHardware();
 handleButtons();
 }

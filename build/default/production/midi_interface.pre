@@ -12096,8 +12096,18 @@ uint8_t DATA_2;
 } USB_AUDIO_MIDI_EVENT_PACKET, *P_USB_AUDIO_MIDI_EVENT_PACKET;
 
 # 4 "midi_interface.c"
-static USB_AUDIO_MIDI_EVENT_PACKET midiData;
 static void* USBTxHandle;
+static void* USBRxHandle;
+static USB_AUDIO_MIDI_EVENT_PACKET midiData;
+static uint8_t ReceivedDataBuffer[64];
+
+void handleMidi() {
+if(!((USBRxHandle != 0x0000) && ((*(volatile uint8_t*)USBRxHandle & 0x80) != 0x00))) {
+
+
+USBRxHandle = USBTransferOnePacket(1,0,(uint8_t*)&ReceivedDataBuffer,64);
+}
+}
 
 void sendMidiNoteOn(char cc, char velocity, char channel) {
 if (!((USBTxHandle != 0x0000) && ((*(volatile uint8_t*)USBTxHandle & 0x80) != 0x00))) {
