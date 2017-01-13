@@ -1,5 +1,4 @@
 
-
 typedef union {
     uint32_t Val;
     uint8_t v[4];
