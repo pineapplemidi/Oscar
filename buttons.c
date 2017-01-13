@@ -37,26 +37,26 @@ void scanButtonsHardware() {
 void handleButtons() {
     for (k=0; k<8; k++) {
         if (Buttons[k].State != Buttons[k].PreviousState) {
-//            if (Buttons[k].Toggle) { // still need to implement the toggle algorithm
-////                sendMidiControlChange(Buttons[k].CC, Buttons[k].Velocity, 0x00);
-//            } else if (Buttons[k].Momentary) { //sends state as control change on every button push and button release
+            if (Buttons[k].Flags && 0x01 == 1) { // toggle flag set
 //                sendMidiControlChange(Buttons[k].CC, Buttons[k].Velocity, 0x00);
-//            } else { //sends state as control change on every button push
-//                if (Buttons[k].State != 0x00) {
-//                    sendMidiControlChange(Buttons[k].CC, Buttons[k].Velocity, 0x00);
-//                }
-//            }
-            if (Buttons[k].State != 0x00) {
-                sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
-                
-            } else {
-                sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+            } else if (Buttons[k].Flags && 0x02 == 1) { // momentary flag set
+                sendMidiControlChange(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+            } else if (Buttons[k].Flags && 0x04 == 1) { // control change flag set
+                if (Buttons[k].State != 0x00) {
+                    sendMidiControlChange(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+                }
+            } else { // no flags; sends note on and off
+                if (Buttons[k].State != 0x00) {
+                    sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+                } else {
+                    sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+            
+                }
             }
         }
     }
 }
 
-// Could definitely save space and use 1 byte (the bits) as the flags
 void readButtonsMemory() {
     for (k=0; k<8; k++) {
         data = eeprom_read(k);

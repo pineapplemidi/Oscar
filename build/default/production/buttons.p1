@@ -29,7 +29,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATCbits `VS746 ~T0 @X0 0 e@3979 ]
 "8 spi_interface.h
 [v _SPIReadWrite `(uc ~T0 @X0 0 ef1`uc ]
-"6 midi_interface.h
+"8 midi_interface.h
+[v _sendMidiControlChange `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"6
 [v _sendMidiNoteOn `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 "7
 [v _sendMidiNoteOff `(v ~T0 @X0 0 ef3`uc`uc`uc ]
@@ -9434,41 +9436,85 @@ Version 3.2 HI-TECH Software Intermediate Code
 "39
 [e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 `i -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 3 `i 1357  ]
 {
+[; ;buttons.c: 40: if (Buttons[k].Flags && 0x01 == 1) {
+"40
+[e $ ! && != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 4 `i -> -> -> 0 `i `uc `i == -> 1 `i -> 1 `i 1358  ]
+{
+"42
+}
+[; ;buttons.c: 42: } else if (Buttons[k].Flags && 0x02 == 1) {
+[e $U 1359  ]
+[e :U 1358 ]
+[e $ ! && != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 4 `i -> -> -> 0 `i `uc `i == -> 2 `i -> 1 `i 1360  ]
+{
+[; ;buttons.c: 43: sendMidiControlChange(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+"43
+[e ( _sendMidiControlChange (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 0 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 -> -> 0 `i `uc ]
+"44
+}
+[; ;buttons.c: 44: } else if (Buttons[k].Flags && 0x04 == 1) {
+[e $U 1361  ]
+[e :U 1360 ]
+[e $ ! && != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 4 `i -> -> -> 0 `i `uc `i == -> 4 `i -> 1 `i 1362  ]
+{
+[; ;buttons.c: 45: if (Buttons[k].State != 0x00) {
+"45
+[e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 `i -> 0 `i 1363  ]
+{
+[; ;buttons.c: 46: sendMidiControlChange(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+"46
+[e ( _sendMidiControlChange (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 0 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 -> -> 0 `i `uc ]
+"47
+}
+[e :U 1363 ]
+"48
+}
+[; ;buttons.c: 47: }
+[; ;buttons.c: 48: } else {
+[e $U 1364  ]
+[e :U 1362 ]
+{
 [; ;buttons.c: 49: if (Buttons[k].State != 0x00) {
 "49
-[e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 `i -> 0 `i 1358  ]
+[e $ ! != -> . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 2 `i -> 0 `i 1365  ]
 {
 [; ;buttons.c: 50: sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
 "50
 [e ( _sendMidiNoteOn (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 0 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 -> -> 0 `i `uc ]
-"52
+"51
 }
-[; ;buttons.c: 52: } else {
-[e $U 1359  ]
-[e :U 1358 ]
+[; ;buttons.c: 51: } else {
+[e $U 1366  ]
+[e :U 1365 ]
 {
-[; ;buttons.c: 53: sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
-"53
+[; ;buttons.c: 52: sendMidiNoteOff(Buttons[k].CC, Buttons[k].Velocity, 0x00);
+"52
 [e ( _sendMidiNoteOff (3 , , . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 0 . *U + &U _Buttons * -> _k `ux -> -> # *U &U _Buttons `ui `ux 1 -> -> 0 `i `uc ]
 "54
 }
-[e :U 1359 ]
+[e :U 1366 ]
 "55
 }
-[e :U 1357 ]
+[e :U 1364 ]
+[e :U 1361 ]
+[e :U 1359 ]
 "56
+}
+[e :U 1357 ]
+"57
 }
 "38
 [e ++ _k -> -> 1 `i `uc ]
 [e $ < -> _k `i -> 8 `i 1354  ]
 [e :U 1355 ]
-"56
+"57
 }
 [; ;buttons.c: 54: }
 [; ;buttons.c: 55: }
 [; ;buttons.c: 56: }
 [; ;buttons.c: 57: }
-"57
+[; ;buttons.c: 58: }
+"58
 [e :UE 1353 ]
 }
 "60
@@ -9481,9 +9527,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "61
 {
 [e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 8 `i 1361  ]
-[e $U 1362  ]
-[e :U 1361 ]
+[e $ < -> _k `i -> 8 `i 1368  ]
+[e $U 1369  ]
+[e :U 1368 ]
 {
 [; ;buttons.c: 62: data = 0;
 "62
@@ -9507,14 +9553,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "61
 [e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 8 `i 1361  ]
-[e :U 1362 ]
+[e $ < -> _k `i -> 8 `i 1368  ]
+[e :U 1369 ]
 "70
 }
 [; ;buttons.c: 70: }
 [; ;buttons.c: 71: }
 "71
-[e :UE 1360 ]
+[e :UE 1367 ]
 }
 "73
 [v _writeToButtonsMemory `(v ~T0 @X0 1 ef2`uc`uc ]
@@ -9526,16 +9572,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;buttons.c: 74: if (addr >= 0 && addr < 24) {
 "74
-[e $ ! && >= -> _addr `i -> 0 `i < -> _addr `i -> 24 `i 1365  ]
+[e $ ! && >= -> _addr `i -> 0 `i < -> _addr `i -> 24 `i 1372  ]
 {
 [; ;buttons.c: 75: ;
 "76
 }
-[e :U 1365 ]
+[e :U 1372 ]
 [; ;buttons.c: 76: }
 [; ;buttons.c: 77: }
 "77
-[e :UE 1364 ]
+[e :UE 1371 ]
 }
 "79
 [v _initButtonsMemory `(v ~T0 @X0 1 ef ]
@@ -9547,9 +9593,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "80
 {
 [e = _k -> -> 0 `i `uc ]
-[e $ < -> _k `i -> 8 `i 1367  ]
-[e $U 1368  ]
-[e :U 1367 ]
+[e $ < -> _k `i -> 8 `i 1374  ]
+[e $U 1375  ]
+[e :U 1374 ]
 {
 [; ;buttons.c: 81: writeToButtonsMemory(k, k);
 "81
@@ -9558,12 +9604,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "80
 [e ++ _k -> -> 1 `i `uc ]
-[e $ < -> _k `i -> 8 `i 1367  ]
-[e :U 1368 ]
+[e $ < -> _k `i -> 8 `i 1374  ]
+[e :U 1375 ]
 "82
 }
 [; ;buttons.c: 82: }
 [; ;buttons.c: 83: }
 "83
-[e :UE 1366 ]
+[e :UE 1373 ]
 }
