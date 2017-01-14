@@ -12106,7 +12106,8 @@ static uint8_t ReceivedDataBuffer[64];
 void handleMidi() {
 if(!((USBRxHandle != 0x0000) && ((*(volatile uint8_t*)USBRxHandle & 0x80) != 0x00))) {
 
-midiData = USBRxHandle;
+
+
 
 USBRxHandle = USBTransferOnePacket(1,0,(uint8_t*)&ReceivedDataBuffer,64);
 }

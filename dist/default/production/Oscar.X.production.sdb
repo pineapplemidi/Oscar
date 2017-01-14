@@ -199,13 +199,13 @@ LED_D2 2
 [v _LED_Off LED_Off `(v  1 e 1 0 ]
 "13 C:\Users\matth\MPLABXProjects\Oscar.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"10 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
+"11 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
 [v _handleMidi handleMidi `(v  1 e 1 0 ]
-"19
+"21
 [v _sendMidiNoteOn sendMidiNoteOn `(v  1 e 1 0 ]
-"32
+"34
 [v _sendMidiNoteOff sendMidiNoteOff `(v  1 e 1 0 ]
-"45
+"47
 [v _sendMidiControlChange sendMidiControlChange `(v  1 e 1 0 ]
 "4 C:\Users\matth\MPLABXProjects\Oscar.X\spi_interface.c
 [v _InitSPIPins InitSPIPins `(v  1 e 1 0 ]
@@ -657,9 +657,7 @@ LED_D2 2
 [v _count count `i  1 e 2 0 ]
 "11
 [v _rx rx `uc  1 e 1 0 ]
-"4 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
-[v _ddata ddata `ul  1 e 4 0 ]
-"5
+"5 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
 [v _USBTxHandle USBTxHandle `*.39v  1 s 2 USBTxHandle ]
 "6
 [v midi_interface@USBRxHandle USBRxHandle `*.39v  1 s 2 USBRxHandle ]
@@ -1233,17 +1231,17 @@ LED_D2 2
 [v SPIReadWrite@byte byte `uc  1 a 1 14 ]
 "29
 } 0
-"10 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
+"11 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
 [v _handleMidi handleMidi `(v  1 e 1 0 ]
 {
-"17
+"19
 } 0
 "37 C:\Users\matth\MPLABXProjects\Oscar.X\buttons.c
 [v _handleButtons handleButtons `(v  1 e 1 0 ]
 {
 "61
 } 0
-"19 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
+"21 C:\Users\matth\MPLABXProjects\Oscar.X\midi_interface.c
 [v _sendMidiNoteOn sendMidiNoteOn `(v  1 e 1 0 ]
 {
 [v sendMidiNoteOn@cc cc `uc  1 a 1 wreg ]
@@ -1251,9 +1249,9 @@ LED_D2 2
 [v sendMidiNoteOn@velocity velocity `uc  1 p 1 25 ]
 [v sendMidiNoteOn@channel channel `uc  1 p 1 26 ]
 [v sendMidiNoteOn@cc cc `uc  1 a 1 27 ]
-"30
-} 0
 "32
+} 0
+"34
 [v _sendMidiNoteOff sendMidiNoteOff `(v  1 e 1 0 ]
 {
 [v sendMidiNoteOff@cc cc `uc  1 a 1 wreg ]
@@ -1261,9 +1259,9 @@ LED_D2 2
 [v sendMidiNoteOff@velocity velocity `uc  1 p 1 25 ]
 [v sendMidiNoteOff@channel channel `uc  1 p 1 26 ]
 [v sendMidiNoteOff@cc cc `uc  1 a 1 27 ]
-"43
-} 0
 "45
+} 0
+"47
 [v _sendMidiControlChange sendMidiControlChange `(v  1 e 1 0 ]
 {
 [v sendMidiControlChange@cc cc `uc  1 a 1 wreg ]
@@ -1271,7 +1269,7 @@ LED_D2 2
 [v sendMidiControlChange@velocity velocity `uc  1 p 1 25 ]
 [v sendMidiControlChange@channel channel `uc  1 p 1 26 ]
 [v sendMidiControlChange@cc cc `uc  1 a 1 27 ]
-"56
+"58
 } 0
 "995 C:\Users\matth\MPLABXProjects\Oscar.X\usb_device.c
 [v _USBTransferOnePacket USBTransferOnePacket `(*.39v  1 e 2 0 ]

@@ -11,7 +11,7 @@ static uint8_t ReceivedDataBuffer[64];
 void handleMidi() {
     if(!USBHandleBusy(USBRxHandle)) {
         //INSERT MIDI PROCESSING CODE HERE
-        midiData = USBRxHandle;
+//        midiData = USBRxHandle;
         
         USBRxHandle = USBRxOnePacket(USB_DEVICE_AUDIO_MIDI_ENDPOINT,(uint8_t*)&ReceivedDataBuffer,64); //Get ready for next packet (this will overwrite the old data)
     }
