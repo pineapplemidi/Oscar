@@ -14,7 +14,7 @@ void initButtons(void);
 void scanButtonsHardware(void);
 void handleButtons(void);
 void readButtonsMemory(void);
-void writeToButtonsMemory(char addr, char data);
+void writeToButtonsMemory(unsigned char addr, unsigned char data);
 void initButtonsMemory(void);
 
 #endif

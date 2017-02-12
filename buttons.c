@@ -7,7 +7,7 @@
 
 char rx;
 unsigned char data;
-char k;
+unsigned char k;
 
 void initButtons() {
     for (k=0; k<8; k++) {
@@ -30,8 +30,8 @@ void scanButtonsHardware() {
         Buttons[k].State = states & 0b00000001;
         states = states >> 1;
     }
-//    initButtonsMemory(); // Writing to EEPROM is not working
-//    readButtonsMemory(); // right now nothing is valid in the EEPROM..
+    initButtonsMemory(); // Writing to EEPROM is not working
+    readButtonsMemory(); // right now nothing is valid in the EEPROM..
 }
 
 void handleButtons() {
@@ -73,14 +73,14 @@ void readButtonsMemory() {
     }   
 }
 
-void writeToButtonsMemory(char addr, char data) {
+void writeToButtonsMemory(unsigned char addr, unsigned char data) {
     if (addr >= 0 && addr < 24) {
             eeprom_write(addr, data);
     }
 }
 
 void initButtonsMemory() {
-    for (k=0; k<8; k++) {
+    for (k=0; k<24; k++) {
         writeToButtonsMemory(k, k);
     }
 }

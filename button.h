@@ -2,8 +2,8 @@
 #define __BUTTON_
 
 typedef struct {
-    char CC;
-    char Velocity;
+    unsigned char CC;
+    unsigned char Velocity;
     char State;
     char PreviousState;
     char Flags; // toggle state / .. / .. / .. || .. / control change / momentary / toggle
