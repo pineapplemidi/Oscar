@@ -1,5 +1,7 @@
 #include "usb.h"
 #include "usb_device_midi.h"
+#include "leds.h"
+#include "io_mapping.h"
 
 unsigned long midiInData;
 static USB_HANDLE USBTxHandle;
@@ -10,8 +12,10 @@ static uint8_t ReceivedDataBuffer[64];
 
 void handleMidi() {
     if(!USBHandleBusy(USBRxHandle)) {
-        //INSERT MIDI PROCESSING CODE HERE
-//        midiData = USBRxHandle;
+        if (ReceivedDataBuffer[1]==0x90) {//note on
+            if (ReceivedDataBuffer[2]==0x00) LATEbits.LATE1 = 0; // E1 = led output
+            if (ReceivedDataBuffer[2]==0x01) LATEbits.LATE1 = 1; //note C#
+        }
         
         USBRxHandle = USBRxOnePacket(USB_DEVICE_AUDIO_MIDI_ENDPOINT,(uint8_t*)&ReceivedDataBuffer,64); //Get ready for next packet (this will overwrite the old data)
     }
