@@ -1,7 +1,5 @@
 #include "usb.h"
 #include "usb_device_midi.h"
-#include "leds.h"
-#include "io_mapping.h"
 
 unsigned long midiInData;
 static USB_HANDLE USBTxHandle;
