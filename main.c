@@ -22,10 +22,7 @@ MAIN_RETURN main(void) {
     
     count = 0;
     rx = 0xAA;
-    
     TRISEbits.TRISE1 = 0; // e1 = led output
-    LATEbits.LATE1 = 1; // led on
-    LATEbits.LATE1 = 0; // led off
     
     while(1) {
         SYSTEM_Tasks();
