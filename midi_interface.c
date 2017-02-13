@@ -12,11 +12,6 @@ static uint8_t ReceivedDataBuffer[64];
 
 void handleMidi() {
     if(!USBHandleBusy(USBRxHandle)) {
-//        if (ReceivedDataBuffer[1]==0x90) {//note on
-//            if (ReceivedDataBuffer[2]==0x00) LATEbits.LATE1 = 0; // E1; led off
-//            if (ReceivedDataBuffer[2]==0x01) LATEbits.LATE1 = 1; // E; led on
-        
-            
         switch (ReceivedDataBuffer[1]) {
             case 0x90: // note on
                 if (ReceivedDataBuffer[2]==0x00) LATEbits.LATE1 = 0; // E1; led off
