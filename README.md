@@ -11,5 +11,4 @@ Use the free version.
 [XC8 Download](http://www.microchip.com/mplab/compilers)
 
 ### Project
-Clone this repo to the desired directory. Open project with MPLABx. Click on the 'hammer icon' on the top to build the project 
-(compile). If the project builds, you have done everything correctly.
+Clone this repository to the desired directory. Open project with MPLABx. Click on the 'hammer icon' on the top to build, also known as compile, the project. If the project builds without errors, you have done everything correctly.
