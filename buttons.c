@@ -5,7 +5,7 @@
 #include "spi_interface.h"
 #include "midi_interface.h"
 
-char rx;
+char buttonsInport;
 unsigned char data;
 char k;
 
@@ -21,22 +21,22 @@ void scanButtonsHardware() {
     LATCbits.LATC0 = 1; // ..
     
     LATCbits.LATC1 = 0; // enable slave
-    rx = SPIReadWrite(0); // read button states
+    buttonsInport = SPIReadWrite(0); // read button states
     LATCbits.LATC1 = 1; // disable slave
     
-    char states = rx; 
+    char states = buttonsInport; 
     for (k=0; k<8; k++) {
         Buttons[k].PreviousState = Buttons[k].State;
         Buttons[k].State = states & 0b00000001;
         states = states >> 1;
     }
-//    initButtonsMemory(); // Writing to EEPROM is not working
+//    initButtonsMemory(); // Writing to EEPROM is not working.. 
 //    readButtonsMemory(); // right now nothing is valid in the EEPROM..
 }
 
 void handleButtons() {
     for (k=0; k<8; k++) {
-        if (Buttons[k].State != Buttons[k].PreviousState) {
+        if (Buttons[k].State != Buttons[k].PreviousState) {            
             if (Buttons[k].Flags && 0x01 == 1) { // toggle flag set ; implemented using note on and off
                 if (Buttons[k].Flags && 0x80 == 0) {
                     sendMidiNoteOn(Buttons[k].CC, Buttons[k].Velocity, 0x00);
@@ -75,7 +75,7 @@ void readButtonsMemory() {
 
 void writeToButtonsMemory(char addr, char data) {
     if (addr >= 0 && addr < 24) {
-            eeprom_write(addr, data);
+        eeprom_write(addr, data);
     }
 }
 
